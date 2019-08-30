@@ -7,6 +7,7 @@ public class pruebbbba {
 
     public static void main(String[] args) {
         pruebbbba pruebbbba = new pruebbbba();
+        System.out.println("CAMBIOOOOOOS");
     }
     
     public void orga() 
