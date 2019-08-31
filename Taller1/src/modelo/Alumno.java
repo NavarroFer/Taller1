@@ -31,7 +31,6 @@ public class Alumno
         return materias.get(Nombre_Materia);
     }
 
-
     /**
      * <b>Pre:</b> debe haber sido asignado un ID al alumno con anterioridad. <br><br>
      * <b>Post:</b> se retorna el ID del alumno en cuestion.
@@ -51,7 +50,17 @@ public class Alumno
      */
     public String getDomicilio()
     {
-        return domicilio;
+      return domicilio;
+    }
+     /**
+     * <b>Pre:</b> debe haber sido asignado una carrera al alumno con anterioridad. <br><br>
+     * <b>Post:</b> se retorna la carrera del alumno en cuestion.
+     * 
+     * @return carrera del alumno en cuestion.
+     */
+    public String getCarrera()
+    {
+        return carrera;
     }
 
     /**
@@ -64,4 +73,11 @@ public class Alumno
     {
         return apellido_y_nombre;
     }
+
+    @Override
+    public String toString()
+    {
+        return this.getID() + " " + this.getApellido_y_nombre() + " " + this.getCarrera();
+    }
 }
+

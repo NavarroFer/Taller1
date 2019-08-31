@@ -24,6 +24,5 @@ public class Almacen
             throw new StudentIDNotFoundException(ID);
         //else
         alumnos.remove(ID);
-    }
-    
+    }    
 }
