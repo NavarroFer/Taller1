@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class Sistema
 {
+
     private Almacen almacen = null;
     private static Sistema instance =null;
     
@@ -42,6 +43,7 @@ public class Sistema
     
     protected void guardarPersistentes()
     {
+
         try 
         {
             XMLEncoder xmlencoder = new XMLEncoder(new FileOutputStream("BotFrases.xml"));
