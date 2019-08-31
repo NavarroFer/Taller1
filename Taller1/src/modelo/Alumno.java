@@ -77,7 +77,6 @@ public class Alumno
     @Override
     public String toString()
     {
-        return this.getID() + " " + this.getApellido_y_nombre() + " " + this.getCarrera();
+        return "ID: " + this.getID() + " Nombre y apellido:" + this.getApellido_y_nombre() + " Carrera:" + this.getCarrera();
     }
 }
-
