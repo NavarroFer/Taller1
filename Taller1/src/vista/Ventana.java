@@ -3,6 +3,7 @@ package vista;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -19,6 +20,7 @@ public class Ventana
         setLocationRelativeTo(null);   
         jTextArea1.setEditable(false);
         jTextArea2.setEditable(false);
+        
         
     }
 
@@ -77,6 +79,11 @@ public class Ventana
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jButton1KeyReleased(evt);
             }
         });
 
@@ -143,6 +150,13 @@ public class Ventana
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 jTextField1.setText("");        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyReleased
+      if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+          //todo
+          // Enter was pressed. Your code goes here.
+       }
+    }//GEN-LAST:event_jButton1KeyReleased
 
     /**
      * @param args the command line arguments
