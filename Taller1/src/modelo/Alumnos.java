@@ -19,4 +19,10 @@ public class Alumnos
     {
         return materias.get(Nombre_Materia);
     }
+
+
+  public String getApellido_y_nombre()
+  {
+    return apellido_y_nombre;
+  }
 }

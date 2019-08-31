@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Almacen 
 {
-  private HashMap<String,Alumno> alumnos; 
+    private HashMap<String,Alumnos> alumnos; 
   
     public Almacen() 
     {
