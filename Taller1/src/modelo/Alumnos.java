@@ -26,4 +26,9 @@ public class Alumnos
         String ID = this.ID; // lol
         return ID;
     }
+
+    public String getDomicilio()
+    {
+        return domicilio;
+    }
 }
