@@ -2,7 +2,7 @@ package modelo;
 
 import java.util.HashMap;
 
-public class Alumnos
+public class Alumno
 {
     String  ID,
             fecha_de_nacimiento,
@@ -11,15 +11,18 @@ public class Alumnos
             carrera;
     HashMap<String,Double> materias;
     
-    public Alumnos()
+    public Alumno()
     {
         super();
     }
     
-    double valorNota(String Nombre_Materia)
+    public double valorNota(String Nombre_Materia) throws SubjectNotFoundException 
     {
+        if(!materias.containsKey(Nombre_Materia))
+            throw new SubjectNotFoundException(Nombre_Materia);
         return materias.get(Nombre_Materia);
     }
+        
 
     public String getID()
     {
@@ -31,6 +34,7 @@ public class Alumnos
     {
         return domicilio;
     }
+    
     public String getApellido_y_nombre()
     {
         return apellido_y_nombre;
