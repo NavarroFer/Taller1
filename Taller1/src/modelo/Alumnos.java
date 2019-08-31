@@ -31,4 +31,8 @@ public class Alumnos
     {
         return domicilio;
     }
+    public String getApellido_y_nombre()
+    {
+        return apellido_y_nombre;
+    }
 }
