@@ -40,10 +40,10 @@ public class Alumno
         return apellido_y_nombre;
     }
 
-
     @Override
     public String toString()
     {
         return this.getID() + " " + this.getApellido_y_nombre() + " " + this.getCarrera();
     }
 }
+
