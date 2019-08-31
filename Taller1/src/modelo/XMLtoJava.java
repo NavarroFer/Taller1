@@ -1,7 +1,10 @@
 package modelo;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class XMLtoJava 
+public class XMLtoJava //TODO una vez que este bien implementado lo de parsear XML, volar esta clase
 {
     public XMLtoJava() {
         super();
@@ -9,7 +12,7 @@ public class XMLtoJava
     
     public static void main(String[] args) throws Exception
           {
-              String LineaXML ="<Alumno>" +
+              String LineaXML ="<Alumno>" +  //ejemplo. Asi hay que levantarlo de archivo
                                     "<Campo>" +
                                         "<Nombre>Id</Nombre>" +
                                         "<Tipo>String</Tipo>" +
@@ -67,15 +70,11 @@ public class XMLtoJava
                                             "</Valores_ArrayList>" +
                                         "</Campo>" +
                                     "</Alumno>";
-              ParserXML p=new ParserXML();
-              String[][] Lista=p.leoArgumento(LineaXML);
-              for (int i=0; i<Lista.length; i++)
+              
+              ArrayList<DatosAtributoXML> lista= ParserXML.leoArgumento(LineaXML);
+              for (Iterator<DatosAtributoXML> it = lista.iterator(); it.hasNext(); )
               {    
-                    System.out.print(Lista[i][0]);
-                    System.out.print("/ ");
-                    System.out.print(Lista[i][1]);
-                    System.out.print("/ ");
-                    System.out.println(Lista[i][2]); 
-                  }
+                    System.out.println(it.next()); 
+              }
           }
 }
