@@ -5,7 +5,7 @@ public class SubjectNotFoundException
 {
     String name;
     
-    public void SubjectNotFoundException(String string)
+    public SubjectNotFoundException(String string)
     {
         this.name = string;
     }
