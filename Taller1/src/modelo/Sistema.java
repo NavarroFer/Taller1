@@ -55,7 +55,7 @@ public class Sistema
     
     public void crear(String string)
     {
-        // todo
+        almacen = new Almacen();
     }
     
     public void cargar(String string)
@@ -73,9 +73,9 @@ public class Sistema
         // todo
     }
     
-    public void eliminar(String string)
+    public void eliminarAlumno(String ID)
     {
-        // todo
+        almacen.eliminarAlumnoID(ID);
     }
     
     public boolean tieneAlmacenCargado()
@@ -83,13 +83,8 @@ public class Sistema
         return almacen != null;
     }
     
-    public boolean alumnoExiste(String string)
+    public boolean alumnoExiste(String ID)
     {
-        return true; // todo
-    }
-
-    public void eliminarAlumno(String string)
-    {
-        // todo
+        return almacen.IDExists(ID);
     }
 }
