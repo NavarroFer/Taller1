@@ -1,8 +1,11 @@
 
 package vista;
 
+import controlador.Parser;
+
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -140,8 +143,19 @@ public class Ventana
         pack();
     }//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-jTextField1.setText("");        // TODO add your handling code here:
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) 
+    {//GEN-FIRST:event_jButton1ActionPerformed
+        String usrInput = jTextField1.getText();
+        try
+        {
+            Parser.parse(usrInput);
+        }
+        catch(Exception e)
+        {
+            jTextArea2.append("\n" + e.toString());
+        }
+        jTextArea1.append("\n" + usrInput);
+        jTextField1.setText("");        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
