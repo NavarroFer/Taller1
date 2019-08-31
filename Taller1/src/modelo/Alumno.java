@@ -30,13 +30,20 @@ public class Alumno
         return ID;
     }
 
-    public String getDomicilio()
+    public String getCarrera()
     {
-        return domicilio;
+        return carrera;
     }
     
     public String getApellido_y_nombre()
     {
         return apellido_y_nombre;
     }
+
+    @Override
+    public String toString()
+    {
+        return this.getID() + " " + this.getApellido_y_nombre() + " " + this.getCarrera();
+    }
 }
+
