@@ -87,6 +87,8 @@ public abstract class Parser
         // ======================= ELIMINAR =======================  
         else if(split_command[0].equals("ELIMINAR"))
         {
+            if(split_command.length < 2)
+                throw new Exception("Error 000: Comando mal formado (Falta segundo argumento)");
             if(!Sistema.getInstance().alumnoExiste(split_command[1]))
                 throw new Exception("Error 004: Operación no realizable. (No existe el alumno)");
             Sistema.getInstance().eliminarAlumno(split_command[1]);

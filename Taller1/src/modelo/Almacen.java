@@ -12,19 +12,18 @@ public class Almacen
     }
 
     /**
-     * <b>Pre:</b> ID != null e ID != "". <br><br>
+     * <b>Pre:</b> Valid ID. ID Exists <br><br>
      * <b>Post:</b> se elimina el alumno cuya ID fue ingresada en el metodo.
      * 
      * @param ID Identificador del alumno:String.
-     * @throws StudentIDNotFoundException Estudiante no encontrado
      */
-    public void eliminarAlumnoID(String ID) throws StudentIDNotFoundException
+    public void eliminarAlumnoID(String ID)
     {
-        if(!alumnos.containsKey(ID))
-            throw new StudentIDNotFoundException(ID);
-        //else
         alumnos.remove(ID);
     }    
     
-    
+    public boolean IDExists(String ID)
+    {
+        return alumnos.containsKey(ID);
+    }
 }

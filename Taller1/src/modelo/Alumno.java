@@ -30,6 +30,8 @@ public class Alumno
             throw new SubjectNotFoundException(Nombre_Materia);
         return materias.get(Nombre_Materia);
     }
+    
+
 
     /**
      * <b>Pre:</b> debe haber sido asignado un ID al alumno con anterioridad. <br><br>
