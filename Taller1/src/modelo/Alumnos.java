@@ -10,6 +10,7 @@ public class Alumnos
             domicilio,
             carrera;
     HashMap<String,Double> materias;
+    
     public Alumnos()
     {
         super();
@@ -25,4 +26,10 @@ public class Alumnos
   {
     return apellido_y_nombre;
   }
+  
+    public String getID()
+    {
+        String ID = this.ID; // lol
+        return ID;
+    }
 }
