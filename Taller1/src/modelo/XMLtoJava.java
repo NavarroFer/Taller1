@@ -67,7 +67,7 @@ public class XMLtoJava
                                             "</Valores_ArrayList>" +
                                         "</Campo>" +
                                     "</Alumno>";
-              parserxml p=new parserxml();
+              ParserXML p=new ParserXML();
               String[][] Lista=p.leoArgumento(LineaXML);
               for (int i=0; i<Lista.length; i++)
               {    
