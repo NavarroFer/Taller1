@@ -5,7 +5,7 @@ public class StudentIDNotFoundException
 {
     String ID;
     
-    public void SubjectNotFoundException(String string)
+    public StudentIDNotFoundException(String string)
     {
         this.ID = string;
     }
