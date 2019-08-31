@@ -9,11 +9,21 @@ import java.util.ArrayList;
 
 public class Sistema
 {
-    private Almacen almacen;
 
-    public Sistema()
+    private Almacen almacen = null;
+    private static Sistema instance =null;
+    
+
+    private Sistema()
     {
         super();
+    }
+    
+    public static Sistema getInstance()
+    {
+        if(instance==null)
+            instance=new Sistema();
+        return instance;
     }
 
     private void cargarPersistentes()
@@ -33,14 +43,50 @@ public class Sistema
     
     protected void guardarPersistentes()
     {
-           try 
-           {
-               XMLEncoder xmlencoder = new XMLEncoder(new FileOutputStream("BotFrases.xml"));
-               xmlencoder.writeObject(this.almacen);
-               xmlencoder.close();
-           }
+
+        try 
+        {
+            XMLEncoder xmlencoder = new XMLEncoder(new FileOutputStream("BotFrases.xml"));
+            xmlencoder.writeObject(this.almacen);
+            xmlencoder.close();
+        }
         catch (FileNotFoundException e)
         {               
         }
+    }
+    
+    public void crear(String string)
+    {
+        almacen = new Almacen();
+    }
+    
+    public void cargar(String string)
+    {
+        // todo
+    }
+    
+    public void guardar()
+    {
+        // todo
+    }
+    
+    public void insertar(String string)
+    {
+        // todo
+    }
+    
+    public void eliminarAlumno(String ID)
+    {
+        almacen.eliminarAlumnoID(ID);
+    }
+    
+    public boolean tieneAlmacenCargado()
+    {
+        return almacen != null;
+    }
+    
+    public boolean alumnoExiste(String ID)
+    {
+        return almacen.IDExists(ID);
     }
 }

@@ -30,22 +30,47 @@ public class Alumno
             throw new SubjectNotFoundException(Nombre_Materia);
         return materias.get(Nombre_Materia);
     }
+    
 
+
+    /**
+     * <b>Pre:</b> debe haber sido asignado un ID al alumno con anterioridad. <br><br>
+     * <b>Post:</b> se retorna el ID del alumno en cuestion.
+     * 
+     * @return ID del alumno en cuestion.
+     */
     public String getID()
     {
-        return this.ID;
+        return ID;
     }
 
+    /**
+     * <b>Pre:</b> debe haber sido asignado un domicilio al alumno con anterioridad. <br><br>
+     * <b>Post:</b> se retorna el domicilio del alumno en cuestion.
+     * 
+     * @return Domicilio del alumno en cuestion.
+     */
     public String getDomicilio()
     {
       return domicilio;
     }
-
+     /**
+     * <b>Pre:</b> debe haber sido asignado una carrera al alumno con anterioridad. <br><br>
+     * <b>Post:</b> se retorna la carrera del alumno en cuestion.
+     * 
+     * @return carrera del alumno en cuestion.
+     */
     public String getCarrera()
     {
         return carrera;
     }
 
+    /**
+     * <b>Pre:</b> debe haber sido asignado un apellido y un nombre al alumno con anterioridad. <br><br>
+     * <b>Post:</b> se retorna el apellido y un nombre del alumno en cuestion.
+     * 
+     * @return Apellido y un nombre del alumno en cuestion.
+     */
     public String getApellido_y_nombre()
     {
         return apellido_y_nombre;
@@ -57,4 +82,3 @@ public class Alumno
         return "ID: " + this.getID() + " Nombre y apellido:" + this.getApellido_y_nombre() + " Carrera:" + this.getCarrera();
     }
 }
-
