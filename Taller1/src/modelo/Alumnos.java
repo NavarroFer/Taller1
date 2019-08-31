@@ -10,6 +10,7 @@ public class Alumnos
             domicilio,
             carrera;
     HashMap<String,Double> materias;
+    
     public Alumnos()
     {
         super();
@@ -18,5 +19,10 @@ public class Alumnos
     double valorNota(String Nombre_Materia)
     {
         return materias.get(Nombre_Materia);
+    }
+
+    public String getID()
+    {
+        return ID;
     }
 }
