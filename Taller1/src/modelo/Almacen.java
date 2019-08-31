@@ -11,6 +11,5 @@ public class Almacen
         super();
     }
     
-    //prueba desde la notebook
     
 }
