@@ -39,7 +39,7 @@ public class Alumno
      */
     public String getID()
     {
-        return this.ID;
+        return ID;
     }
 
     /**
@@ -80,4 +80,3 @@ public class Alumno
         return "ID: " + this.getID() + " Nombre y apellido:" + this.getApellido_y_nombre() + " Carrera:" + this.getCarrera();
     }
 }
-
