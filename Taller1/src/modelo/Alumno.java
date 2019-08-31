@@ -20,7 +20,7 @@ public class Alumno
      * <b>Pre:</b> Nombre_Materia != null y Nombre_Materia != "". <br><br>
      * <b>Post:</b> se retorna la nota que tiene el alumno en la materia especificada.
      * 
-     * @param Nombre_Materia  nombre de la materia cuya nota se quiere consultar.
+     * @param Nombre_Materia  nombre de la materia cuya nota se quiere consultar:String.
      * @return Nota que tiene el alumno en la materia especificada.
      * @throws SubjectNotFoundException Materia con nombre Nombre_Materia no encontrada.
      */
