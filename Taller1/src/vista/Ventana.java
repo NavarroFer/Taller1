@@ -120,10 +120,12 @@ public class Ventana
 
         zonaErorres.setBorder(javax.swing.BorderFactory.createTitledBorder("Errores"));
         zonaErorres.setToolTipText("rucula");
-        zonaErorres.setLayout(new java.awt.GridLayout());
+        zonaErorres.setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel8.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         jPanel8.setLayout(new java.awt.BorderLayout());
+
+        jScrollPane2.setHorizontalScrollBar(null);
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
