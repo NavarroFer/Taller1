@@ -21,20 +21,18 @@ public class Alumnos
         return materias.get(Nombre_Materia);
     }
 
-
-    public String getApellido_y_nombre()
-    {
-    return apellido_y_nombre;
-    }
-  
     public String getID()
     {
         String ID = this.ID; // lol
         return ID;
     }
-    
+
     public String getDomicilio()
     {
         return domicilio;
+    }
+    public String getApellido_y_nombre()
+    {
+        return apellido_y_nombre;
     }
 }
