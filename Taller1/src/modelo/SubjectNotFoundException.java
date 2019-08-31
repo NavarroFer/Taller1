@@ -3,15 +3,15 @@ package modelo;
 public class SubjectNotFoundException
     extends Exception
 {
-    String name;
+    private String message;
     
     public SubjectNotFoundException(String string)
     {
-        this.name = string;
+        this.message = string;
     }
 
-    public String getName()
+    public String toString()
     {
-        return name;
+        return message;
     }
 }

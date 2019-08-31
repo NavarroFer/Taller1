@@ -1,15 +1,15 @@
 package modelo;
 
-public class StudentIDNotFoundException
+public class ComandoMalFormadoException
     extends Exception
 {
     private String message;
     
-    public StudentIDNotFoundException(String string)
+    public ComandoMalFormadoException(String string)
     {
-        this.message = string;
+        message = string;
     }
-
+    
     public String toString()
     {
         return message;

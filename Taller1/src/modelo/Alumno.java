@@ -26,7 +26,6 @@ public class Alumno
 
     public String getID()
     {
-        String ID = this.ID; // lol
         return ID;
     }
 

@@ -1,13 +1,13 @@
 package modelo;
 
-public class StudentIDNotFoundException
+public class InstruccionDesconocidaException
     extends Exception
 {
     private String message;
     
-    public StudentIDNotFoundException(String string)
+    public InstruccionDesconocidaException(String string)
     {
-        this.message = string;
+        message = string;
     }
 
     public String toString()
