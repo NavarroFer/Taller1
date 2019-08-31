@@ -1,15 +1,25 @@
 
 package vista;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author Mau
  */
-public class Ventana extends javax.swing.JFrame {
+public class Ventana
+    extends javax.swing.JFrame
+{
 
     /** Creates new form Ventana */
-    public Ventana() {
+    public Ventana()
+    {
         initComponents();
+        setLocationRelativeTo(null);   
+        jTextArea1.setEditable(false);
+        jTextArea2.setEditable(false);
+        
     }
 
     /** This method is called from within the constructor to
@@ -30,6 +40,10 @@ public class Ventana extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        zonaErorres = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Almacen Alumnos");
@@ -60,6 +74,11 @@ public class Ventana extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jButton1.setForeground(new java.awt.Color(15, 147, 74));
         jButton1.setText("Enviar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -84,7 +103,7 @@ public class Ventana extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Salida"));
         jPanel1.setToolTipText("rucula");
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         jPanel6.setLayout(new java.awt.BorderLayout());
@@ -99,30 +118,57 @@ public class Ventana extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
+        zonaErorres.setBorder(javax.swing.BorderFactory.createTitledBorder("Errores"));
+        zonaErorres.setToolTipText("rucula");
+        zonaErorres.setLayout(new java.awt.GridLayout());
+
+        jPanel8.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        jPanel8.setLayout(new java.awt.BorderLayout());
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
+
+        jPanel8.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+
+        zonaErorres.add(jPanel8);
+
+        getContentPane().add(zonaErorres, java.awt.BorderLayout.EAST);
+
         pack();
     }//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+jTextField1.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing
-                                                                   .UIManager
-                                                                   .getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info: javax.swing
+                                                                  .UIManager
+                                                                  .getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing
                          .UIManager
                          .setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        }
+        catch (ClassNotFoundException ex)
+        {
             java.util
                 .logging
                 .Logger
@@ -131,7 +177,9 @@ public class Ventana extends javax.swing.JFrame {
                          .logging
                          .Level
                          .SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        }
+        catch (InstantiationException ex)
+        {
             java.util
                 .logging
                 .Logger
@@ -140,7 +188,9 @@ public class Ventana extends javax.swing.JFrame {
                          .logging
                          .Level
                          .SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        }
+        catch (IllegalAccessException ex)
+        {
             java.util
                 .logging
                 .Logger
@@ -149,7 +199,9 @@ public class Ventana extends javax.swing.JFrame {
                          .logging
                          .Level
                          .SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        }
+        catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util
                 .logging
                 .Logger
@@ -164,8 +216,10 @@ public class Ventana extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt
             .EventQueue
-            .invokeLater(new Runnable() {
-                public void run() {
+            .invokeLater(new Runnable()
+            {
+                public void run()
+                {
                     new Ventana().setVisible(true);
                 }
             });
@@ -179,9 +233,13 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel zonaErorres;
     // End of variables declaration//GEN-END:variables
 
 }
