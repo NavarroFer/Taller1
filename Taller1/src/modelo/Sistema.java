@@ -10,10 +10,19 @@ import java.util.ArrayList;
 public class Sistema
 {
     private Almacen almacen;
+    private static Sistema instance =null;
+    
 
-    public Sistema()
+    private Sistema()
     {
         super();
+    }
+    
+    public static Sistema getInstance()
+    {
+        if(instance==null)
+            instance=new Sistema();
+        return instance;
     }
 
     private void cargarPersistentes()
