@@ -5,15 +5,16 @@ import java.util.Arrays;
 
 import modelo.ComandoMalFormadoException;
 import modelo.InstruccionDesconocidaException;
+import modelo.Sistema;
 
 public abstract class Parser
 {
-    private static ArrayList<String> COMMANDS = new ArrayList<String>(Arrays.asList("CREAR",
+    /*     private static ArrayList<String> COMMANDS = new ArrayList<String>(Arrays.asList("CREAR",
                                                                                     "CARGAR",
                                                                                     "GUARDAR",
                                                                                     "INSERTAR",
                                                                                     "ELIMINAR",
-                                                                                    "CONSULTAR"));
+                                                                                    "CONSULTAR")); */
 
 
     /**
@@ -35,12 +36,11 @@ public abstract class Parser
         raw_command = raw_command.toUpperCase();
         String split_command[] = raw_command.split(" ");
         
-        if(!COMMANDS.contains(split_command[0]))
-            throw new InstruccionDesconocidaException("Error 001: No se reconoce la instrucción \""+split_command[0]+"\"");
-        
         // ======================= CREAR =======================
-        if(split_command[0] == "CREAR")
+        if(split_command[0].equals("CREAR"))
         {
+            if(split_command.length < 2)
+                throw new Exception("Error 000: Comando mal formado (Falta segundo argumento)");
             if(fileExists(split_command[1]))
                 throw new Exception("Error 004: Operación no realizable. (Ya existe el archivo)");
             //if(split_command.length > 2) 
@@ -51,8 +51,10 @@ public abstract class Parser
         }
         
         // ======================= CARGAR =======================
-        else if(split_command[0] == "CARGAR")
+        else if(split_command[0].equals("CARGAR"))
         {
+            if(split_command.length < 2)
+                throw new Exception("Error 000: Comando mal formado (Falta segundo argumento)");
             if(!fileExists(split_command[1]))
                 throw new Exception("Error 003: Operación no realizable. (No existe el archivo)");
             Sistema.getInstance().cargar(split_command[1]);
@@ -63,37 +65,42 @@ public abstract class Parser
         }
         
         // ======================= GUARDAR =======================
-        else if(split_command[0] == "GUARDAR")
+        else if(split_command[0].equals("GUARDAR"))
         {
-            if(Sistema.getInstance().tieneAlmacenCargado())
-                throw new Exception("Error 004: Operación no realizable. (Ya hay un almacén cargado)");
-            if(fileExists(split_command[1]))
-                throw new Exception("Error 004: Operación no realizable. (Ya existe el archivo)");
+            if(split_command.length > 1)
+                throw new Exception("Error 000: Comando mal formado (No se esperaba un segundo argumento)");
+            if(!Sistema.getInstance().tieneAlmacenCargado())
+                throw new Exception("Error 004: Operación no realizable. (No hay almacén cargado)");
             //if(split_command.length > 2) 
             //  throw new Exception("Error 002: Consulta mal construida. (Más argumentos de los necesarios para la operación)");
             
             //else: Ya pasó todos los filtros de la capa de negocios.
-            Sistema.getInstance().crear(split_command[1]);
+            Sistema.getInstance().guardar();
         }     
         
         // ======================= INSERTAR =======================
-        else if(split_command[0] == "INSERTAR")
+        else if(split_command[0].equals("INSERTAR"))
         {
             // TODO
         }
         
         // ======================= ELIMINAR =======================  
-        else if(split_command[0] == "ELIMINAR")
+        else if(split_command[0].equals("ELIMINAR"))
         {
-            if(!alumnoExiste(split_command[1]))
+            if(!Sistema.getInstance().alumnoExiste(split_command[1]))
                 throw new Exception("Error 004: Operación no realizable. (No existe el alumno)");
-            Sistema.eliminarAlumno(split_command[1]);
+            Sistema.getInstance().eliminarAlumno(split_command[1]);
             //if(split_command.length > 2) 
             //  throw new Exception("Error 002: Consulta mal construida. (Más argumentos de los necesarios para la operación)");
         }
         
         // ======================= CONSULTAR =======================
                 
+                
+                
+                
+        else
+            throw new InstruccionDesconocidaException("Error 001: No se reconoce la instrucción \""+split_command[0]+"\"");
     }
             
     private static boolean fileExists(String filename)
