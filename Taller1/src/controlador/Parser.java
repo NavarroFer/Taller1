@@ -1,8 +1,11 @@
 package controlador;
 
+import java.io.File;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import modelo.Alumno;
 import modelo.ComandoMalFormadoException;
 import modelo.InstruccionDesconocidaException;
 import modelo.Sistema;
@@ -82,6 +85,15 @@ public abstract class Parser
         else if(split_command[0].equals("INSERTAR"))
         {
             // TODO
+            if(split_command.length < 2)
+                throw new Exception("Error 000: Comando mal formado (Falta segundo argumento)");
+            if(!fileExists(split_command[1]))
+                throw new Exception("Error 003: Operación no realizable. (No existe el archivo)");
+            Sistema.getInstance().insertar(split_command[1]);
+            //if(split_command.length > 2) 
+            //  throw new Exception("Error 002: Consulta mal construida. (Más argumentos de los necesarios para la operación)");
+            
+            
         }
         
         // ======================= ELIMINAR =======================  
@@ -107,7 +119,9 @@ public abstract class Parser
             
     private static boolean fileExists(String filename)
     {
-        return true; //TODO!!!!!!!!!!!!
+        File f = new File(filename);
+        boolean resultado = f.exists();
+        return resultado;
     }
     
 }

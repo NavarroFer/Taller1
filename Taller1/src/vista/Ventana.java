@@ -5,7 +5,17 @@ import controlador.Parser;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+
+import java.beans.XMLEncoder;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
+import java.util.HashMap;
+
+import modelo.Alumno;
 
 /**
  *
@@ -22,7 +32,6 @@ public class Ventana
         setLocationRelativeTo(null);   
         jTextArea1.setEditable(false);
         jTextArea2.setEditable(false);
-        
         
     }
 
@@ -118,6 +127,7 @@ public class Ventana
         jPanel6.setLayout(new java.awt.BorderLayout());
 
         jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
@@ -137,6 +147,7 @@ public class Ventana
         jScrollPane2.setHorizontalScrollBar(null);
 
         jTextArea2.setColumns(20);
+        jTextArea2.setLineWrap(true);
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
@@ -166,8 +177,17 @@ public class Ventana
 
     private void jButton1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyReleased
       if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
-          //todo
-          // Enter was pressed. Your code goes here.
+           String usrInput = jTextField1.getText();
+           try
+           {
+               Parser.parse(usrInput);
+           }
+           catch(Exception e)
+           {
+               jTextArea2.append("\n" + e.toString());
+           }
+           jTextArea1.append("\n" + usrInput);
+           jTextField1.setText(""); //literalmente lo miusmo q arriba, no supe como llamar al metodo de arriba xq el evt es de tipo distinto :/ //todo
        }
     }//GEN-LAST:event_jButton1KeyReleased
 

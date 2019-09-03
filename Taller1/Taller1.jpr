@@ -88,12 +88,13 @@
       </hash>
    </hash>
    <hash n="oracle.jdeveloper.runner.RunConfigurations">
+      <value n="activeName" v="Con asserts"/>
       <hash n="runConfigurationDefinitions">
          <hash n="Con asserts">
             <value n="custom" v="false"/>
             <value n="javaOptions" v="-ea"/>
             <value n="name" v="Con asserts"/>
-            <value n="targetURL"/>
+            <url n="targetURL" path="src/vista/Ventana.java"/>
          </hash>
       </hash>
       <list n="runConfigurationList">
