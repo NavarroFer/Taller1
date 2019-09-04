@@ -27,6 +27,11 @@ public class Almacen
     {
         super();
         this.filename=filename;
+        this.alumnos = new HashMap<String,Alumno>();
+    }
+    
+    public Almacen(){
+        super();
     }
 
     /**
