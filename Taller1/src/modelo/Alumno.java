@@ -4,16 +4,17 @@ import java.util.HashMap;
 
 public class Alumno
 {
-    String  ID,
+    private String  ID,
             fecha_de_nacimiento,
             apellido_y_nombre,
             domicilio,
             carrera;
-    HashMap<String,Double> materias;
+     private HashMap<String,Double> materias;
     
     public Alumno()
     {
         super();
+        this.materias = new HashMap<String,Double>();
     }
 
     /**
