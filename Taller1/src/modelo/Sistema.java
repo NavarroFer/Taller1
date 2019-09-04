@@ -26,11 +26,11 @@ public class Sistema
         return instance;
     }
 
-    private void cargarPersistentes()
+    public void cargar(String filename)
     {
         try
         {
-            XMLDecoder xmldecoder = new XMLDecoder(new FileInputStream("BotFrases.xml"));
+            XMLDecoder xmldecoder = new XMLDecoder(new FileInputStream(filename));
             this.almacen = (Almacen) xmldecoder.readObject();
         }
         catch (FileNotFoundException e)
@@ -41,39 +41,26 @@ public class Sistema
         }
     }
     
-    protected void guardarPersistentes()
+    public void guardar()
     {
 
         try 
         {
-            XMLEncoder xmlencoder = new XMLEncoder(new FileOutputStream("BotFrases.xml"));
+            XMLEncoder xmlencoder = new XMLEncoder(new FileOutputStream(almacen.getFilename()));
             xmlencoder.writeObject(this.almacen);
             xmlencoder.close();
         }
         catch (FileNotFoundException e)
         {               
+            System.out.println("esto no deberia pasar nunca");
         }
     }
     
-    public void crear(String string)
+    public void crear(String filename)
     {
-        almacen = new Almacen();
+        almacen = new Almacen(filename);
     }
     
-    public void cargar(String string)
-    {
-        // todo
-    }
-    
-    public void guardar()
-    {
-        // todo
-    }
-    
-    public void insertar(String string)
-    {
-        // todo
-    }
     
     public void eliminarAlumno(String ID)
     {
@@ -88,5 +75,26 @@ public class Sistema
     public boolean alumnoExiste(String ID)
     {
         return almacen.IDExists(ID);
+    }
+
+    public void insertar(String filename) {
+    
+        try
+        {
+            XMLDecoder xmldecoder = new XMLDecoder(new FileInputStream(filename));
+            Alumno a = (Alumno) xmldecoder.readObject();
+            if(almacen.IDExists(a.getID())){ //si ya hay un almumno con esa ID
+                System.out.println("La verdad q no tendriamos q haber tirado una excepcion ams arriba??"); //TODO mirar esto y lo de los prints de no encontrado q me parece medio raro?? -Mau
+            }
+            else{
+                almacen.agregarAlumno(a);
+            }
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println("==============================");
+            System.out.println("=Archivo alumno no encontrado=");
+            System.out.println("==============================");
+        }
     }
 }

@@ -4,10 +4,33 @@ import java.util.HashMap;
 
 public class Almacen 
 {
-    private HashMap<String,Alumno> alumnos; 
-  
-    public Almacen() 
+    private HashMap<String,Alumno> alumnos;
+    private String filename;
+
+    public void setAlumnos(HashMap<String, Alumno> alumnos) {
+        this.alumnos = alumnos;
+    }
+
+    public HashMap<String, Alumno> getAlumnos() {
+        return alumnos;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public Almacen(String filename) 
     {
+        super();
+        this.filename=filename;
+        this.alumnos = new HashMap<String,Alumno>();
+    }
+    
+    public Almacen(){
         super();
     }
 
@@ -25,5 +48,9 @@ public class Almacen
     public boolean IDExists(String ID)
     {
         return alumnos.containsKey(ID);
+    }
+
+    public void agregarAlumno(Alumno a) {
+        this.alumnos.put(a.getID(),a);
     }
 }
