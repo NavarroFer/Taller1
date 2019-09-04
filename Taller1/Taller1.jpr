@@ -88,6 +88,7 @@
       </hash>
    </hash>
    <hash n="oracle.jdeveloper.runner.RunConfigurations">
+      <value n="activeName" v="Con asserts"/>
       <hash n="runConfigurationDefinitions">
          <hash n="Con asserts">
             <value n="custom" v="false"/>

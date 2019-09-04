@@ -75,6 +75,12 @@ public class Sistema
         // todo
     }
     
+    public void consultar(String string) throws NumberFormatException
+    {
+        int nota= Integer.parseInt(string);
+        almacen.consultarNota(nota);
+    }
+    
     public void eliminarAlumno(String ID)
     {
         almacen.eliminarAlumnoID(ID);
