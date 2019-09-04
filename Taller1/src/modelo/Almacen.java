@@ -45,6 +45,10 @@ public class Almacen
         alumnos.remove(ID);
     }    
     
+    public void consultarNota(int nota){ //falta definir como vamos a mostrar el listado
+        //todo
+    }
+    
     public boolean IDExists(String ID)
     {
         return alumnos.containsKey(ID);

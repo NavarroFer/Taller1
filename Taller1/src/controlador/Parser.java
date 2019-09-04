@@ -109,7 +109,17 @@ public abstract class Parser
         }
         
         // ======================= CONSULTAR =======================
-                
+        else if(split_command[0].equals("CONSULTAR")) 
+        {
+            //if(split.command[]>=2) 
+                //throw new Exception("Error 002: Consulta mal construida. (Más argumentos de los necesarios para la operación)");      
+            try{
+                Sistema.getInstance().consultar(split_command[1]);
+            }
+            catch(NumberFormatException e){
+                    throw new Exception("Error 002: Consulta mal construida. (Se esperaba un numero y se recibio otro caracter)");
+                }
+        }
                 
                 
                 
