@@ -9,6 +9,12 @@ public class Almacen
     private HashMap<String,Alumno> alumnos;
     private String filename;
 
+
+    public Almacen()
+    {
+        super();
+    }
+    
     public void setAlumnos(HashMap<String, Alumno> alumnos) 
     {
         this.alumnos = alumnos;
@@ -34,10 +40,6 @@ public class Almacen
         super();
         this.filename=filename;
         this.alumnos = new HashMap<String,Alumno>();
-    }
-    
-    public Almacen(){
-        super();
     }
 
     /**

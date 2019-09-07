@@ -77,35 +77,43 @@ public class Alumno
         return apellido_y_nombre;
     }
 
-    public void setID(String ID) {
+    public void setID(String ID) 
+    {
         this.ID = ID;
     }
 
-    public void setFecha_de_nacimiento(String fecha_de_nacimiento) {
+    public void setFecha_de_nacimiento(String fecha_de_nacimiento) 
+    {
         this.fecha_de_nacimiento = fecha_de_nacimiento;
     }
 
-    public String getFecha_de_nacimiento() {
+    public String getFecha_de_nacimiento() 
+    {
         return fecha_de_nacimiento;
     }
 
-    public void setApellido_y_nombre(String apellido_y_nombre) {
+    public void setApellido_y_nombre(String apellido_y_nombre) 
+    {
         this.apellido_y_nombre = apellido_y_nombre;
     }
 
-    public void setDomicilio(String domicilio) {
+    public void setDomicilio(String domicilio) 
+    {
         this.domicilio = domicilio;
     }
 
-    public void setCarrera(String carrera) {
+    public void setCarrera(String carrera) 
+    {
         this.carrera = carrera;
     }
 
-    public void setMaterias(HashMap<String, Double> materias) {
+    public void setMaterias(HashMap<String, Double> materias) 
+    {
         this.materias = materias;
     }
 
-    public HashMap<String, Double> getMaterias() {
+    public HashMap<String, Double> getMaterias() 
+    {
         return materias;
     }
 
