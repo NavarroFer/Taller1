@@ -24,17 +24,23 @@ import modelo.Alumno;
 public class Ventana
     extends javax.swing.JFrame
 {
-
+    
     /** Creates new form Ventana */
     public Ventana()
     {
+        
         initComponents();
         setLocationRelativeTo(null);   
         jTextArea1.setEditable(false);
         jTextArea2.setEditable(false);
         jTextField1.requestFocus();
         this.getRootPane().setDefaultButton(jButton1);
+        Parser.setVentana(this);
         
+    }
+    
+    public void imprimirEnConsola(String texto){
+        this.jTextArea1.append(texto+"\n");
     }
 
     /** This method is called from within the constructor to
