@@ -53,8 +53,15 @@ public abstract class Parser
             if(split_command.length > 2) 
                 throw new Exception("Error 002: Consulta mal construida. (Mas argumentos de los necesarios para la operacion)");
             if(!fileExists(split_command[1]))
-                throw new Exception("Error 003: Operación no realizable. (No existe el archivo)");
-            Sistema.getInstance().cargar(split_command[1]);
+                throw new Exception("Error 003: Operacion no realizable. (No existe el archivo)");
+            try
+            {
+                Sistema.getInstance().cargar(split_command[1]);
+            }
+            catch(ClassCastException e)
+            {
+                throw new Exception("Error 004: Operación no realizable. (El archivo existe, pero no contiene un almacén)");
+            }
 
         }
         
@@ -80,7 +87,6 @@ public abstract class Parser
                 throw new Exception("Error 003: OperaciÃ³n no realizable. (No existe el archivo)");
             Sistema.getInstance().insertar(split_command[1]);
             
-            
         }
         
         // ======================= ELIMINAR =======================  
@@ -100,8 +106,15 @@ public abstract class Parser
         {
             if((split_command.length!=4)&&(split_command.length!=6)) 
                 throw new Exception("Error 000: Comando mal formado. (Cantidad invalida de argumentos)"); 
-            if(!(split_command[2].equals("=="))&&(!(split_command[2].equals("!=")))&&(!(split_command[2].equals("<")))&&(!(split_command[2].equals(">")))&&(!(split_command[2].equals(">=")))&&(!(split_command[2].equals("<="))))
-                throw new Exception("Error 002: Operador desconocido)");
+            if(!split_command[2].equals("==") &&
+               !split_command[2].equals("!=") &&
+               !split_command[2].equals("<") &&
+               !split_command[2].equals(">") &&
+               !split_command[2].equals(">=") &&
+               !split_command[2].equals("<=")
+                )
+                throw new Exception("Error 002: Operador desconocido (" +split_command[2]+ ")");
+
             
             Double nota;
             try
@@ -122,7 +135,6 @@ public abstract class Parser
                 if(split_command[4]!="TOFILE")
                     throw new Exception("Error 002: Consulta mal construida (No se encuentra la palabra reservada 'toFile')");
                 Sistema.getInstance().listaDeAlumnosArch(split_command[1], split_command[2], nota, split_command[5]);
-
             }
                                    
         }

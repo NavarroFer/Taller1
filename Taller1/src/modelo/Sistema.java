@@ -42,6 +42,12 @@ public class Sistema
         {
             //Imposible por precondición
         }
+        /*         
+        catch (ClassCastException e)
+        {
+            Esta excepción la propagamos.
+        } 
+        */
     }
     
     public void guardar()
