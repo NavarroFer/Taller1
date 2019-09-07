@@ -9,7 +9,7 @@ public class Alumno
             apellido_y_nombre,
             domicilio,
             carrera;
-     private HashMap<String,Double> materias;
+    private HashMap<String,Double> materias;
     
     public Alumno()
     {
@@ -28,7 +28,7 @@ public class Alumno
     {
         return materias.get(Nombre_Materia);
     }
-    public boolean isMateria(String materia)
+    public boolean haceMateria(String materia)
     {
         return this.materias.containsKey(materia);
     }
@@ -120,6 +120,6 @@ public class Alumno
     @Override
     public String toString()
     {
-        return "ID: " + this.getID() + " Nombre y apellido:" + this.getApellido_y_nombre() + " Carrera:" + this.getCarrera();
+        return "Alumno nro " + this.getID() + ". Nombre completo: " + this.getApellido_y_nombre() + ". Carrera:" + this.getCarrera();
     }
 }

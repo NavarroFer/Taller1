@@ -95,7 +95,7 @@ public class Sistema
      */
     public ArrayList<Alumno> listaDeAlumnos(String materia,String operador,double nota)
     {
-       return this.almacen.listaDeAlumno(materia,operador,nota);
+       return almacen.listaDeAlumno(materia,operador,nota);
     }
     
     public ArrayList<Alumno> listaDeAlumnosArch(String materia,String operador,double nota,String nombreArch)
