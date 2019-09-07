@@ -168,7 +168,7 @@ public class Ventana
         }
         catch(Exception e)
         {
-            jTextArea2.append("\n" + e.toString());
+            jTextArea2.append("\n" + e.getMessage());
         }
         jTextArea1.append("\n" + usrInput);
         jTextField1.setText("");        // TODO add your handling code here:

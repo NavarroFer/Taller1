@@ -2,14 +2,9 @@ package controlador;
 
 import java.io.File;
 
-import java.io.FileNotFoundException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-import modelo.Alumno;
-import modelo.ComandoMalFormadoException;
-import modelo.InstruccionDesconocidaException;
 import modelo.Sistema;
 
 public abstract class Parser
@@ -31,15 +26,13 @@ public abstract class Parser
      * @throws InstruccionDesconocidaException: non-existant instruction
      * 
      */
-    public static void parse(String raw_command) throws ComandoMalFormadoException, InstruccionDesconocidaException,
-                                                        Exception
+    public static void parse(String raw_command) throws Exception
     {
         // Lo bochamos si es una string nula. (T茅cnicamente imposible?)
         if(raw_command == null)
-            throw new ComandoMalFormadoException("Error 000: Se ha introducido un comando vac铆o");
+            throw new Exception("Error 000: Se ha introducido un comando vac韔");
         
-        raw_command = raw_command.toUpperCase();
-        String split_command[] = raw_command.split(" ");
+        String split_command[] = raw_command.toUpperCase().split(" ");
         
         // ======================= CREAR =======================
         if(split_command[0].equals("CREAR"))
@@ -47,7 +40,7 @@ public abstract class Parser
             if(split_command.length < 2)
                 throw new Exception("Error 000: Comando mal formado (Falta segundo argumento)");
             if(fileExists(split_command[1]))
-                throw new Exception("Error 004: Operaci贸n no realizable. (Ya existe el archivo)");
+                throw new Exception("Error 004: Operaci髇 no realizable. (Ya existe el archivo)");
             //if(split_command.length > 2) 
             //  throw new Exception("Error 002: Consulta mal construida. (M谩s argumentos de los necesarios para la operaci贸n)");
             
@@ -61,7 +54,7 @@ public abstract class Parser
             if(split_command.length < 2)
                 throw new Exception("Error 000: Comando mal formado (Falta segundo argumento)");
             if(!fileExists(split_command[1]))
-                throw new Exception("Error 003: Operaci贸n no realizable. (No existe el archivo)");
+                throw new Exception("Error 003: Operaci髇 no realizable. (No existe el archivo)");
             Sistema.getInstance().cargar(split_command[1]);
             //if(split_command.length > 2) 
             //  throw new Exception("Error 002: Consulta mal construida. (M谩s argumentos de los necesarios para la operaci贸n)");
@@ -75,7 +68,7 @@ public abstract class Parser
             if(split_command.length > 1)
                 throw new Exception("Error 000: Comando mal formado (No se esperaba un segundo argumento)");
             if(!Sistema.getInstance().tieneAlmacenCargado())
-                throw new Exception("Error 004: Operaci贸n no realizable. (No hay almac茅n cargado)");
+                throw new Exception("Error 004: Operaci髇 no realizable. (No hay almac茅n cargado)");
             //if(split_command.length > 2) 
             //  throw new Exception("Error 002: Consulta mal construida. (M谩s argumentos de los necesarios para la operaci贸n)");
             
@@ -117,37 +110,24 @@ public abstract class Parser
                 throw new Exception("Error 000: Comando mal formado. (Cantidad invalida de argumentos)"); 
             if((split_command[2]!="==")||(split_command[2]!="!=")||(split_command[2]!="<")||(split_command[2]!=">")||(split_command[2]!=">=")||(split_command[2]!="<="))
                 throw new Exception("Error 002: Operador desconocido)");
-            try
+
+            Double nota = Double.parseDouble(split_command[3]);
+            if(split_command.length==4)
             {
-                Double nota = Double.parseDouble(split_command[3]);
-                if(split_command.length==4)
-                {
-                    Sistema.getInstance().listaDeAlumnos(split_command[1], split_command[2], nota);
-                }
-                else
-                {
-                    if(split_command[4]!="TOFILE")
-                        throw new Exception("Error 002: Consulta mal construida (No se encuentra la palabra reservada 'toFile')");
-                    try
-                    { 
-                        Sistema.getInstance().listaDeAlumnosArch(split_command[1], split_command[2], nota, split_command[5]);
-                    }
-                    catch(FileNotFoundException e) 
-                    {
-                        throw new Exception("Error 002: Consulta mal construida (Hay un problema con el nombre del archivo)");    
-                    }
-                }
+                Sistema.getInstance().listaDeAlumnos(split_command[1], split_command[2], nota);
             }
-            catch(NumberFormatException e)
+            else
             {
-                throw new Exception("Error 002: Consulta mal construida. (El tercer argumento no es numerico)");
+                if(split_command[4]!="TOFILE")
+                    throw new Exception("Error 002: Consulta mal construida (No se encuentra la palabra reservada 'toFile')");
+                Sistema.getInstance().listaDeAlumnosArch(split_command[1], split_command[2], nota, split_command[5]);
+
             }
                                    
         }
-                                                            
-                                                            
+                                                          
         else
-            throw new InstruccionDesconocidaException("Error 001: No se reconoce la instrucci贸n \""+split_command[0]+"\"");
+            throw new Exception("Error 001: No se reconoce la instrucci贸n \""+split_command[0]+"\"");
     }
             
     private static boolean fileExists(String filename)
