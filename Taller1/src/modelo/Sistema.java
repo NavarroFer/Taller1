@@ -2,10 +2,15 @@ package modelo;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
+
+import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Sistema
 {
@@ -61,12 +66,7 @@ public class Sistema
         almacen = new Almacen(filename);
     }
     
-    
-    public void consultar(String string) throws NumberFormatException
-    {
-        int nota= Integer.parseInt(string);
-        almacen.consultarNota(nota);
-    }
+
     
     public void eliminarAlumno(String ID)
     {
@@ -82,7 +82,26 @@ public class Sistema
     {
         return almacen.IDExists(ID);
     }
-
+    /**
+     * <b>Pre:</b> El operador es valido. La nota es un numero <br><br>
+     * <b>Post:</b> Devuelve la lista de alumnos que cumple con la condicion.
+     * 
+     * @param materia nombre de la materia:String, operador valor del operador para evaluar:String, nota valor numerico en la materia:double:.
+     */
+    public ArrayList<Alumno> listaDeAlumnos(String materia,String operador,double nota)
+    {
+       return this.almacen.listaDeAlumno(materia,operador,nota);
+    }
+    public ArrayList<Alumno> listaDeAlumnosArch(String materia,String operador,double nota,String nombreArch)throws FileNotFoundException //no se si esta bien serializar aca xd
+    {
+        ArrayList<Alumno> aux = this.almacen.listaDeAlumno(materia,operador,nota);
+        XMLEncoder encoder = null;
+        encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(nombreArch)));    
+        encoder.writeObject(aux);
+        encoder.close();
+        return aux;
+    }
+    
     public void insertar(String filename) {
     
         try
