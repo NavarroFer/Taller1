@@ -33,13 +33,18 @@ public class Ventana
     {
 
         initComponents();
-        this.jButton1.setEnabled(false);
-        this.jButton1.setBackground(Color.gray);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds(0,0,screenSize.width*2/3, screenSize.height*2/3);
+        this.setMinimumSize(new Dimension(screenSize.width*6/10,screenSize.height*6/10));
+        this.zonaErorres.setMinimumSize(new Dimension(zonaErorres.getPreferredSize().width/2,zonaErorres.getPreferredSize().width/2));
+        this.jPanelSalida.setMinimumSize(new Dimension(jPanelSalida.getPreferredSize().width/2,jPanelSalida.getPreferredSize().width/2));
+        this.BotonEnviar.setEnabled(false);
+        this.BotonEnviar.setBackground(Color.gray);
         setLocationRelativeTo(null);
         jTextArea1.setEditable(false);
         jTextArea2.setEditable(false);
-        jTextField1.requestFocus();
-        this.getRootPane().setDefaultButton(jButton1);
+        jTFEntrada.requestFocus();
+        this.getRootPane().setDefaultButton(BotonEnviar);
         Parser.setVentana(this);
 
     }
@@ -59,116 +64,110 @@ public class Ventana
     private void initComponents()//GEN-BEGIN:initComponents
     {
 
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        jPanelBotonyTextField = new javax.swing.JPanel();
+        jPanelBotonyTFAdentro = new javax.swing.JPanel();
+        JPanelTF = new javax.swing.JPanel();
+        jTFEntrada = new javax.swing.JTextField();
+        jPanelButton = new javax.swing.JPanel();
+        BotonEnviar = new javax.swing.JButton();
+        jPanelSalida = new javax.swing.JPanel();
+        jPanelSalidaAdentro = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         zonaErorres = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
+        jPanelErroresAdentro = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Almacen Alumnos");
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Comandos"));
-        jPanel2.setLayout(new java.awt.BorderLayout());
+        jPanelBotonyTextField.setBorder(javax.swing.BorderFactory.createTitledBorder("Comandos"));
+        jPanelBotonyTextField.setLayout(new java.awt.BorderLayout());
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        jPanelBotonyTFAdentro.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        jPanelBotonyTFAdentro.setLayout(new java.awt.BorderLayout());
 
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter()
+        JPanelTF.setLayout(new java.awt.BorderLayout());
+
+        jTFEntrada.addKeyListener(new java.awt.event.KeyAdapter()
         {
             public void keyReleased(java.awt.event.KeyEvent evt)
             {
-                jTextField1KeyReleased(evt);
+                jTFEntradaKeyReleased(evt);
             }
         });
+        JPanelTF.add(jTFEntrada, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-        );
+        jPanelBotonyTFAdentro.add(JPanelTF, java.awt.BorderLayout.CENTER);
 
-        jPanel3.add(jPanel5);
-
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(15, 147, 74));
-        jButton1.setText("Enviar");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
+        BotonEnviar.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        BotonEnviar.setForeground(new java.awt.Color(15, 147, 74));
+        BotonEnviar.setText("Enviar");
+        BotonEnviar.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton1ActionPerformed(evt);
+                BotonEnviarActionPerformed(evt);
             }
         });
-        jButton1.addKeyListener(new java.awt.event.KeyAdapter()
+        BotonEnviar.addKeyListener(new java.awt.event.KeyAdapter()
         {
             public void keyReleased(java.awt.event.KeyEvent evt)
             {
-                jButton1KeyReleased(evt);
+                BotonEnviarKeyReleased(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelButtonLayout = new javax.swing.GroupLayout(jPanelButton);
+        jPanelButton.setLayout(jPanelButtonLayout);
+        jPanelButtonLayout.setHorizontalGroup(
+            jPanelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelButtonLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(BotonEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+        jPanelButtonLayout.setVerticalGroup(
+            jPanelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelButtonLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(BotonEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel3.add(jPanel4);
+        jPanelBotonyTFAdentro.add(jPanelButton, java.awt.BorderLayout.EAST);
 
-        jPanel2.add(jPanel3, java.awt.BorderLayout.PAGE_START);
+        jPanelBotonyTextField.add(jPanelBotonyTFAdentro, java.awt.BorderLayout.PAGE_START);
 
-        getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
+        getContentPane().add(jPanelBotonyTextField, java.awt.BorderLayout.SOUTH);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Salida"));
-        jPanel1.setToolTipText("rucula");
-        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
+        jPanelSalida.setBorder(javax.swing.BorderFactory.createTitledBorder("Salida"));
+        jPanelSalida.setToolTipText("rucula");
+        jPanelSalida.setPreferredSize(new java.awt.Dimension(150, 119));
+        jPanelSalida.setLayout(new java.awt.BorderLayout());
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        jPanel6.setLayout(new java.awt.BorderLayout());
+        jPanelSalidaAdentro.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        jPanelSalidaAdentro.setLayout(new java.awt.BorderLayout());
 
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jPanel6.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        jPanelSalidaAdentro.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        jPanel1.add(jPanel6);
+        jPanelSalida.add(jPanelSalidaAdentro, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jPanelSalida, java.awt.BorderLayout.CENTER);
 
         zonaErorres.setBorder(javax.swing.BorderFactory.createTitledBorder("Errores"));
         zonaErorres.setToolTipText("rucula");
-        zonaErorres.setLayout(new java.awt.GridLayout(1, 0));
+        zonaErorres.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        zonaErorres.setPreferredSize(new java.awt.Dimension(400, 119));
+        zonaErorres.setLayout(new java.awt.BorderLayout());
 
-        jPanel8.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        jPanel8.setLayout(new java.awt.BorderLayout());
+        jPanelErroresAdentro.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        jPanelErroresAdentro.setMinimumSize(new java.awt.Dimension(60, 26));
+        jPanelErroresAdentro.setLayout(new java.awt.BorderLayout());
 
         jScrollPane2.setHorizontalScrollBar(null);
 
@@ -177,18 +176,18 @@ public class Ventana
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
-        jPanel8.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+        jPanelErroresAdentro.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
-        zonaErorres.add(jPanel8);
+        zonaErorres.add(jPanelErroresAdentro, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(zonaErorres, java.awt.BorderLayout.EAST);
 
         pack();
     }//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) 
+    private void BotonEnviarActionPerformed(java.awt.event.ActionEvent evt) 
     {//GEN-FIRST:event_jButton1ActionPerformed
-        String usrInput = jTextField1.getText();
+        String usrInput = jTFEntrada.getText();
         jTextArea1.append(usrInput + "\n");
         try
         {
@@ -199,30 +198,30 @@ public class Ventana
             jTextArea2.append("\n" + e.getMessage());
         }
 
-        jTextField1.setText("");  
-        this.jButton1.setEnabled(false);
-        this.jButton1.setBackground(Color.gray);
+        jTFEntrada.setText("");  
+        this.BotonEnviar.setEnabled(false);
+        this.BotonEnviar.setBackground(Color.gray);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyReleased
+    private void BotonEnviarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BotonEnviarKeyReleased
       
-    }//GEN-LAST:event_jButton1KeyReleased
+    }//GEN-LAST:event_BotonEnviarKeyReleased
 
-    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt)//GEN-FIRST:event_jTextField1KeyReleased
-    {//GEN-HEADEREND:event_jTextField1KeyReleased
-        if (this.jTextField1
+    private void jTFEntradaKeyReleased(java.awt.event.KeyEvent evt)//GEN-FIRST:event_jTFEntradaKeyReleased
+    {//GEN-HEADEREND:event_jTFEntradaKeyReleased
+        if (this.jTFEntrada
                 .getText()
                 .equals(""))
         {
-            this.jButton1.setEnabled(false);
-            this.jButton1.setBackground(Color.gray);
+            this.BotonEnviar.setEnabled(false);
+            this.BotonEnviar.setBackground(Color.gray);
         }
         else
         {
-            this.jButton1.setEnabled(true);
-            this.jButton1.setBackground(new JButton().getBackground());
+            this.BotonEnviar.setEnabled(true);
+            this.BotonEnviar.setBackground(new JButton().getBackground());
         }
-    }//GEN-LAST:event_jTextField1KeyReleased
+    }//GEN-LAST:event_jTFEntradaKeyReleased
 
     /**
      * @param args the command line arguments
@@ -308,19 +307,19 @@ public class Ventana
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel8;
+    private javax.swing.JButton BotonEnviar;
+    private javax.swing.JPanel JPanelTF;
+    private javax.swing.JPanel jPanelBotonyTFAdentro;
+    private javax.swing.JPanel jPanelBotonyTextField;
+    private javax.swing.JPanel jPanelButton;
+    private javax.swing.JPanel jPanelErroresAdentro;
+    private javax.swing.JPanel jPanelSalida;
+    private javax.swing.JPanel jPanelSalidaAdentro;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTFEntrada;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel zonaErorres;
     // End of variables declaration//GEN-END:variables
 
