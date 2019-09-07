@@ -19,7 +19,7 @@
   <void property="materias">
    <object class="java.util.HashMap">
     <void method="put">
-     <string>Animalitos I</string>
+     <string>Animalitos_I</string>
      <double>10.0</double>
     </void>
    </object>

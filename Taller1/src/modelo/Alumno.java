@@ -9,7 +9,7 @@ public class Alumno
             apellido_y_nombre,
             domicilio,
             carrera;
-     private HashMap<String,Double> materias;
+    private HashMap<String,Double> materias;
     
     public Alumno()
     {
