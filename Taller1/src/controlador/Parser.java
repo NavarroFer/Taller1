@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import modelo.Sistema;
 
+import vista.Ventana;
+
 public abstract class Parser
 {
     /*     private static ArrayList<String> COMMANDS = new ArrayList<String>(Arrays.asList("CREAR",
@@ -16,7 +18,7 @@ public abstract class Parser
                                                                                     "ELIMINAR",
                                                                                     "CONSULTAR")); */
 
-
+    private static Ventana ventana = null;
     /**
      * Pre: 
      * @param raw_command: Raw input from user
@@ -46,6 +48,7 @@ public abstract class Parser
             
             //else: Ya pasó todos los filtros de la capa de negocios.
             Sistema.getInstance().crear(split_command[1]);
+            ventana.imprimirEnConsola("Almacen "+split_command[1]+" creado correctamente");
         }
         
         // ======================= CARGAR =======================
@@ -56,7 +59,7 @@ public abstract class Parser
             if(!fileExists(split_command[1]))
                 throw new Exception("Error 003: Operaci�n no realizable. (No existe el archivo)");
             Sistema.getInstance().cargar(split_command[1]);
-
+            ventana.imprimirEnConsola("Almacen "+split_command[1]+" cargado correctamente");
         }
         
         // ======================= GUARDAR =======================
@@ -67,6 +70,7 @@ public abstract class Parser
             if(!Sistema.getInstance().tieneAlmacenCargado())
                 throw new Exception("Error 004: Operaci�n no realizable. (No hay almacén cargado)");
             Sistema.getInstance().guardar();
+            ventana.imprimirEnConsola("Almacen guardado correctamente");
         }     
         
         // ======================= INSERTAR =======================
@@ -82,7 +86,7 @@ public abstract class Parser
             Sistema.getInstance().insertar(split_command[1]);
             //if(split_command.length > 2) 
             //  throw new Exception("Error 002: Consulta mal construida. (Más argumentos de los necesarios para la operación)");
-            
+            ventana.imprimirEnConsola("Alumno "+split_command[1]+" insertado correctamente");
             
         }
         
@@ -96,6 +100,7 @@ public abstract class Parser
             if(!Sistema.getInstance().alumnoExiste(split_command[1]))
                 throw new Exception("Error 004: Operación no realizable. (No existe el alumno)");
             Sistema.getInstance().eliminarAlumno(split_command[1]);
+            ventana.imprimirEnConsola("Alumno "+split_command[1]+" eliminado correctamente");
         }
         
         // ======================= CONSULTAR =======================
@@ -139,5 +144,8 @@ public abstract class Parser
         File f = new File(filename);
         return f.exists();
     }
-    
+
+    public static void setVentana(Ventana v) {
+        Parser.ventana=v;
+    }
 }
