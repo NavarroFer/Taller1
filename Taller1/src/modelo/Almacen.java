@@ -22,6 +22,8 @@ public class Almacen
         
         this.filename=filename;
         this.alumnos = new HashMap<String,Alumno>();
+        
+        verificarInvariante();
     }
 
     
@@ -62,26 +64,37 @@ public class Almacen
         assert ID != null:"El ID ingresado es null";
         assert !ID.equals(""):"El ID ingresado es String vacia";
         assert IDExists(ID):"No existe ningun alumno con la ID solicitada";
+        verificarInvariante();
+        //------------------------------------------------------------------------------
         
         alumnos.remove(ID);
     }    
     
     /**
-     * <b>Pre:</b> El operador es valido. La nota es un numero <br><br>
-     * <b>Post:</b> Devuelve la lista de alumnos que cumple con la condicion.
+     * <b>Pre:</b> materia != null y != "". operador != null y != "". La nota es un numero.  <br><br>
+     * <b>Post:</b> Devuelve la lista de alumnos que cumple con la condicion ({operador} sobre una {nota} en una {materia}).
      * 
-     * @param materia nombre de la materia:String, operador valor del operador para evaluar:String, nota valor numerico en la materia:double:.
+     * @param materia nombre de la materia:String
+     * @param operador valor del operador para evaluar:String
+     * @param nota valor numerico en la materia:double:.
      */
     public ArrayList<Alumno> listaDeAlumno(String materia, String operador, double nota)//devuelve los alumnos que cursan la materia solicitada con su correspondiente nota
     {
+        assert materia != null: "La materia ingresada es null";
+        assert !materia.equals(""): "La materia ingresada es String vacia";
+        assert operador != null: "El operador ingresado es null";
+        assert !operador.equals(""): "El operador ingresado es String vacia";
+        verificarInvariante();
+        //------------------------------------------------------------------------------
+        
         ArrayList<Alumno> listaDeAlumnos = new ArrayList<Alumno>();
-        Iterator it = alumnos.values().iterator();
+        Iterator<Alumno> it = alumnos.values().iterator();
         Alumno aux;
         if(operador.equals("=="))
         {
             while(it.hasNext()) 
             {
-                aux=(Alumno) it.next();
+                aux= it.next();
                 if(aux.haceMateria(materia))
                 {
                     double auxNota = aux.valorNota(materia);
@@ -94,7 +107,7 @@ public class Almacen
         {
             while(it.hasNext()) 
             {
-                aux=(Alumno) it.next();
+                aux= it.next();
                 if(aux.haceMateria(materia))
                 {
                     double auxNota = aux.valorNota(materia);
@@ -107,7 +120,7 @@ public class Almacen
         {
             while(it.hasNext()) 
             {
-                aux=(Alumno) it.next();
+                aux= it.next();
                 if(aux.haceMateria(materia))
                 {
                     double auxNota = aux.valorNota(materia);
@@ -120,7 +133,7 @@ public class Almacen
         {
             while(it.hasNext()) 
             {
-                aux=(Alumno) it.next();
+                aux= it.next();
                 if(aux.haceMateria(materia))
                 {
                     double auxNota = aux.valorNota(materia);
@@ -133,7 +146,7 @@ public class Almacen
         {
             while(it.hasNext()) 
             {
-                aux=(Alumno) it.next();
+                aux= it.next();
                 if(aux.haceMateria(materia))
                 {
                     double auxNota = aux.valorNota(materia);
@@ -146,7 +159,7 @@ public class Almacen
         {
             while(it.hasNext()) 
             {
-                aux=(Alumno) it.next();
+                aux= it.next();
                 if(aux.haceMateria(materia))
                 {
                     double auxNota = aux.valorNota(materia);
@@ -157,14 +170,44 @@ public class Almacen
         }
         return listaDeAlumnos;
     }
-        
-    
+
+
+    /**
+     * <b>Pre:</b> ID != null y != "". <br><br>
+     * <b>Post:</b> Devuelve si el ID de alumno ingresado es valido o no.
+     * 
+     * @param ID identificador de un alumno
+     * @return devuelve si el ID de alumno ingresado es valido o no
+     */
     public boolean IDExists(String ID)
     {
+        assert ID != null:"El ID ingresado es null";
+        assert !ID.equals(""):"El ID ingresado es String vacia";
+        verificarInvariante();
+        //--------------------------------------------------------------
+        
         return alumnos.containsKey(ID);
     }
 
-    public void agregarAlumno(Alumno a) {
-        this.alumnos.put(a.getID(),a);
+    /**
+     * <b>Pre:</b> alumno != null. <br><br>
+     * <b>Post:</b> agrega el alumno al HashMap de alumnos.
+     * 
+     * 
+     * @param alumno instancia de alumno a agregar al HashMap de alumnos
+     */
+    public void agregarAlumno(Alumno alumno) 
+    {
+        assert alumno != null: "El alumno que se quiere insertar es null";
+        verificarInvariante();
+        
+        this.alumnos.put(alumno.getID(),alumno);
     }
+    
+    private void verificarInvariante(){
+        assert this.alumnos != null: "El HashMap de alumnos es null";
+        assert this.filename != null: "El filename es null";
+        assert !this.filename.equals(""): "El filename es String vacia";
+    }
+    
 }
