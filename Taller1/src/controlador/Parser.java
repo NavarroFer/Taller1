@@ -133,8 +133,7 @@ public abstract class Parser
     private static boolean fileExists(String filename)
     {
         File f = new File(filename);
-        boolean resultado = f.exists();
-        return resultado;
+        return f.exists();
     }
     
 }
