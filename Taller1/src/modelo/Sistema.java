@@ -40,9 +40,7 @@ public class Sistema
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("=======================");
-            System.out.println("=Archivo no encontrado=");
-            System.out.println("=======================");
+            //Imposible por precondición
         }
     }
     
@@ -57,7 +55,7 @@ public class Sistema
         }
         catch (FileNotFoundException e)
         {               
-            System.out.println("esto no deberia pasar nunca");
+            //Imposible por precondición
         }
     }
     
@@ -82,6 +80,7 @@ public class Sistema
     {
         return almacen.IDExists(ID);
     }
+    
     /**
      * <b>Pre:</b> El operador es valido. La nota es un numero <br><br>
      * <b>Post:</b> Devuelve la lista de alumnos que cumple con la condicion.
@@ -92,34 +91,36 @@ public class Sistema
     {
        return this.almacen.listaDeAlumno(materia,operador,nota);
     }
-    public ArrayList<Alumno> listaDeAlumnosArch(String materia,String operador,double nota,String nombreArch)throws FileNotFoundException //no se si esta bien serializar aca xd
+    
+    public ArrayList<Alumno> listaDeAlumnosArch(String materia,String operador,double nota,String nombreArch)
     {
         ArrayList<Alumno> aux = this.almacen.listaDeAlumno(materia,operador,nota);
         XMLEncoder encoder = null;
-        encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(nombreArch)));    
+        try
+        {
+            encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(nombreArch)));
+        }
+        catch (FileNotFoundException e)
+        {
+            //Imposible por precondición
+        }
         encoder.writeObject(aux);
         encoder.close();
         return aux;
     }
     
-    public void insertar(String filename) {
+    public void insertar(String filename) 
+    {
     
         try
         {
             XMLDecoder xmldecoder = new XMLDecoder(new FileInputStream(filename));
             Alumno a = (Alumno) xmldecoder.readObject();
-            if(almacen.IDExists(a.getID())){ //si ya hay un almumno con esa ID
-                System.out.println("La verdad q no tendriamos q haber tirado una excepcion ams arriba??"); //TODO mirar esto y lo de los prints de no encontrado q me parece medio raro?? -Mau
-            }
-            else{
-                almacen.agregarAlumno(a);
-            }
+            almacen.agregarAlumno(a);
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("==============================");
-            System.out.println("=Archivo alumno no encontrado=");
-            System.out.println("==============================");
+            //Imposible por precondición
         }
     }
 }

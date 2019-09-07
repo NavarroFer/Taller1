@@ -35,8 +35,7 @@ public abstract class Parser
         if(raw_command == null)
             throw new Exception("Error 000: Se ha introducido un comando vacío");
         
-        raw_command = raw_command.toUpperCase();
-        String split_command[] = raw_command.split(" ");
+        String split_command[] = raw_command.toUpperCase().split(" ");
         
         // ======================= CREAR =======================
         if(split_command[0].equals("CREAR"))
@@ -125,14 +124,8 @@ public abstract class Parser
                 {
                     if(split_command[4]!="TOFILE")
                         throw new Exception("Error 002: Consulta mal construida (No se encuentra la palabra reservada 'toFile')");
-                    try
-                    { 
-                        Sistema.getInstance().listaDeAlumnosArch(split_command[1], split_command[2], nota, split_command[5]);
-                    }
-                    catch(FileNotFoundException e) 
-                    {
-                        throw new Exception("Error 002: Consulta mal construida (Hay un problema con el nombre del archivo)");    
-                    }
+                    Sistema.getInstance().listaDeAlumnosArch(split_command[1], split_command[2], nota, split_command[5]);
+
                 }
             }
             catch(NumberFormatException e)
