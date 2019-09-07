@@ -33,6 +33,7 @@ public class Ventana
         jTextArea1.setEditable(false);
         jTextArea2.setEditable(false);
         jTextField1.requestFocus();
+        this.getRootPane().setDefaultButton(jButton1);
         
     }
 
@@ -175,19 +176,7 @@ public class Ventana
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyReleased
-      if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
-           String usrInput = jTextField1.getText();
-           try
-           {
-               Parser.parse(usrInput);
-           }
-           catch(Exception e)
-           {
-               jTextArea2.append("\n" + e.toString());
-           }
-           jTextArea1.append("\n" + usrInput);
-           jTextField1.setText(""); //literalmente lo miusmo q arriba, no supe como llamar al metodo de arriba xq el evt es de tipo distinto :/ //todo
-       }
+      
     }//GEN-LAST:event_jButton1KeyReleased
 
     /**
