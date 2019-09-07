@@ -39,12 +39,9 @@ public abstract class Parser
         {
             if(split_command.length < 2)
                 throw new Exception("Error 000: Comando mal formado (Falta segundo argumento)");
-            if(split_command.length > 2) 
-                throw new Exception("Error 002: Consulta mal construida. (Mas argumentos de los necesarios para la operacion)");
             if(fileExists(split_command[1]))
                 throw new Exception("Error 004: Operaci�n no realizable. (Ya existe el archivo)");
             
-            //else: Ya pasó todos los filtros de la capa de negocios.
             Sistema.getInstance().crear(split_command[1]);
         }
         
@@ -53,6 +50,8 @@ public abstract class Parser
         {
             if(split_command.length < 2)
                 throw new Exception("Error 000: Comando mal formado (Falta segundo argumento)");
+            if(split_command.length > 2) 
+                throw new Exception("Error 002: Consulta mal construida. (Mas argumentos de los necesarios para la operacion)");
             if(!fileExists(split_command[1]))
                 throw new Exception("Error 003: Operaci�n no realizable. (No existe el archivo)");
             Sistema.getInstance().cargar(split_command[1]);
@@ -80,8 +79,6 @@ public abstract class Parser
             if(!fileExists(split_command[1]))
                 throw new Exception("Error 003: Operación no realizable. (No existe el archivo)");
             Sistema.getInstance().insertar(split_command[1]);
-            //if(split_command.length > 2) 
-            //  throw new Exception("Error 002: Consulta mal construida. (Más argumentos de los necesarios para la operación)");
             
             
         }
