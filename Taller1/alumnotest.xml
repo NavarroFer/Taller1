@@ -22,7 +22,7 @@
                                     "<Campo>" +
                                         "<Nombre>Carrera</Nombre>" +
                                         "<Tipo>String</Tipo>" +
-                                        "<Valor>Licenciatura en Física</Valor>" +
+                                        "<Valor>Licenciatura_en_Fï¿½sica</Valor>" +
                                     "</Campo>" + 
                                     "<Campo>" +
                                         "<Nombre>Materias</Nombre>" +
@@ -33,7 +33,7 @@
                                                     "<Campo>" +
                                                         "<Nombre>Nombre_Materia</Nombre>" +
                                                         "<Tipo>String</Tipo>" +
-                                                        "<Valores>Algebra A</Valores>" +
+                                                        "<Valores>AlgebraA</Valores>" +
                                                     "</Campo>" +
                                                     "<Campo>" +
                                                         "<Nombre>Nota</Nombre>" +
@@ -45,7 +45,7 @@
                                                     "<Campo>" +
                                                         "<Nombre>Nombre_Materia</Nombre>" +
                                                         "<Tipo>String</Tipo>" +
-                                                        "<Valores>Algebra B</Valores>" +
+                                                        "<Valores>AlgebraB</Valores>" +
                                                     "</Campo>" +
                                                     "<Campo>" +
                                                         "<Nombre>Nota</Nombre>" +
