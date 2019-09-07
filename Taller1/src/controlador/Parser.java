@@ -40,7 +40,7 @@ public abstract class Parser
             if(split_command.length < 2)
                 throw new Exception("Error 000: Comando mal formado (Falta segundo argumento)");
             if(split_command.length > 2) 
-              throw new Exception("Error 002: Consulta mal construida. (Mas argumentos de los necesarios para la operacion)");
+                throw new Exception("Error 002: Consulta mal construida. (Mas argumentos de los necesarios para la operacion)");
             if(fileExists(split_command[1]))
                 throw new Exception("Error 004: Operación no realizable. (Ya existe el archivo)");
             
@@ -105,8 +105,17 @@ public abstract class Parser
                 throw new Exception("Error 000: Comando mal formado. (Cantidad invalida de argumentos)"); 
             if(!(split_command[2].equals("=="))&&(!(split_command[2].equals("!=")))&&(!(split_command[2].equals("<")))&&(!(split_command[2].equals(">")))&&(!(split_command[2].equals(">=")))&&(!(split_command[2].equals("<="))))
                 throw new Exception("Error 002: Operador desconocido)");
-
-            Double nota = Double.parseDouble(split_command[3]);
+            
+            Double nota;
+            try
+            {
+                nota = Double.parseDouble(split_command[3]);
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Error 002: Consulta mal construida. (El tercer argumento no es numerico)");
+            }
+            
             if(split_command.length==4)
             {
                 Sistema.getInstance().listaDeAlumnos(split_command[1], split_command[2], nota);
