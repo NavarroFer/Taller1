@@ -18,20 +18,20 @@ public class Alumno
     }
 
     /**
-     * <b>Pre:</b> Nombre_Materia != null y Nombre_Materia != "". <br><br>
+     * <b>Pre:</b> Nombre_Materia != null y Nombre_Materia != "" El alumno cursa la materia. <br><br>
      * <b>Post:</b> se retorna la nota que tiene el alumno en la materia especificada.
      * 
      * @param Nombre_Materia  nombre de la materia cuya nota se quiere consultar:String.
      * @return Nota que tiene el alumno en la materia especificada.
-     * @throws SubjectNotFoundException Materia con nombre Nombre_Materia no encontrada.
      */
-    public double valorNota(String Nombre_Materia) throws SubjectNotFoundException 
+    public double valorNota(String Nombre_Materia)
     {
-        if(!materias.containsKey(Nombre_Materia))
-            throw new SubjectNotFoundException(Nombre_Materia);
         return materias.get(Nombre_Materia);
     }
-    
+    public boolean isMateria(String materia)
+    {
+        return this.materias.containsKey(materia);
+    }
 
 
     /**
