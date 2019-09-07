@@ -115,7 +115,7 @@ public abstract class Parser
         {
             if((split_command.length!=4)&&(split_command.length!=6)) 
                 throw new Exception("Error 000: Comando mal formado. (Cantidad invalida de argumentos)"); 
-            if((split_command[2]!="==")||(split_command[2]!="!=")||(split_command[2]!="<")||(split_command[2]!=">")||(split_command[2]!=">=")||(split_command[2]!="<="))
+            if(!(split_command[2].equals("=="))&&(!(split_command[2].equals("!=")))&&(!(split_command[2].equals("<")))&&(!(split_command[2].equals(">")))&&(!(split_command[2].equals(">=")))&&(!(split_command[2].equals("<="))))
                 throw new Exception("Error 002: Operador desconocido)");
             try
             {
