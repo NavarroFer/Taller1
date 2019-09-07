@@ -69,59 +69,77 @@ public class Almacen
             while(it.hasNext()) 
             {
                 aux=(Alumno) it.next();
-                double auxNota = aux.valorNota(materia);
-                if((aux.isMateria(materia))&&(auxNota==nota))  //verifico si el alumno cursa la materia y agrega a la lista si la nota es igual
-                    listaDeAlumnos.add(aux);
+                if(aux.haceMateria(materia))
+                {
+                    double auxNota = aux.valorNota(materia);
+                    if(auxNota==nota)  //verifico si el alumno cursa la materia y agrega a la lista si la nota es igual
+                        listaDeAlumnos.add(aux);
+                }
             }
         }
         else if(operador.equals("!="))
         {
             while(it.hasNext()) 
             {
-                aux=alumnos.get(it.next());
-                double auxNota = aux.valorNota(materia);
-                if((aux.isMateria(materia))&&(auxNota!=nota))  //verifico si el alumno cursa la materia y agrega a la lista si la nota es distinta
-                    listaDeAlumnos.add(aux);
+                aux=(Alumno) it.next();
+                if(aux.haceMateria(materia))
+                {
+                    double auxNota = aux.valorNota(materia);
+                    if(auxNota!=nota)  //verifico si el alumno cursa la materia y agrega a la lista si la nota es igual
+                        listaDeAlumnos.add(aux);
+                }
             }
         }
         else if(operador.equals(">"))
         {
-            while(it.hasNext())
+            while(it.hasNext()) 
             {
-                aux=alumnos.get(it.next());
-                double auxNota = aux.valorNota(materia);
-                if((aux.isMateria(materia))&&(auxNota>nota))  //verifico si el alumno cursa la materia y agrega a la lista si la nota es mayor
-                    listaDeAlumnos.add(aux);
+                aux=(Alumno) it.next();
+                if(aux.haceMateria(materia))
+                {
+                    double auxNota = aux.valorNota(materia);
+                    if(auxNota>nota)  //verifico si el alumno cursa la materia y agrega a la lista si la nota es igual
+                        listaDeAlumnos.add(aux);
+                }
             }
         }
         else if(operador.equals("<"))
         {
-            while(it.hasNext())
+            while(it.hasNext()) 
             {
-                aux=alumnos.get(it.next());
-                double auxNota = aux.valorNota(materia);
-                if((aux.isMateria(materia))&&(auxNota<nota))  //verifico si el alumno cursa la materia y agrega a la lista si la nota es menor
-                    listaDeAlumnos.add(aux);
+                aux=(Alumno) it.next();
+                if(aux.haceMateria(materia))
+                {
+                    double auxNota = aux.valorNota(materia);
+                    if(auxNota<nota)  //verifico si el alumno cursa la materia y agrega a la lista si la nota es igual
+                        listaDeAlumnos.add(aux);
+                }
             }
         }
         else if(operador.equals(">="))
         {
             while(it.hasNext()) 
             {
-                aux=alumnos.get(it.next());
-                double auxNota = aux.valorNota(materia);
-                if((aux.isMateria(materia))&&(auxNota>=nota))  //verifico si el alumno cursa la materia y agrega a la lista si la nota es mayor o igual
-                    listaDeAlumnos.add(aux);
+                aux=(Alumno) it.next();
+                if(aux.haceMateria(materia))
+                {
+                    double auxNota = aux.valorNota(materia);
+                    if(auxNota>=nota)  //verifico si el alumno cursa la materia y agrega a la lista si la nota es igual
+                        listaDeAlumnos.add(aux);
+                }
             }
         }
         else //por descarte <= y por precondición: Sí o si es uno de ellos.
         {
             while(it.hasNext()) 
             {
-                aux=alumnos.get(it.next());
-                double auxNota = aux.valorNota(materia);
-                if((aux.isMateria(materia))&&(auxNota<=nota))  //verifico si el alumno cursa la materia y agrega a la lista si la nota es menor o igual
-                    listaDeAlumnos.add(aux);
+                aux=(Alumno) it.next();
+                if(aux.haceMateria(materia))
+                {
+                    double auxNota = aux.valorNota(materia);
+                    if(auxNota<=nota)  //verifico si el alumno cursa la materia y agrega a la lista si la nota es igual
+                        listaDeAlumnos.add(aux);
+                }
             }
         }
         return listaDeAlumnos;

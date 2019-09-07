@@ -30,7 +30,7 @@ public abstract class Parser
      */
     public static void parse(String raw_command) throws Exception
     {
-        // Lo bochamos si es una string nula. (TÃ©cnicamente imposible?)
+        // Lo bochamos si es una string nula. (Tecnicamente imposible?)
         if(raw_command == null)
             throw new Exception("Error 000: Se ha introducido un comando vacío");
         if(raw_command == "")
@@ -65,7 +65,7 @@ public abstract class Parser
             }
             catch(ClassCastException e)
             {
-                throw new Exception("Error 004: Operación no realizable. (El archivo existe, pero no contiene un almacén)");
+                throw new Exception("Error 004: Operacion no realizable. (El archivo existe, pero no contiene un almacen)");
             }
             ventana.imprimirEnConsola("Almacen "+split_command[1]+" cargado correctamente");
         }
@@ -125,7 +125,7 @@ public abstract class Parser
                !split_command[2].equals("<=")
                 )
                 throw new Exception("Error 002: Operador desconocido (" +split_command[2]+ ")");
-
+            String materia = raw_command.split(" ")[1];
             Double nota;
             try
             {
@@ -138,19 +138,25 @@ public abstract class Parser
             
             if(split_command.length==4)
             {
-                Sistema.getInstance().listaDeAlumnos(split_command[1], split_command[2], nota);
+                try{
+                System.out.println(Sistema.getInstance().listaDeAlumnos(materia, split_command[2], nota));
+                ventana.imprimirEnConsola(Sistema.getInstance().listaDeAlumnos(materia, split_command[2], nota).toString());
+                }
+                catch(Exception e)
+                {
+                    System.out.println(e);
+                }
             }
             else
             {
                 if(split_command[4].toUpperCase().equals("TOFILE"))
                     throw new Exception("Error 002: Consulta mal construida (No se encuentra la palabra reservada 'toFile')");
-                
-                Sistema.getInstance().listaDeAlumnosArch(split_command[1], split_command[2], nota, split_command[5]);
-            }
+                ventana.imprimirEnConsola(Sistema.getInstance().listaDeAlumnosArch(materia, split_command[2], nota, split_command[5]).toString());
+            }               
                                        
         }                                                    
         else
-            throw new Exception("Error 001: No se reconoce la instrucciÃ³n \""+split_command[0]+"\"");
+            throw new Exception("Error 001: No se reconoce la instruccion \""+split_command[0]+"\"");
     }
             
     private static boolean fileExists(String filename)
