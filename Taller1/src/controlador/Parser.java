@@ -138,14 +138,8 @@ public abstract class Parser
             
             if(split_command.length==4)
             {
-                try{
                 System.out.println(Sistema.getInstance().listaDeAlumnos(materia, split_command[2], nota));
                 ventana.imprimirEnConsola(Sistema.getInstance().listaDeAlumnos(materia, split_command[2], nota).toString());
-                }
-                catch(Exception e)
-                {
-                    System.out.println(e);
-                }
             }
             else
             {
