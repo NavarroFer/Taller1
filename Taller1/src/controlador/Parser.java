@@ -33,6 +33,8 @@ public abstract class Parser
         // Lo bochamos si es una string nula. (TÃ©cnicamente imposible?)
         if(raw_command == null)
             throw new Exception("Error 000: Se ha introducido un comando vacío");
+        if(raw_command == "")
+            throw new Exception("Error 000: Se ha introducido un comando vacío");
         
         String split_command[] = raw_command.toUpperCase().split(" ");
         
