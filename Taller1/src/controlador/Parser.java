@@ -137,6 +137,7 @@ public abstract class Parser
             {
                 if(split_command[4].toUpperCase().equals("TOFILE"))
                     throw new Exception("Error 002: Consulta mal construida (No se encuentra la palabra reservada 'toFile')");
+                
                 Sistema.getInstance().listaDeAlumnosArch(split_command[1], split_command[2], nota, split_command[5]);
             }
                                    
