@@ -24,17 +24,24 @@ import modelo.Alumno;
 public class Ventana
     extends javax.swing.JFrame
 {
-
+    
     /** Creates new form Ventana */
     public Ventana()
     {
+        
         initComponents();
         setLocationRelativeTo(null);   
         jTextArea1.setEditable(false);
         jTextArea2.setEditable(false);
         jTextField1.requestFocus();
         this.getRootPane().setDefaultButton(jButton1);
+        Parser.setVentana(this);
         
+    }
+    
+    public void imprimirEnConsola(String texto){
+        this.jTextArea1.append(texto+"\n");
+        this.repaint();
     }
 
     /** This method is called from within the constructor to
@@ -163,6 +170,7 @@ public class Ventana
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) 
     {//GEN-FIRST:event_jButton1ActionPerformed
         String usrInput = jTextField1.getText();
+        jTextArea1.append(usrInput+ "\n");
         try
         {
             Parser.parse(usrInput);
@@ -171,8 +179,8 @@ public class Ventana
         {
             jTextArea2.append("\n" + e.getMessage());
         }
-        jTextArea1.append("\n" + usrInput);
-        jTextField1.setText("");        // TODO add your handling code here:
+        
+        jTextField1.setText("");        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyReleased

@@ -71,7 +71,22 @@ public class XMLtoJava //TODO una vez que este bien implementado lo de parsear X
                                         "</Campo>" +
                                     "</Alumno>";
               
-              ArrayList<DatosAtributoXML> lista= ParserXML.leoArgumento(LineaXML);
+              ParserXML p1 = new ParserXML();
+              ParserXML p2 = new ParserXML();
+              ArrayList<DatosAtributoXML> lista= p1.leoArgumento(LineaXML);
+              for (Iterator<DatosAtributoXML> it = lista.iterator(); it.hasNext(); )
+              {    
+                    System.out.println(it.next()); 
+              }
+              
+              System.out.println("--------------------------------------------"); 
+              ArrayList<DatosAtributoXML> lista2= p2.leoArgumento(LineaXML);
+              lista.clear();
+              for (Iterator<DatosAtributoXML> it = lista2.iterator(); it.hasNext(); )
+              {    
+                    System.out.println(it.next()); 
+              }
+              System.out.println("--------------------------------------------"); 
               for (Iterator<DatosAtributoXML> it = lista.iterator(); it.hasNext(); )
               {    
                     System.out.println(it.next()); 
