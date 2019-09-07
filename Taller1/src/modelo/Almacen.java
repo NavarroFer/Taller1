@@ -9,11 +9,21 @@ public class Almacen
     private HashMap<String,Alumno> alumnos;
     private String filename;
 
-
-    public Almacen()
+    /**
+     * <b>Pre:</b> filename != null y != "".<br><br>
+     * <b>Post:</b> se instancia el almacen con el nombre de archivo dado.
+     * 
+     * @param filename nombre del archivo en que se guardara el almacen en caso de solicitarlo.
+     */
+    public Almacen(String filename) 
     {
-        super();
+        assert filename != null:"El nombre de archivo es null";
+        assert !filename.equals(""):"El nombre del archivo es String vacia";
+        
+        this.filename=filename;
+        this.alumnos = new HashMap<String,Alumno>();
     }
+
     
     public void setAlumnos(HashMap<String, Alumno> alumnos) 
     {
@@ -35,21 +45,24 @@ public class Almacen
         return filename;
     }
 
-    public Almacen(String filename) 
-    {
-        super();
-        this.filename=filename;
-        this.alumnos = new HashMap<String,Alumno>();
-    }
+    
 
     /**
-     * <b>Pre:</b> Valid ID. ID Exists <br><br>
+     * <b>Pre:</b> Valid ID. <br>
+     * ID Exists.<br>
+     * ID != null.<br>
+     * ID != "". <br><br>
+     * 
      * <b>Post:</b> se elimina el alumno cuya ID fue ingresada en el metodo.
      * 
      * @param ID Identificador del alumno:String.
      */
     public void eliminarAlumnoID(String ID)
     {
+        assert ID != null:"El ID ingresado es null";
+        assert !ID.equals(""):"El ID ingresado es String vacia";
+        assert IDExists(ID):"No existe ningun alumno con la ID solicitada";
+        
         alumnos.remove(ID);
     }    
     

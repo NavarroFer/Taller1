@@ -91,5 +91,7 @@ public class XMLtoJava //TODO una vez que este bien implementado lo de parsear X
               {    
                     System.out.println(it.next()); 
               }
+              
+              new Almacen(null);
           }
 }
