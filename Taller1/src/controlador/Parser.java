@@ -113,16 +113,16 @@ public abstract class Parser
         // ======================= CONSULTAR =======================
         else if(split_command[0].equals("CONSULTAR")) 
         {
-            if((split_command.length!=3)&&(split_command.length!=5)) 
+            if((split_command.length!=4)&&(split_command.length!=6)) 
                 throw new Exception("Error 000: Comando mal formado. (Cantidad invalida de argumentos)"); 
-            if((split_command[1]!="==")||(split_command[1]!="!=")||(split_command[1]!="<")||(split_command[1]!=">")||(split_command[1]!=">=")||(split_command[1]!="<="))
+            if((split_command[2]!="==")||(split_command[2]!="!=")||(split_command[2]!="<")||(split_command[2]!=">")||(split_command[2]!=">=")||(split_command[2]!="<="))
                 throw new Exception("Error 002: Operador desconocido)");
             try
             {
-                Double nota = Double.parseDouble(split_command[2]);
-                if(split_command.length==3)
+                Double nota = Double.parseDouble(split_command[3]);
+                if(split_command.length==4)
                 {
-                    Sistema.getInstance().listaDeAlumnos(split_command[0], split_command[1], nota);
+                    Sistema.getInstance().listaDeAlumnos(split_command[1], split_command[2], nota);
                 }
                 else
                 {
@@ -130,7 +130,7 @@ public abstract class Parser
                         throw new Exception("Error 002: Consulta mal construida (No se encuentra la palabra reservada 'toFile')");
                     try
                     { 
-                        Sistema.getInstance().listaDeAlumnosArch(split_command[0], split_command[1], nota, split_command[5]);
+                        Sistema.getInstance().listaDeAlumnosArch(split_command[1], split_command[2], nota, split_command[5]);
                     }
                     catch(FileNotFoundException e) 
                     {
