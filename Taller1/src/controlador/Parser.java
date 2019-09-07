@@ -2,12 +2,9 @@ package controlador;
 
 import java.io.File;
 
-import java.io.FileNotFoundException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-import modelo.Alumno;
 import modelo.Sistema;
 
 public abstract class Parser
@@ -113,29 +110,22 @@ public abstract class Parser
                 throw new Exception("Error 000: Comando mal formado. (Cantidad invalida de argumentos)"); 
             if((split_command[2]!="==")||(split_command[2]!="!=")||(split_command[2]!="<")||(split_command[2]!=">")||(split_command[2]!=">=")||(split_command[2]!="<="))
                 throw new Exception("Error 002: Operador desconocido)");
-            try
-            {
-                Double nota = Double.parseDouble(split_command[3]);
-                if(split_command.length==4)
-                {
-                    Sistema.getInstance().listaDeAlumnos(split_command[1], split_command[2], nota);
-                }
-                else
-                {
-                    if(split_command[4]!="TOFILE")
-                        throw new Exception("Error 002: Consulta mal construida (No se encuentra la palabra reservada 'toFile')");
-                    Sistema.getInstance().listaDeAlumnosArch(split_command[1], split_command[2], nota, split_command[5]);
 
-                }
-            }
-            catch(NumberFormatException e)
+            Double nota = Double.parseDouble(split_command[3]);
+            if(split_command.length==4)
             {
-                throw new Exception("Error 002: Consulta mal construida. (El tercer argumento no es numerico)");
+                Sistema.getInstance().listaDeAlumnos(split_command[1], split_command[2], nota);
+            }
+            else
+            {
+                if(split_command[4]!="TOFILE")
+                    throw new Exception("Error 002: Consulta mal construida (No se encuentra la palabra reservada 'toFile')");
+                Sistema.getInstance().listaDeAlumnosArch(split_command[1], split_command[2], nota, split_command[5]);
+
             }
                                    
         }
-                                                            
-                                                            
+                                                          
         else
             throw new Exception("Error 001: No se reconoce la instrucción \""+split_command[0]+"\"");
     }
