@@ -32,6 +32,7 @@ public class Ventana
         setLocationRelativeTo(null);   
         jTextArea1.setEditable(false);
         jTextArea2.setEditable(false);
+        jTextField1.requestFocus();
         
     }
 
@@ -65,8 +66,6 @@ public class Ventana
         jPanel2.setLayout(new java.awt.BorderLayout());
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
-        jTextField1.setText("jTextField1");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
