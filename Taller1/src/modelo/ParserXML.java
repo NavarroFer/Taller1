@@ -6,6 +6,8 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import java.util.NoSuchElementException;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -15,21 +17,16 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public abstract class ParserXML {
+public class ParserXML {
    
     public ParserXML()
     {
         super();
     }
     
-    private static final  ArrayList<String> lista = new ArrayList<String>(); 
-    private static final  ArrayList<DatosAtributoXML>listaSalida = new ArrayList<DatosAtributoXML>(); //TODO cambiar este tipo de dato a un arraylist de String[3] para no tener problemas con la cantidad de materias
-    private static int cantElemPars;
+    private final  ArrayList<String> lista = new ArrayList<String>(); 
+    private final  ArrayList<DatosAtributoXML> listaSalida = new ArrayList<DatosAtributoXML>();
 
-
-    public static int getCantElemPars() {
-        return cantElemPars;
-    }
 
 
     /**
@@ -38,12 +35,12 @@ public abstract class ParserXML {
      * 
      * @param InNodo Nodo cuyo valor va a ser agreagado a la lista o va a servir para invocar recursivamente con sus hijos.
      */
-    public static void leerNode(Node InNodo)
+    public void leerNode(Node inNodo)
     {
       
-        if (InNodo.hasChildNodes())
+        if (inNodo.hasChildNodes())
           {
-              NodeList nList = InNodo.getChildNodes();
+              NodeList nList = inNodo.getChildNodes();
               for (int i=0; i<nList.getLength(); i++)
               {
                    leerNode(nList.item(i));
@@ -51,34 +48,45 @@ public abstract class ParserXML {
           }     
         else
            {
-               lista.add(InNodo.getNodeValue());
+               lista.add(inNodo.getNodeValue());
            }   
-       
     }
 
     /**
-     * 
+     *
      * <b>Pre:</b> LineaXML != null, donde cada elemento(campo) debe tener 3 atributos definidos nombre_atributo, tipo y valor.<br><br>
      * <b>Post:</b> si es nodo hoja el nodo agrega su valor a lista, si no es hoja hace que sus hijos sean parametrizados para invocaciones de leerNode.
-     * 
+     *
      * @param LineaXML String con formato XML en una sola linea
+     *
      * @return listaSalida que es un ArrayList de que contiene variables cuyo formato incluye [{nombre_atributo}, {tipo}, {valor}]
-     * @throws ParserConfigurationException TODO investigar para que sirven esas 3 exception
-     * @throws SAXException
-     * @throws IOException
+     *
+     * //@throws ParserConfigurationException si el DocumentBuilder no puede ser instanciado satisfaciendo la configuracion especificada, no debería ser arrojada ya que no se especifica la configuracion
+     * @throws SAXException errores en el formato del XML que se desea parsear
+     * @throws IOException interrupcion o fallo de la operacion de I/O en el parseo del ImputSource cuya base es la String LineaXML
+     * @throws NoSuchElementException si el iterator no pudo leer en sets de 3 elementos por atributo [{nombre_atributo}, {tipo}, {valor}] tira esta excepcion
      */
-    public static ArrayList<DatosAtributoXML> leoArgumento(String LineaXML) throws ParserConfigurationException, SAXException, IOException
+    @SuppressWarnings("oracle.jdeveloper.java.insufficient-catch-block")
+    public ArrayList<DatosAtributoXML> leoArgumento(String lineaXML) throws SAXException, IOException, NoSuchElementException
     {
-        DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        Document doc = db.parse(new InputSource(new StringReader(LineaXML)));
+        DocumentBuilder db = null;
+        
+        try {
+            db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        } 
+        catch (ParserConfigurationException e) {
+            //no debería ser arrojada ya que no se especifica la configuracion del DocumentBuilder
+        }
+        Document doc = db.parse(new InputSource(new StringReader(lineaXML)));
         doc.getDocumentElement().normalize();
         Node Nodo=doc.getFirstChild();
         leerNode(Nodo);
         
+        
         for (Iterator<String> it = lista.iterator(); it.hasNext(); )
         {
             DatosAtributoXML datosAtribAux;
-            datosAtribAux = new DatosAtributoXML(it.next(), it.next(), it.next());
+            datosAtribAux = new DatosAtributoXML(it.next(), it.next(), it.next()); //si no puede hacer 3 it.next() consecutivos esta mal armado el XML --> NoSuchElementException
             listaSalida.add(datosAtribAux);
         }
         
