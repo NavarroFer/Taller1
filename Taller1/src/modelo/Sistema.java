@@ -23,7 +23,10 @@ public class Sistema
     {
         super();
     }
-    
+
+    /**
+     * @return devuelve la instancia del sistema (Singleton)
+     */
     public static Sistema getInstance()
     {
         if(instance==null)
