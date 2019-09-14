@@ -19,6 +19,8 @@ public abstract class Parser
                                                                                     "CONSULTAR")); */
 
     private static Ventana ventana = null;
+    
+    
     /**
      * Pre: 
      * @param raw_command: Raw input from user
@@ -44,7 +46,7 @@ public abstract class Parser
             if(split_command.length < 2)
                 throw new Exception("Error 000: Comando mal formado (Falta segundo argumento)");
             if(fileExists(split_command[1]))
-                throw new Exception("Error 004: Operaci�n no realizable. (Ya existe el archivo)");
+                throw new Exception("Error 004: Operacion no realizable. (Ya existe el archivo)");
             
             Sistema.getInstance().crear(split_command[1]);
             ventana.imprimirEnConsola("Almacen "+split_command[1]+" creado correctamente");
@@ -90,7 +92,9 @@ public abstract class Parser
             if(split_command.length > 2) 
                 throw new Exception("Error 002: Consulta mal construida. (Mas argumentos de los necesarios para la operacion)");
             if(!fileExists(split_command[1]))
-                throw new Exception("Error 003: Operación no realizable. (No existe el archivo)");
+                throw new Exception("Error 003: Operacion no realizable. (No existe el archivo)");
+            if(Sistema.getInstance().alumnoExiste(split_command[1]))
+                throw new Exception("Error 002: Operacion no realizable (Alumno duplicado).");
             Sistema.getInstance().insertar(split_command[1]);
             ventana.imprimirEnConsola("Alumno "+split_command[1]+" insertado correctamente");            
         }
@@ -103,7 +107,7 @@ public abstract class Parser
             if(split_command.length > 2) 
                 throw new Exception("Error 002: Consulta mal construida. (Mas argumentos de los necesarios para la operacion)");
             if(!Sistema.getInstance().alumnoExiste(split_command[1]))
-                throw new Exception("Error 004: Operación no realizable. (No existe el alumno)");
+                throw new Exception("Error 004: Operacion no realizable. (No existe el alumno)");
             Sistema.getInstance().eliminarAlumno(split_command[1]);
             ventana.imprimirEnConsola("Alumno "+split_command[1]+" eliminado correctamente");
         }

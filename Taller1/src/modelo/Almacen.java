@@ -174,7 +174,7 @@ public class Almacen
 
     /**
      * <b>Pre:</b> ID != null y != "". <br><br>
-     * <b>Post:</b> Devuelve si el ID de alumno ingresado es valido o no.
+     * <b>Post:</b> Devuelve si el ID de alumno ingresado ya estaba en la coleccion de alumnos o no.
      * 
      * @param ID identificador de un alumno
      * @return devuelve si el ID de alumno ingresado es valido o no
@@ -190,7 +190,7 @@ public class Almacen
     }
 
     /**
-     * <b>Pre:</b> alumno != null. <br><br>
+     * <b>Pre:</b> alumno != null y el alumno no estaba agregado previamente en la coleccion. <br><br>
      * <b>Post:</b> agrega el alumno al HashMap de alumnos.
      * 
      * 
@@ -203,7 +203,10 @@ public class Almacen
         
         this.alumnos.put(alumno.getID(),alumno);
     }
-    
+
+    /**
+     * Verifica que se cumplan los invariantes de clase
+     */
     private void verificarInvariante(){
         assert this.alumnos != null: "El HashMap de alumnos es null";
         assert this.filename != null: "El filename es null";
