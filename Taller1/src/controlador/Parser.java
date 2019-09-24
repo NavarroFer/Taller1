@@ -17,7 +17,13 @@ public abstract class Parser
                                                                                     "INSERTAR",
                                                                                     "ELIMINAR",
                                                                                     "CONSULTAR")); */
-
+    private final static String INSTRUCCION_CREAR = "CREAR";
+    private final static String INSTRUCCION_CARGAR = "CARGAR";
+    private final static String INSTRUCCION_GUARDAR = "GUARDAR";
+    private final static String INSTRUCCION_INSERTAR = "INSERTAR";
+    private final static String INSTRUCCION_ELIMINAR = "ELIMINAR";
+    private final static String INSTRUCCION_CONSULTAR = "CONSULTAR";
+    
     private static Ventana ventana = null;
     
     
@@ -41,7 +47,7 @@ public abstract class Parser
         String split_command[] = raw_command.toUpperCase().split(" ");
         
         // ======================= CREAR =======================
-        if(split_command[0].equals("CREAR"))
+        if(split_command[0].equals(INSTRUCCION_CREAR))
         {
             if(split_command.length < 2)
                 throw new Exception("Error 000: Comando mal formado (Falta segundo argumento)");
@@ -53,7 +59,7 @@ public abstract class Parser
         }
         
         // ======================= CARGAR =======================
-        else if(split_command[0].equals("CARGAR"))
+        else if(split_command[0].equals(INSTRUCCION_CARGAR))
         {
             if(split_command.length < 2)
                 throw new Exception("Error 000: Comando mal formado (Falta segundo argumento)");
@@ -73,7 +79,7 @@ public abstract class Parser
         }
         
         // ======================= GUARDAR =======================
-        else if(split_command[0].equals("GUARDAR"))
+        else if(split_command[0].equals(INSTRUCCION_GUARDAR))
         {
             if(split_command.length > 1)
                 throw new Exception("Error 000: Comando mal formado (No se esperaba un segundo argumento)");
@@ -84,7 +90,7 @@ public abstract class Parser
         }     
         
         // ======================= INSERTAR =======================
-        else if(split_command[0].equals("INSERTAR"))
+        else if(split_command[0].equals(INSTRUCCION_INSERTAR))
         {
             // TODO
             if(split_command.length < 2)
@@ -100,7 +106,7 @@ public abstract class Parser
         }
         
         // ======================= ELIMINAR =======================  
-        else if(split_command[0].equals("ELIMINAR"))
+        else if(split_command[0].equals(INSTRUCCION_ELIMINAR))
         {
             if(split_command.length < 2)
                 throw new Exception("Error 000: Comando mal formado (Falta segundo argumento)");
@@ -113,7 +119,7 @@ public abstract class Parser
         }
         
         // ======================= CONSULTAR =======================
-        else if(split_command[0].equals("CONSULTAR")) 
+        else if(split_command[0].equals(INSTRUCCION_CONSULTAR)) 
         {
             if(!Sistema.getInstance().tieneAlmacenCargado())
                 throw new Exception("Error 004: Operación no realizable. (No hay almacen cargado)");
@@ -163,7 +169,8 @@ public abstract class Parser
         return f.exists();
     }
 
-    public static void setVentana(Ventana v) {
+    public static void setVentana(Ventana v)
+    {
         Parser.ventana=v;
     }
 }
