@@ -3,6 +3,8 @@ package vista;
 
 import controlador.Parser;
 
+import exceptions.ParsingException;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -193,9 +195,13 @@ public class Ventana
         {
             Parser.parse(usrInput);
         }
+        catch (ParsingException exception)
+        {
+            jTextArea2.append("\n" + exception.getErrorMessage());
+        }
         catch (Exception e)
         {
-            jTextArea2.append("\n" + e.getMessage());
+            jTextArea2.append("\n UNEXPECTED ERROR: " + e.getMessage());
         }
 
         jTFEntrada.setText("");  
