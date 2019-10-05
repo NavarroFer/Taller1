@@ -1,13 +1,23 @@
 package modelo;
 
+import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public class Almacen 
+public class Almacen implements Serializable
 {
     private HashMap<String,Alumno> alumnos;
     private String filename;
+
+    /**
+     * Exclusivamente para que funcione la serializacion
+     * @author: Mau
+     */
+    public Almacen(){
+        
+    }
 
     /**
      * <b>Pre:</b> filename != null y != "".<br><br>
