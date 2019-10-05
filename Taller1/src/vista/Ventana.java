@@ -20,6 +20,8 @@ import java.util.HashMap;
 
 import javax.swing.JButton;
 
+import javax.swing.JTextArea;
+
 import modelo.Alumno;
 
 /**
@@ -48,6 +50,9 @@ public class Ventana
         jTFEntrada.requestFocus();
         this.getRootPane().setDefaultButton(BotonEnviar);
         Parser.setVentana(this);
+        
+        jTextArea2.setWrapStyleWord(true);        
+        jTextArea1.setWrapStyleWord(true);
 
     }
 
@@ -204,9 +209,11 @@ public class Ventana
             jTextArea2.append("\n UNEXPECTED ERROR: " + e.getMessage());
         }
 
-        jTFEntrada.setText("");  
+        jTFEntrada.setText("");          
+        this.BotonEnviar.setBackground(Color.black);
+        this.BotonEnviar.setFocusPainted(false);
         this.BotonEnviar.setEnabled(false);
-        this.BotonEnviar.setBackground(Color.gray);
+        this.jTFEntrada.grabFocus();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BotonEnviarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BotonEnviarKeyReleased
