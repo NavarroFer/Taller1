@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import modelo.Sistema;
 
+import vista.IVista;
 import vista.Ventana;
 
 public abstract class Parser
@@ -37,7 +38,7 @@ public abstract class Parser
     private final static int CONSULTAR_EXPECTED_LENGTH = 4;   
     private final static int CONSULTAR_EXPECTED_LENGTH_WITH_TOFILE = 6;
     
-    private static Ventana ventana = null;
+    private static IVista vista = null;
     
     
     /**
@@ -126,7 +127,7 @@ public abstract class Parser
             throw new ParsingException(ERROR_006 + " (Ya existe el archivo)");
         
         Sistema.getInstance().crear(split_command[1]);
-        ventana.imprimirEnConsola("Almacen "+split_command[1]+" creado correctamente");
+        vista.imprimirEnConsola("Almacen "+split_command[1]+" creado correctamente");
     }
     
     /**
@@ -150,7 +151,7 @@ public abstract class Parser
         {
             throw new ParsingException(ERROR_006 + " (El archivo existe, pero no contiene un almacen)");
         }
-        ventana.imprimirEnConsola("Almacen "+split_command[1]+" cargado correctamente");
+        vista.imprimirEnConsola("Almacen "+split_command[1]+" cargado correctamente");
     }
     
     /**
@@ -165,7 +166,7 @@ public abstract class Parser
         if(!Sistema.getInstance().tieneAlmacenCargado())
             throw new ParsingException(ERROR_006 + " (No hay almacen cargado)");
         Sistema.getInstance().guardar();
-        ventana.imprimirEnConsola("Almacen guardado correctamente");
+        vista.imprimirEnConsola("Almacen guardado correctamente");
     }
     
     /**
@@ -184,7 +185,7 @@ public abstract class Parser
         if(Sistema.getInstance().alumnoExiste(split_command[1]))
             throw new ParsingException(ERROR_004);
         Sistema.getInstance().insertar(split_command[1]);
-        ventana.imprimirEnConsola("Alumno "+split_command[1]+" insertado correctamente");    
+        vista.imprimirEnConsola("Alumno "+split_command[1]+" insertado correctamente");    
     }
          
     /**
@@ -201,7 +202,7 @@ public abstract class Parser
         if(!Sistema.getInstance().alumnoExiste(split_command[1]))
             throw new ParsingException(ERROR_005 + " (No existe el alumno)");
         Sistema.getInstance().eliminarAlumno(split_command[1]);
-        ventana.imprimirEnConsola("Alumno "+split_command[1]+" eliminado correctamente");
+        vista.imprimirEnConsola("Alumno "+split_command[1]+" eliminado correctamente");
     }
     
     /**
@@ -239,13 +240,13 @@ public abstract class Parser
         
         if(split_command.length==CONSULTAR_EXPECTED_LENGTH)
         {
-            ventana.imprimirEnConsola(Sistema.getInstance().listaDeAlumnos(materia, split_command[2], nota).toString());
+            vista.imprimirEnConsola(Sistema.getInstance().listaDeAlumnos(materia, split_command[2], nota).toString());
         }
         else
         {
             if(split_command[4].toUpperCase().equals("TOFILE"))
                 throw new ParsingException(ERROR_002 + " (Expected 'TOFILE' but found "+split_command[4].toUpperCase()+")");
-            ventana.imprimirEnConsola(Sistema.getInstance().listaDeAlumnosArch(materia, split_command[2], nota, split_command[5]).toString());
+            vista.imprimirEnConsola(Sistema.getInstance().listaDeAlumnosArch(materia, split_command[2], nota, split_command[5]).toString());
         }
     }
 
@@ -260,6 +261,6 @@ public abstract class Parser
 
     public static void setVentana(Ventana v)
     {
-        Parser.ventana=v;
+        Parser.vista=v;
     }
 }
