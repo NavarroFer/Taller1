@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_131" class="java.beans.XMLDecoder">
+ <object class="modelo.Almacen">
+  <void property="alumnos">
+   <object class="java.util.HashMap"/>
+  </void>
+  <void property="filename">
+   <string>LOL</string>
+  </void>
+ </object>
+</java>
