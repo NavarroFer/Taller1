@@ -29,8 +29,7 @@ import modelo.Alumno;
  * @author Mau
  */
 public class Ventana
-    extends javax.swing.JFrame
-{
+    extends javax.swing.JFrame implements IVista {
 
     /** Creates new form Ventana */
     public Ventana()
