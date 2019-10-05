@@ -7,6 +7,7 @@ import java.io.File;
 
 import java.util.ArrayList;
 
+import modelo.Alumno;
 import modelo.Sistema;
 
 import vista.IVista;
@@ -240,7 +241,15 @@ public abstract class Parser
         
         if(split_command.length==CONSULTAR_EXPECTED_LENGTH)
         {
-            vista.imprimirEnConsola(Sistema.getInstance().listaDeAlumnos(materia, split_command[2], nota).toString());
+            System.out.println("beep");
+            ArrayList<Alumno> resultado = Sistema.getInstance().listaDeAlumnos(materia, split_command[2], nota);
+            
+            if(resultado.size()==0)
+                vista.imprimirEnConsola("No se encontro ningun alumno que cumpla la condición");
+            else
+                vista.imprimirEnConsola(resultado.toString());
+            
+            System.out.println("boop");
         }
         else
         {
