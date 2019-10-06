@@ -250,7 +250,7 @@ public abstract class Parser
         }
         else
         {
-            if(split_command[4].toUpperCase().equals("TOFILE"))
+            if(!split_command[4].toUpperCase().equals("TOFILE"))
                 throw new ParsingException(ERROR_002 + " (Expected 'TOFILE' but found "+split_command[4].toUpperCase()+")");
             vista.imprimirEnConsola(Sistema.getInstance().listaDeAlumnosArch(materia, split_command[2], nota, split_command[5]).toString());
         }
