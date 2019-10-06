@@ -41,8 +41,9 @@ public class Ventana
         this.setMinimumSize(new Dimension(screenSize.width*6/10,screenSize.height*6/10));
         this.zonaErorres.setMinimumSize(new Dimension(zonaErorres.getPreferredSize().width/2,zonaErorres.getPreferredSize().width/2));
         this.jPanelSalida.setMinimumSize(new Dimension(jPanelSalida.getPreferredSize().width/2,jPanelSalida.getPreferredSize().width/2));
-        this.BotonEnviar.setEnabled(false);
-        this.BotonEnviar.setBackground(Color.gray);
+        this.BotonEnviar.setBackground(Color.black);
+        this.BotonEnviar.setFocusPainted(false);
+        this.BotonEnviar.setEnabled(false);           
         setLocationRelativeTo(null);
         jTextArea1.setEditable(false);
         jTextArea2.setEditable(false);
@@ -96,6 +97,17 @@ public class Ventana
 
         JPanelTF.setLayout(new java.awt.BorderLayout());
 
+        jTFEntrada.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusGained(java.awt.event.FocusEvent evt)
+            {
+                jTFEntradaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
+                jTFEntradaFocusLost(evt);
+            }
+        });
         jTFEntrada.addKeyListener(new java.awt.event.KeyAdapter()
         {
             public void keyReleased(java.awt.event.KeyEvent evt)
@@ -225,8 +237,10 @@ public class Ventana
                 .getText()
                 .equals(""))
         {
+            this.BotonEnviar.setBackground(Color.black);
+            this.BotonEnviar.setFocusPainted(false);
             this.BotonEnviar.setEnabled(false);
-            this.BotonEnviar.setBackground(Color.gray);
+          
         }
         else
         {
@@ -234,6 +248,16 @@ public class Ventana
             this.BotonEnviar.setBackground(new JButton().getBackground());
         }
     }//GEN-LAST:event_jTFEntradaKeyReleased
+
+    private void jTFEntradaFocusGained(java.awt.event.FocusEvent evt)//GEN-FIRST:event_jTFEntradaFocusGained
+    {//GEN-HEADEREND:event_jTFEntradaFocusGained
+      this.jTFEntrada.setText("");
+    }//GEN-LAST:event_jTFEntradaFocusGained
+
+    private void jTFEntradaFocusLost(java.awt.event.FocusEvent evt)//GEN-FIRST:event_jTFEntradaFocusLost
+    {//GEN-HEADEREND:event_jTFEntradaFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFEntradaFocusLost
 
     /**
      * @param args the command line arguments

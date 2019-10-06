@@ -67,6 +67,8 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="jTFEntrada">
                   <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTFEntradaFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTFEntradaFocusLost"/>
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFEntradaKeyReleased"/>
                   </Events>
                   <Constraints>
