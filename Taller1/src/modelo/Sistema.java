@@ -113,7 +113,7 @@ public class Sistema
 
     /**
      * Verifica si hay un almacen cargado
-     * 
+     *   
      * @return si almacen es distinto de null, retorna verdadero, sino falso
      */
     public boolean tieneAlmacenCargado()
