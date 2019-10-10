@@ -128,7 +128,7 @@ public class Sistema
      * <b>pre:</b> ID Identificacion de alumno ID != null, ID != "". Almacen != null <br><br>
      *
      * @param ID Identificacion de el alumno
-     * @return Si el alumno existe retorna verdadero, sino falso 
+     * @return Si el alumno existe retorna verdadero, sino falso  
      */
     public boolean alumnoExiste(String ID)
     {
