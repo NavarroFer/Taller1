@@ -36,10 +36,10 @@ public class Sistema
 
 
     /**
-     * Este metodo carga un almacen al sistema, que llega por parametro
+     * Este metodo carga un almacen al sistema, que llega por parametro <br><br> 
      * 
-     * <b>pre:</b> filename distinto de vacio y distinto de null
-     * <b>post:</b> se ha cargado un almacen en el sistema
+     * <b>pre:</b> filename distinto de vacio y distinto de null <br><br> 
+     * <b>post:</b> se ha cargado un almacen en el sistema <br><br> 
      * 
      * @param filename es el nombre de el archivo el cual cargara el almacen. filename != "", filename != null
      */
@@ -65,7 +65,7 @@ public class Sistema
 
     /**
      * Este metodo guarda el almacen que esta cargado actualmente en el sistema creando un archivo
-     * con el nombre que tiene el atributo filename
+     * con el nombre que tiene el atributo filename <br><br> 
      * 
      * <b>pre:</b> el almacen tiene asignado un almacen, almacen != null
      */
@@ -85,9 +85,9 @@ public class Sistema
     }
 
     /**
-     * Este metodo crea un almacen, asignandolo al atributo almacen de el sistema
+     * Este metodo crea un almacen, asignandolo al atributo almacen de el sistema <br><br> 
      * 
-     * <b>pre:</b> filename != null, filename != ""
+     * <b>pre:</b> filename != null, filename != "" <br><br> 
      * 
      * @param filename Nombre de el archivo que representara el almacen. filename != null, filename != ""
      */
@@ -98,10 +98,10 @@ public class Sistema
 
 
     /**
-     * Este metodo elimina un alumno de el almacen, segun su identificacion
+     * Este metodo elimina un alumno de el almacen, segun su identificacion <br><br> 
      * 
-     * <b>pre:</b> ID != null, ID != "". Almacen != null
-     * <b>post:</b> hay un alumno menos en el almacen
+     * <b>pre:</b> ID != null, ID != "". Almacen != null <br><br> 
+     * <b>post:</b> hay un alumno menos en el almacen <br><br> 
      * 
      * @param ID Identificacion de el alumno que se desea eliminar. ID != null, ID != ""
      */
@@ -112,7 +112,7 @@ public class Sistema
 
 
     /**
-     * Verifica si hay un almacen cargado
+     * Verifica si hay un almacen cargado <br><br> 
      *   
      * @return si almacen es distinto de null, retorna verdadero, sino falso
      */
@@ -123,11 +123,12 @@ public class Sistema
     
     
     /**
-     * Este metodo verifica que dada la identificacion de un alumno, verifica si existe o no en el almacen
-     * 
-     * <b>pre:</b> ID != null, ID != "". Almacen != null
-     * 
-     * @return Si el alumno existe retorna verdadero, sino falso
+     * Este metodo verifica que dada la identificacion de un alumno, verifica si existe o no en el almacen <br><br>
+     *
+     * <b>pre:</b> ID Identificacion de alumno ID != null, ID != "". Almacen != null <br><br>
+     *
+     * @param ID Identificacion de el alumno
+     * @return Si el alumno existe retorna verdadero, sino falso 
      */
     public boolean alumnoExiste(String ID)
     {
@@ -135,10 +136,16 @@ public class Sistema
     }
     
     /**
-     * <b>Pre:</b> materia != null, materia != vacio. operador != null, operador != vacio, operador valido. La nota es un numero positivo<br><br>
-     * <b>Post:</b> Devuelve la lista de alumnos que cumple con la condicion.
+     * Este metodo delega al almacen el listado de alumnos<br><br> 
+     * 
+     * <b>Pre:</b> materia != null, materia != vacio. operador != null, operador != vacio, operador valido. La nota es un numero positivo<br><br> 
+     * <b>Post:</b> Devuelve la lista de alumnos que cumple con la condicion. <br><br> 
      * 
      * @param materia nombre de la materia:String, operador valor del operador para evaluar:String, nota valor numerico en la materia:double:.
+     * @param operador Operador valido para comparar la materia con la nota
+     * @param nota Nota mayor que 0, nota de la materia para comparar
+     * 
+     * @return lista de alumnos que cumplen con la consulta
      */
     public ArrayList<Alumno> listaDeAlumnos(String materia,String operador,double nota)
     {
@@ -148,7 +155,7 @@ public class Sistema
     /**
      * @param materia Nombre de la materia. materia != "", materia != null
      * @param operador Operador valido para comparar la materia con la nota
-     * @param nota Nota > 0, nota de la materia para comparar
+     * @param nota Nota mayor que 0, nota de la materia para comparar
      * @param nombreArch nombre de el archivo donde se guardaran los datos
      * 
      * @return arrayList de alumnos que cumplen con la condicion establecida
@@ -172,10 +179,10 @@ public class Sistema
 
 
     /**
-     * Este metodo inserta un alumno en el almacen actual
+     * Este metodo inserta un alumno en el almacen actual <br><br> 
      * 
-     * <b>pre:</b> almacen != null, filename, filename != ""
-     * <b>post:</b> se ha insertado un alumno a el almacen actual
+     * <b>pre:</b> almacen != null, filename, filename != "" <br><br> 
+     * <b>post:</b> se ha insertado un alumno a el almacen actual <br><br> 
      * 
      * @param filename nombre de el archivo de el alumno a insertar
      */
