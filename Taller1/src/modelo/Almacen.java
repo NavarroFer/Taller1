@@ -20,6 +20,7 @@ public class Almacen implements Serializable
     }
 
     /**
+
      * @param filename nombre del archivo en que se guardara el almacen en caso de solicitarlo.
      * 
      * <b>Pre:</b> filename != null y != "".<br><br>
@@ -61,12 +62,13 @@ public class Almacen implements Serializable
     
 
     /**
+
      * @param ID Identificador del alumno:String.
      * 
      * <b>Pre:</b> Valid ID. <br>
      * ID Exists.<br>
      * ID != null.<br>
-     * ID != "". <br><br>
+     * ID != "" <br><br>
      * 
      * <b>Post:</b> se elimina el alumno cuya ID fue ingresada en el metodo.
      * 
@@ -92,7 +94,7 @@ public class Almacen implements Serializable
      * <b>Pre:</b> materia != null y != "". operador != null y != "". La nota es un numero.  <br><br>
      * <b>Post:</b><br>
      * Devuelve la lista de alumnos que cumple con la condicion ({operador} sobre una {nota} en una {materia}).<br>
-     * @return Devuelve la lista de alumnos que cumple con la condicion. Si ninguno satisfajo la consulta, devuelve un arraylist vacío.
+     * @return Devuelve la lista de alumnos que cumple con la condicion. Si ninguno satisfajo la consulta, devuelve un arraylist vacÃ­o.
      */
     public ArrayList<Alumno> listaDeAlumno(String materia, String operador, double nota)//devuelve los alumnos que cursan la materia solicitada con su correspondiente nota
     {
@@ -171,7 +173,7 @@ public class Almacen implements Serializable
                 }
             }
         }
-        else //por descarte <= y por precondición: Sí o si es uno de ellos.
+        else //por descarte <= y por precondiciÃ³n: SÃ­ o si es uno de ellos.
         {
             while(it.hasNext()) 
             {
@@ -189,7 +191,9 @@ public class Almacen implements Serializable
 
 
     /**
-     * <b>Pre:</b> ID != null y != "". <br><br>
+     * <b>Pre:</b> ID != null<br>
+     * ID != "". <br><br>
+     * 
      * <b>Post:</b> Devuelve si el ID de alumno ingresado ya estaba en la coleccion de alumnos o no.
      * 
      * @param ID identificador de un alumno
@@ -206,10 +210,11 @@ public class Almacen implements Serializable
     }
 
     /**
-     * <b>Pre:</b> alumno != null y el alumno no estaba agregado previamente en la coleccion. <br><br>
+     * <b>Pre:</b> alumno != null<br
+     * El alumno no estaba agregado previamente en la coleccion. <br><br>
+     * 
      * <b>Post:</b> agrega el alumno al HashMap de alumnos.
-     * 
-     * 
+     *  
      * @param alumno instancia de alumno a agregar al HashMap de alumnos
      */
     public void agregarAlumno(Alumno alumno) 
