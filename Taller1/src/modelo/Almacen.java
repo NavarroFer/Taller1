@@ -20,7 +20,8 @@ public class Almacen implements Serializable
     }
 
     /**
-     * <b>Pre:</b> filename != null y != "".<br><br>
+     * <b>Pre:</b> filename != null<br>
+     * filename != "".<br><br>
      * <b>Post:</b> se instancia el almacen con el nombre de archivo dado.
      * 
      * @param filename nombre del archivo en que se guardara el almacen en caso de solicitarlo.
@@ -60,10 +61,12 @@ public class Almacen implements Serializable
     
 
     /**
-     * <b>Pre:</b> Valid ID. <br>
+     * Este metodo elimina un alumno de la lista de alumno en el almacen.
+     * 
+     * <b>Pre:</b> valid ID<br>
      * ID Exists.<br>
      * ID != null.<br>
-     * ID != "". <br><br>
+     * ID != "" <br><br>
      * 
      * <b>Post:</b> se elimina el alumno cuya ID fue ingresada en el metodo.
      * 
@@ -186,7 +189,9 @@ public class Almacen implements Serializable
 
 
     /**
-     * <b>Pre:</b> ID != null y != "". <br><br>
+     * <b>Pre:</b> ID != null<br>
+     * ID != "". <br><br>
+     * 
      * <b>Post:</b> Devuelve si el ID de alumno ingresado ya estaba en la coleccion de alumnos o no.
      * 
      * @param ID identificador de un alumno
@@ -203,10 +208,11 @@ public class Almacen implements Serializable
     }
 
     /**
-     * <b>Pre:</b> alumno != null y el alumno no estaba agregado previamente en la coleccion. <br><br>
+     * <b>Pre:</b> alumno != null<br
+     * El alumno no estaba agregado previamente en la coleccion. <br><br>
+     * 
      * <b>Post:</b> agrega el alumno al HashMap de alumnos.
-     * 
-     * 
+     *  
      * @param alumno instancia de alumno a agregar al HashMap de alumnos
      */
     public void agregarAlumno(Alumno alumno) 
