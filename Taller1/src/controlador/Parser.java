@@ -48,7 +48,7 @@ public abstract class Parser
      * 
      * <b>Nota al lector:</b> El parser es la <i>capa de negocios</i> de este sistema. Recibe el input del usuario y 
      * en función del comando que se desea ejecutar verifica que se cumplan todas las precondiciones para hacer
-     * la correspondiente llamada al modelo.
+     * la correspondiente llamada al modelo.<br><br>
      * 
      * <b>Pre:</b><br>
      * No hay precondiciones.<br>
@@ -57,17 +57,19 @@ public abstract class Parser
      * Ejecutará, de ser posible, el comando solicitado por el usuario, y enviará, en caso de ejecución satisfactoria, un mensaje de confirmación.<br>
      * De no haber podido realizar lo anterior, lanzará una excepción con mensaje de error.<br>
      * Nota: Todas las instrucciones y la mayoría de los parámetros no son case sensitive. Para saber exactamente cuales son case 
-     * sensitive y cuales no, remitirse a la documentación del modelo. En caso de no aclararse se asume que no es case sensitive.<br><br>
+     * sensitive y cuales no, remitirse a la documentación de cada método en el modelo. En caso de no aclararse se asume 
+     * que no es case sensitive.<br><br>
      * 
      * <b>Inv:</b><br>
      * raw_command<br>
      * 
      * @throws ParsingException
-     * Dado que la única información pertinente de las excepciones arrojadas por este método es el contenido de su mensaje 
+     * Dado que la única información relevante de las excepciones arrojadas por este método es simplemente su mensaje 
      * (código de error y descripción), las excepciones arrojadas por este método son todas de la misma clase "ParsingException". 
      * Utilizar <u><a href="../exceptions/ParsingException.html#getErrorMessage--">getErrorMessage()</a></u> si desea obtener el mensaje de error.<br><br>
      * 
-     * <b>Códigos de error:</b><br>
+     * <b>Códigos de error: (No coinciden con los códigos de error del SRS, debieron ser cambiados en tiempo de diseño
+     * pues el SRS era inconsistente)</b><br>
      * <b>Error 000:</b> Comando mal formado<br>
      * <b>Error 001:</b> Operacion no conocida<br>
      * <b>Error 002:</b> Consulta mal construida<br>
@@ -76,8 +78,7 @@ public abstract class Parser
      * <b>Error 005:</b> Archivo inexistente<br>
      * <b>Error 006:</b> Operacion no realizable<br>
      * <b>Error 007:</b> Dato inexistente<br>
-     * <br>
-     * <p style="font-size:8px">Si usted considera que esta documentación está incompleta comuníquese al 0223 481-6600 y pregunte por El Dema</p>
+     * <br>                                                                                                                                                                                                   <p style="font-size:8px">Si usted considera que esta documentación está incompleta comuníquese al 0223 481-6600 y pregunte por El Dema</p>
      */
     public static void parse(String raw_command) throws ParsingException
     {
