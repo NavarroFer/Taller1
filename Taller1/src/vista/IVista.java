@@ -1,8 +1,10 @@
 package vista;
 
 public interface IVista {
-    /**Se encarga de imprimir en la vista informacion sobre el funcionamiento del programa
+    /**
      * @param texto: el texto a escribir
+     * Se encarga de imprimir en la vista informacion sobre el funcionamiento del programa
+     * 
      */
     void imprimirEnConsola(String texto);
 }
