@@ -37,13 +37,13 @@ public class Alumno
     
     /**
      * @author Nahuel
+     * @param materia nombre de la materia cuya que se quiere consultar:String.
      * <b>Pre:</b><br>
      * materia != null y materia != ""<br>
      * 
      * 
      * <b>Post:</b> retorna true si el alumno tiene la materia en su colección de materias.
      * 
-     * @param materia nombre de la materia cuya que se quiere consultar:String.
      * @return retorna true si el alumno tiene la materia en su colección de materias.
      */
     public boolean haceMateria(String materia)
