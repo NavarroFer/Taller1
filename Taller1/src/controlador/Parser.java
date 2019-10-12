@@ -43,28 +43,38 @@ public abstract class Parser
     
     
     /**
-     * @author Nahuel
-     * Pre: 
-     * @param raw_command: Input del usuario tal y como fue ingresada
+     * @author Nahuel<br>
+     * @param raw_command: Input del usuario tal y como fue ingresado.<br><br>
      * 
-     * Post:
-     * Ejecutará, de ser posible, el comando solicitado por el usuario.
-     * Enviará, en caso de ejecución satisfactoria, un mensaje de confirmación; y caso contrario una excepción con mensaje de error.
-     * Nota: Todas las instrucciones y la mayoría de los parámetros no son case sensitive. Para saber exactamente cuales son case sensitive y cuales no, remitirse a la documentación del modelo. En caso de no aclararse se asume que no es case sensitive.
+     * <b>Nota al lector:</b> El parser es la <i>capa de negocios</i> de este sistema. Recibe el input del usuario y 
+     * en función del comando que se desea ejecutar verifica que se cumplan todas las precondiciones para hacer
+     * la correspondiente llamada al modelo.
+     * 
+     * <b>Pre:</b><br>
+     * No hay precondiciones.<br>
+     * 
+     * <b>Post:</b><br>
+     * Ejecutará, de ser posible, el comando solicitado por el usuario, y enviará, en caso de ejecución satisfactoria, un mensaje de confirmación.<br>
+     * De no haber podido realizar lo anterior, lanzará una excepción con mensaje de error.<br>
+     * Nota: Todas las instrucciones y la mayoría de los parámetros no son case sensitive. Para saber exactamente cuales son case 
+     * sensitive y cuales no, remitirse a la documentación del modelo. En caso de no aclararse se asume que no es case sensitive.<br><br>
      * 
      * @throws ParsingException
-     * Dado que la única información pertinente de las excepciones arrojadas por este método es el contenido de su mensaje (código de error y descripción), 
-     * las excepciones arrojadas por este método son todas de la misma clase "ParsingException". Utilizar getErrorMessage() para obtener el mensaje de error.
+     * Dado que la única información pertinente de las excepciones arrojadas por este método es el contenido de su mensaje 
+     * (código de error y descripción), las excepciones arrojadas por este método son todas de la misma clase "ParsingException". 
+     * Utilizar <u><a href="../exceptions/ParsingException.html#getErrorMessage--">getErrorMessage()</a></u> si desea obtener el mensaje de error.<br><br>
      * 
-     * Códigos de error:
-     * Error 000: Comando mal formado
-     * Error 001: Operacion no conocida
-     * Error 002: Consulta mal construida
-     * Error 003: Base de datos inexistente
-     * Error 004: Alumno duplicado
-     * Error 005: Archivo inexistente
-     * Error 006: Operacion no realizable
-     * Error 007: Dato inexistente
+     * <b>Códigos de error:</b><br>
+     * <b>Error 000:</b> Comando mal formado<br>
+     * <b>Error 001:</b> Operacion no conocida<br>
+     * <b>Error 002:</b> Consulta mal construida<br>
+     * <b>Error 003:</b> Base de datos inexistente<br>
+     * <b>Error 004:</b> Alumno duplicado<br>
+     * <b>Error 005:</b> Archivo inexistente<br>
+     * <b>Error 006:</b> Operacion no realizable<br>
+     * <b>Error 007:</b> Dato inexistente<br>
+     * <br>
+     * <p style="font-size:8px">Si usted considera que esta documentación está incompleta comuníquese al 0223 481-6600 y pregunte por El Dema</p>
      */
     public static void parse(String raw_command) throws ParsingException
     {
@@ -76,6 +86,7 @@ public abstract class Parser
         
         String split_command[] = raw_command.toUpperCase().split(" "); // Pasamos el comando a uppercase (para que no sea case sensitive) y separamos donde encuentre espacios
         String instruccion = split_command[0];
+        
         // ======================= CREAR =======================
         if(instruccion.equals(INSTRUCCION_CREAR))
         {
@@ -101,7 +112,7 @@ public abstract class Parser
         {
             parseEliminar(split_command); //Las excepciones arrojadas por este método son propagadas
         }
-        // ======================= CONSULTAR =======================
+        // ======================= CONSULTAR ======================
         else if(instruccion.equals(INSTRUCCION_CONSULTAR)) 
         {
             parseConsultar(split_command, raw_command); //Las excepciones arrojadas por este método son propagadas
@@ -109,9 +120,6 @@ public abstract class Parser
         else
             throw new ParsingException(ERROR_001 + " (No se reconoce la instruccion \""+instruccion+"\")");
     }
-
-
-
 
     /**
      * Método creado únicamente para modularizar el método parse.
@@ -124,11 +132,12 @@ public abstract class Parser
             throw new ParsingException(ERROR_000 + " (Falta segundo argumento)");
         if(split_command.length > CREAR_EXPECTED_LENGTH) 
             throw new ParsingException(ERROR_000 + " (Mas argumentos de los necesarios para la operacion)");
-        if(fileExists(split_command[1]))
+        String filename = split_command[1];
+        if(fileExists(filename))
             throw new ParsingException(ERROR_006 + " (Ya existe el archivo)");
         
-        Sistema.getInstance().crear(split_command[1]);
-        vista.imprimirEnConsola("Almacen "+split_command[1]+" creado correctamente");
+        Sistema.getInstance().crear(filename);
+        vista.imprimirEnConsola("Almacen "+filename+" creado correctamente");
     }
     
     /**
@@ -142,17 +151,18 @@ public abstract class Parser
             throw new ParsingException(ERROR_000 + " (Falta segundo argumento)");
         if(split_command.length > CARGAR_EXPECTED_LENGTH) 
             throw new ParsingException(ERROR_000 + " (Mas argumentos de los necesarios para la operacion)");
-        if(!fileExists(split_command[1]))
+        String filename = split_command[1];
+        if(!fileExists(filename))
             throw new ParsingException(ERROR_006 + " (No existe el archivo)");
         try
         {
-            Sistema.getInstance().cargar(split_command[1]);
+            Sistema.getInstance().cargar(filename);
         }
         catch(ClassCastException e)
         {
             throw new ParsingException(ERROR_006 + " (El archivo existe, pero no contiene un almacen)");
         }
-        vista.imprimirEnConsola("Almacen "+split_command[1]+" cargado correctamente");
+        vista.imprimirEnConsola("Almacen "+filename+" cargado correctamente");
     }
     
     /**
@@ -272,9 +282,9 @@ public abstract class Parser
 
     /**
      * @author Mauri
-     * @param ventana
+     * @param v referencia a la ventana
      */
-    public static void setVentana(Ventana v)
+    public static void setVista(IVista v)
     {
         Parser.vista=v;
     }

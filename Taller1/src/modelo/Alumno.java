@@ -10,7 +10,10 @@ public class Alumno
             domicilio,
             carrera;
     private HashMap<String,Double> materias;
-    
+
+    /**
+     * Constructor vacío para ser usado con fines de persistencia. No se recomienda su uso para otros fines.
+     */
     public Alumno()
     {
         super();
@@ -18,7 +21,11 @@ public class Alumno
     }
 
     /**
-     * <b>Pre:</b> Nombre_Materia != null y Nombre_Materia != "" El alumno cursa la materia. <br><br>
+     * <b>Pre:</b><br>
+     * Nombre_Materia != null<br>
+     * Nombre_Materia != ""<br><br>
+     * 
+     * 
      * <b>Post:</b> se retorna la nota que tiene el alumno en la materia especificada.
      * 
      * @param Nombre_Materia  nombre de la materia cuya nota se quiere consultar:String.
@@ -33,45 +40,21 @@ public class Alumno
         return this.materias.containsKey(materia);
     }
 
-
-    /**
-     * <b>Pre:</b> debe haber sido asignado un ID al alumno con anterioridad. <br><br>
-     * <b>Post:</b> se retorna el ID del alumno en cuestion.
-     * 
-     * @return ID del alumno en cuestion.
-     */
     public String getID()
     {
         return ID;
     }
 
-    /**
-     * <b>Pre:</b> debe haber sido asignado un domicilio al alumno con anterioridad. <br><br>
-     * <b>Post:</b> se retorna el domicilio del alumno en cuestion.
-     * 
-     * @return Domicilio del alumno en cuestion.
-     */
     public String getDomicilio()
     {
       return domicilio;
     }
-     /**
-     * <b>Pre:</b> debe haber sido asignado una carrera al alumno con anterioridad. <br><br>
-     * <b>Post:</b> se retorna la carrera del alumno en cuestion.
-     * 
-     * @return carrera del alumno en cuestion.
-     */
+    
     public String getCarrera()
     {
         return carrera;
     }
 
-    /**
-     * <b>Pre:</b> debe haber sido asignado un apellido y un nombre al alumno con anterioridad. <br><br>
-     * <b>Post:</b> se retorna el apellido y un nombre del alumno en cuestion.
-     * 
-     * @return Apellido y un nombre del alumno en cuestion.
-     */
     public String getApellido_y_nombre()
     {
         return apellido_y_nombre;

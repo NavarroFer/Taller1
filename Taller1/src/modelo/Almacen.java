@@ -83,11 +83,13 @@ public class Almacen implements Serializable
     /**
      * @author Nacho
      * <b>Pre:</b> materia != null y != "". operador != null y != "". La nota es un numero.  <br><br>
-     * <b>Post:</b> Devuelve la lista de alumnos que cumple con la condicion ({operador} sobre una {nota} en una {materia}).
+     * <b>Post:</b><br>
+     * Devuelve la lista de alumnos que cumple con la condicion ({operador} sobre una {nota} en una {materia}).<br>
      * 
      * @param materia nombre de la materia:String
      * @param operador valor del operador para evaluar:String
-     * @param nota valor numerico en la materia:double:.
+     * @param nota valor numerico en la materia:double.
+     * @return Devuelve la lista de alumnos que cumple con la condicion. Si ninguno satisfajo la consulta, devuelve un arraylist vacío.
      */
     public ArrayList<Alumno> listaDeAlumno(String materia, String operador, double nota)//devuelve los alumnos que cursan la materia solicitada con su correspondiente nota
     {
@@ -108,6 +110,7 @@ public class Almacen implements Serializable
                 aux= it.next();
                 if(aux.haceMateria(materia))
                 {
+                    //Si haceMateria(materia) lo agrego a la lista de salida.
                     double auxNota = aux.valorNota(materia);
                     if(auxNota==nota)  //verifico si el alumno cursa la materia y agrega a la lista si la nota es igual
                         listaDeAlumnos.add(aux);
