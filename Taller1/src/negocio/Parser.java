@@ -1,4 +1,4 @@
-package controlador;
+package negocio;
 
 import exceptions.ParsingException;
 
