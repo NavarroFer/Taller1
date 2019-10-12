@@ -12,7 +12,7 @@ public class Alumno
     private HashMap<String,Double> materias;
 
     /**
-     * Constructor vacío para ser usado con fines de persistencia. No se recomienda su uso para otros fines.
+     * Constructor vacio para ser usado con fines de persistencia. No se recomienda su uso para otros fines.
      */
     public Alumno()
     {
@@ -41,8 +41,8 @@ public class Alumno
      * @author Nahuel
      * @param materia nombre de la materia cuya que se quiere consultar:String.
      * <b>Pre:</b><br>
-     * materia != null y materia != ""<br>
-     * 
+     * materia != null<br>
+     * materia != ""<br><br> 
      * 
      * <b>Post:</b> retorna true si el alumno tiene la materia en su colección de materias.
      * 
