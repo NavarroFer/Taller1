@@ -21,20 +21,18 @@ public class Alumno
     }
 
     /**
-     * @author Nacho
+     * @author Nahuel
+     * @param materia nombre de la materia cuya nota se quiere consultar:String.
      * <b>Pre:</b><br>
-     * Nombre_Materia != null<br>
-     * Nombre_Materia != ""<br><br>
+     * Se ha verificado previamente que el alumno hace la materia utilizando <u><a href="#haceMateria-java.lang.String-">haceMateria(materia)</a></u><br><br>
      * 
+     * <b>Post:</b> Retorna la nota que tiene el alumno en la materia especificada.
      * 
-     * <b>Post:</b> se retorna la nota que tiene el alumno en la materia especificada.
-     * 
-     * @param Nombre_Materia  nombre de la materia cuya nota se quiere consultar:String.
      * @return Nota que tiene el alumno en la materia especificada.
      */
-    public double valorNota(String Nombre_Materia)
+    public double valorNota(String materia)
     {
-        return materias.get(Nombre_Materia);
+        return materias.get(materia);
     }
     
     /**
