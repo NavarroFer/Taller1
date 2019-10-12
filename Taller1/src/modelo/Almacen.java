@@ -222,7 +222,6 @@ public class Almacen
     assert !ID.equals(""): "El ID ingresado es String vacia";
     verificarInvariante();
     //--------------------------------------------------------------
-
     return alumnos.containsKey(ID);
   }
 
@@ -254,5 +253,6 @@ public class Almacen
     assert this.filename != null: "El filename es null";
     assert !this.filename.equals(""): "El filename es String vacia";
   }
+
 
 }
