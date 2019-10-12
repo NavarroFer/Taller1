@@ -47,7 +47,7 @@ public class Sistema
     {
         try
         {
-            XMLDecoder xmldecoder = new XMLDecoder(new FileInputStream(filename));
+            XMLDecoder xmldecoder = new XMLDecoder(new FileInputStream("Datos/"+filename));
             this.almacen = (Almacen) xmldecoder.readObject();
         }
         catch (FileNotFoundException e)
@@ -74,7 +74,7 @@ public class Sistema
 
         try 
         {
-            XMLEncoder xmlencoder = new XMLEncoder(new FileOutputStream(almacen.getFilename()));
+            XMLEncoder xmlencoder = new XMLEncoder(new FileOutputStream("Datos/"+almacen.getFilename()));
             xmlencoder.writeObject(this.almacen);
             xmlencoder.close();
         }
@@ -199,7 +199,7 @@ public class Sistema
         XMLEncoder encoder = null;
         try
         {
-            encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(nombreArch)));
+            encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream("Datos/"+nombreArch)));
         }
         catch (FileNotFoundException e)
         {
@@ -224,7 +224,7 @@ public class Sistema
     
         try
         {
-            XMLDecoder xmldecoder = new XMLDecoder(new FileInputStream(filename));
+            XMLDecoder xmldecoder = new XMLDecoder(new FileInputStream("Datos/"+filename));
             Alumno a = (Alumno) xmldecoder.readObject();
             almacen.agregarAlumno(a);
         }
