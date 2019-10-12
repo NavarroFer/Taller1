@@ -12,7 +12,7 @@ public class Alumno
     private HashMap<String,Double> materias;
 
     /**
-     * Constructor vacío para ser usado con fines de persistencia. No se recomienda su uso para otros fines.
+     * Constructor vacÃ­o para ser usado con fines de persistencia. No se recomienda su uso para otros fines.
      */
     public Alumno()
     {
@@ -32,6 +32,8 @@ public class Alumno
      */
     public double valorNota(String materia)
     {
+        assert(Nombre_Materia!=null);
+        assert(Nombre_Materia!="");
         return materias.get(materia);
     }
     
@@ -42,12 +44,14 @@ public class Alumno
      * materia != null y materia != ""<br>
      * 
      * 
-     * <b>Post:</b> retorna true si el alumno tiene la materia en su colección de materias.
+     * <b>Post:</b> retorna true si el alumno tiene la materia en su colecciÃ³n de materias.
      * 
-     * @return retorna true si el alumno tiene la materia en su colección de materias.
+     * @return retorna true si el alumno tiene la materia en su coleccion de materias.
      */
     public boolean haceMateria(String materia)
     {
+        assert(materia!=null);
+        assert(materia!="");
         return this.materias.containsKey(materia);
     }
 
