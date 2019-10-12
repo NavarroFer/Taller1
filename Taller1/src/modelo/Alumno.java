@@ -34,6 +34,8 @@ public class Alumno
      */
     public double valorNota(String Nombre_Materia)
     {
+        assert(Nombre_Materia!=null);
+        assert(Nombre_Materia!="");
         return materias.get(Nombre_Materia);
     }
     
@@ -50,6 +52,8 @@ public class Alumno
      */
     public boolean haceMateria(String materia)
     {
+        assert(materia!=null);
+        assert(materia!="");
         return this.materias.containsKey(materia);
     }
 
