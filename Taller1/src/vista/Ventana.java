@@ -75,7 +75,6 @@ public class Ventana
         JPanelTF = new javax.swing.JPanel();
         jTFComandos = new javax.swing.JTextField();
         jPanelButton = new javax.swing.JPanel();
-        jButtonEnviar = new javax.swing.JButton();
         jPanelSalida = new javax.swing.JPanel();
         jPanelSalidaAdentro = new javax.swing.JPanel();
         jScrollPaneSalida = new javax.swing.JScrollPane();
@@ -113,33 +112,15 @@ public class Ventana
 
         jPanelBotonyTFAdentro.add(JPanelTF, java.awt.BorderLayout.CENTER);
 
-        jButtonEnviar.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jButtonEnviar.setForeground(new java.awt.Color(15, 147, 74));
-        jButtonEnviar.setText("Enviar");
-        jButtonEnviar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEnviarActionPerformed(evt);
-            }
-        });
-        jButtonEnviar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jButtonEnviarKeyReleased(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanelButtonLayout = new javax.swing.GroupLayout(jPanelButton);
         jPanelButton.setLayout(jPanelButtonLayout);
         jPanelButtonLayout.setHorizontalGroup(
             jPanelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelButtonLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButtonEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 149, Short.MAX_VALUE)
         );
         jPanelButtonLayout.setVerticalGroup(
             jPanelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelButtonLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButtonEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 54, Short.MAX_VALUE)
         );
 
         jPanelBotonyTFAdentro.add(jPanelButton, java.awt.BorderLayout.EAST);
@@ -218,13 +199,9 @@ public class Ventana
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void mostrarError(String text){
-        jTextArea2.append("\n " + text);
+        jTextAreaErrores.append("\n " + text);
     }
     
-    private void jButtonEnviarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonEnviarKeyReleased
-      
-    }//GEN-LAST:event_jButtonEnviarKeyReleased
-
     private void jTFComandosKeyReleased(java.awt.event.KeyEvent evt)//GEN-FIRST:event_jTFComandosKeyReleased
     {//GEN-HEADEREND:event_jTFComandosKeyReleased
         if (this.jTFComandos
@@ -338,7 +315,6 @@ public class Ventana
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanelTF;
-    private javax.swing.JButton jButtonEnviar;
     private javax.swing.JPanel jPanelBotonyTFAdentro;
     private javax.swing.JPanel jPanelBotonyTextField;
     private javax.swing.JPanel jPanelButton;
