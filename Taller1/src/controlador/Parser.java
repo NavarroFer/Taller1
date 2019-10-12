@@ -43,7 +43,7 @@ public abstract class Parser
     
     
     /**
-     * @author Nawe
+     * @author Nahuel
      * Pre: 
      * @param raw_command: Input del usuario tal y como fue ingresada
      * 
@@ -190,6 +190,7 @@ public abstract class Parser
     }
          
     /**
+     * @author Nahuel
      * Método creado únicamente para modularizar el método parse.
      * @param split_command idem "parse"
      * @throws ParsingException idem "parse"
@@ -207,7 +208,7 @@ public abstract class Parser
     }
     
     /**
-     * @author Nacho
+     * @author Nahuel
      * Método creado únicamente para modularizar el método parse.
      * @param split_command idem "parse"
      * @throws ParsingException idem "parse"
@@ -241,7 +242,7 @@ public abstract class Parser
         
         if(split_command.length==CONSULTAR_EXPECTED_LENGTH)
         {
-            ArrayList<Alumno> resultado = Sistema.getInstance().listaDeAlumnos(materia, split_command[2], nota);
+            ArrayList<Alumno> resultado = Sistema.getInstance().consultar(materia, split_command[2], nota);
             
             if(resultado.size()==0)
                 vista.imprimirEnConsola("No se encontro ningun alumno que cumpla la condición");
@@ -252,19 +253,27 @@ public abstract class Parser
         {
             if(!split_command[4].toUpperCase().equals("TOFILE"))
                 throw new ParsingException(ERROR_002 + " (Expected 'TOFILE' but found "+split_command[4].toUpperCase()+")");
-            vista.imprimirEnConsola(Sistema.getInstance().listaDeAlumnosArch(materia, split_command[2], nota, split_command[5]).toString());
+            vista.imprimirEnConsola(Sistema.getInstance().consultarArch(materia, split_command[2], nota, split_command[5]).toString());
         }
     }
 
 
-
-
+    /**
+     * @author Nahuel
+     *
+     * @param nombre del archivo
+     * @return true if exists
+     */
     private static boolean fileExists(String filename)
     {
         File f = new File(filename);
         return f.exists();
     }
 
+    /**
+     * @author Mauri
+     * @param ventana
+     */
     public static void setVentana(Ventana v)
     {
         Parser.vista=v;

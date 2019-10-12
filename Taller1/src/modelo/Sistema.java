@@ -136,6 +136,7 @@ public class Sistema
     }
     
     /**
+     * @author Nacho
      * Este metodo delega al almacen el listado de alumnos<br><br> 
      * 
      * <b>Pre:</b> materia != null, materia != vacio. operador != null, operador != vacio, operador valido. La nota es un numero positivo<br><br> 
@@ -148,7 +149,7 @@ public class Sistema
      * 
      * @return lista de alumnos que cumplen con la consulta
      */
-    public ArrayList<Alumno> listaDeAlumnos(String materia,String operador,double nota)
+    public ArrayList<Alumno> consultar(String materia,String operador,double nota)
     {
         assert(this.tieneAlmacenCargado());
         assert(materia!= null);
@@ -165,8 +166,9 @@ public class Sistema
     }
 
     /**
+     * @author Nacho
      * Este metodo delega al almacen el listado de alumnos y guarda el listado en un archivo<br><br> 
-     * 
+     * <b>El parámetro "materia" es case sensitive.</b>
      * <b>Pre:</b> materia != null, materia != vacio. operador != null, operador != vacio, operador valido. La nota es un numero positivo<br><br> 
      * <b>Post:</b> Devuelve la lista de alumnos que cumple con la condicion y la almacena en un archivo. <br><br> 
      * <b>inv: </b> <br> Almacen != null
@@ -179,7 +181,7 @@ public class Sistema
      * 
      * @return arrayList de alumnos que cumplen con la condicion establecida
      */
-    public ArrayList<Alumno> listaDeAlumnosArch(String materia,String operador,double nota,String nombreArch)
+    public ArrayList<Alumno> consultarArch(String materia,String operador,double nota,String nombreArch)
     {
         assert(this.tieneAlmacenCargado());
         assert(materia!= null);
@@ -192,6 +194,7 @@ public class Sistema
            operador.equals(">") ||
            operador.equals(">=") ||
            operador.equals("<="));
+        
         ArrayList<Alumno> aux = this.almacen.listaDeAlumno(materia,operador,nota);
         XMLEncoder encoder = null;
         try
