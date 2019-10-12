@@ -140,6 +140,7 @@ public class Sistema
      * 
      * <b>Pre:</b> materia != null, materia != vacio. operador != null, operador != vacio, operador valido. La nota es un numero positivo<br><br> 
      * <b>Post:</b> Devuelve la lista de alumnos que cumple con la condicion. <br><br> 
+     * <b>inv: </b> <br> Almacen != null
      * 
      * @param materia nombre de la materia:String, operador valor del operador para evaluar:String, nota valor numerico en la materia:double:.
      * @param operador Operador valido para comparar la materia con la nota
@@ -149,19 +150,48 @@ public class Sistema
      */
     public ArrayList<Alumno> listaDeAlumnos(String materia,String operador,double nota)
     {
-       return almacen.listaDeAlumno(materia,operador,nota);
+        assert(this.tieneAlmacenCargado());
+        assert(materia!= null);
+        assert(materia != "");
+        assert(operador != null);
+        assert(operador != "");
+        assert(operador.equals("==") ||
+           operador.equals("!=") ||
+           operador.equals("<") ||
+           operador.equals(">") ||
+           operador.equals(">=") ||
+           operador.equals("<="));
+        return almacen.listaDeAlumno(materia,operador,nota);
     }
 
     /**
+     * Este metodo delega al almacen el listado de alumnos y guarda el listado en un archivo<br><br> 
+     * 
+     * <b>Pre:</b> materia != null, materia != vacio. operador != null, operador != vacio, operador valido. La nota es un numero positivo<br><br> 
+     * <b>Post:</b> Devuelve la lista de alumnos que cumple con la condicion y la almacena en un archivo. <br><br> 
+     * <b>inv: </b> <br> Almacen != null
+     * 
      * @param materia Nombre de la materia. materia != "", materia != null
      * @param operador Operador valido para comparar la materia con la nota
      * @param nota Nota mayor que 0, nota de la materia para comparar
      * @param nombreArch nombre de el archivo donde se guardaran los datos
      * 
+     * 
      * @return arrayList de alumnos que cumplen con la condicion establecida
      */
     public ArrayList<Alumno> listaDeAlumnosArch(String materia,String operador,double nota,String nombreArch)
     {
+        assert(this.tieneAlmacenCargado());
+        assert(materia!= null);
+        assert(materia != "");
+        assert(operador != null);
+        assert(operador != "");
+        assert(operador.equals("==") ||
+           operador.equals("!=") ||
+           operador.equals("<") ||
+           operador.equals(">") ||
+           operador.equals(">=") ||
+           operador.equals("<="));
         ArrayList<Alumno> aux = this.almacen.listaDeAlumno(materia,operador,nota);
         XMLEncoder encoder = null;
         try
