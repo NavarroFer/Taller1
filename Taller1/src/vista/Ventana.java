@@ -1,28 +1,18 @@
 
 package vista;
 
-import controlador.Parser;
+import controlador.Controlador;
 
 import exceptions.ParsingException;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-
-import java.beans.XMLEncoder;
-
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-
-import java.util.HashMap;
 
 import javax.swing.JButton;
 
-import javax.swing.JTextArea;
+import negocio.Parser;
 
-import modelo.Alumno;
 
 /**
  *
@@ -34,6 +24,7 @@ public class Ventana
     /** Creates new form Ventana */
     public Ventana()
     {
+        
 
         initComponents();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -43,16 +34,23 @@ public class Ventana
         this.jPanelSalida.setMinimumSize(new Dimension(jPanelSalida.getPreferredSize().width/2,jPanelSalida.getPreferredSize().width/2));
         this.BotonEnviar.setBackground(Color.black);
         this.BotonEnviar.setFocusPainted(false);
-        this.BotonEnviar.setEnabled(false);           
+        this.BotonEnviar.setEnabled(false);
+        
+        this.BotonEnviar.addActionListener(Controlador.getInstance());
+        this.BotonEnviar.setActionCommand(Controlador.COMMAND_ENVIAR_COMANDO);
+        
         setLocationRelativeTo(null);
         jTextArea1.setEditable(false);
         jTextArea2.setEditable(false);
         jTFEntrada.requestFocus();
         this.getRootPane().setDefaultButton(BotonEnviar);
         Parser.setVista(this);
+        Controlador.setVista(this);
         
         jTextArea2.setWrapStyleWord(true);        
         jTextArea1.setWrapStyleWord(true);
+        
+    
 
     }
 
@@ -207,7 +205,8 @@ public class Ventana
     {//GEN-FIRST:event_jButton1ActionPerformed
         String usrInput = jTFEntrada.getText();
         jTextArea1.append(usrInput + "\n");
-        try
+        
+        /* try
         {
             Parser.parse(usrInput);
         }
@@ -218,7 +217,7 @@ public class Ventana
         catch (Exception e)
         {
             jTextArea2.append("\n UNEXPECTED ERROR: " + e.getMessage());
-        }
+        } */
 
         jTFEntrada.setText("");          
         this.BotonEnviar.setBackground(Color.black);
@@ -227,6 +226,10 @@ public class Ventana
         this.jTFEntrada.grabFocus();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public void mostrarError(String text){
+        jTextArea2.append("\n " + text);
+    }
+    
     private void BotonEnviarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BotonEnviarKeyReleased
       
     }//GEN-LAST:event_BotonEnviarKeyReleased
