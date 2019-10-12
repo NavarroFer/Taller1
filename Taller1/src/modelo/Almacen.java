@@ -12,7 +12,7 @@ public class Almacen implements Serializable
     private String filename;
 
     /**
-     * Exclusivamente para que funcione la serializacion
+     * Exclusivamente para que funcione la serializacion. No utilizar.
      * @author: Mau
      */
     public Almacen(){
@@ -20,10 +20,11 @@ public class Almacen implements Serializable
     }
 
     /**
+     * @param filename nombre del archivo en que se guardara el almacen en caso de solicitarlo.
+     * 
      * <b>Pre:</b> filename != null y != "".<br><br>
      * <b>Post:</b> se instancia el almacen con el nombre de archivo dado.
      * 
-     * @param filename nombre del archivo en que se guardara el almacen en caso de solicitarlo.
      */
     public Almacen(String filename) 
     {
@@ -60,6 +61,8 @@ public class Almacen implements Serializable
     
 
     /**
+     * @param ID Identificador del alumno:String.
+     * 
      * <b>Pre:</b> Valid ID. <br>
      * ID Exists.<br>
      * ID != null.<br>
@@ -67,7 +70,6 @@ public class Almacen implements Serializable
      * 
      * <b>Post:</b> se elimina el alumno cuya ID fue ingresada en el metodo.
      * 
-     * @param ID Identificador del alumno:String.
      */
     public void eliminarAlumnoID(String ID)
     {
@@ -82,13 +84,14 @@ public class Almacen implements Serializable
     
     /**
      * @author Nacho
-     * <b>Pre:</b> materia != null y != "". operador != null y != "". La nota es un numero.  <br><br>
-     * <b>Post:</b><br>
-     * Devuelve la lista de alumnos que cumple con la condicion ({operador} sobre una {nota} en una {materia}).<br>
      * 
      * @param materia nombre de la materia:String
      * @param operador valor del operador para evaluar:String
      * @param nota valor numerico en la materia:double.
+     * 
+     * <b>Pre:</b> materia != null y != "". operador != null y != "". La nota es un numero.  <br><br>
+     * <b>Post:</b><br>
+     * Devuelve la lista de alumnos que cumple con la condicion ({operador} sobre una {nota} en una {materia}).<br>
      * @return Devuelve la lista de alumnos que cumple con la condicion. Si ninguno satisfajo la consulta, devuelve un arraylist vacío.
      */
     public ArrayList<Alumno> listaDeAlumno(String materia, String operador, double nota)//devuelve los alumnos que cursan la materia solicitada con su correspondiente nota
