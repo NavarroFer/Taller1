@@ -63,7 +63,7 @@ public class Almacen implements Serializable
 
     /**
 
-     * @param ID Identificador del alumno:String.
+     * @param ID Identificador del alumno:String. <br><br>
      * 
      * <b>Pre:</b> Valid ID. <br>
      * ID Exists.<br>

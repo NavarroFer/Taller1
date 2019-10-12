@@ -12,7 +12,7 @@ public class Alumno
     private HashMap<String,Double> materias;
 
     /**
-     * Constructor vacío para ser usado con fines de persistencia. No se recomienda su uso para otros fines.
+     * Constructor vacio para ser usado con fines de persistencia. No se recomienda su uso para otros fines.
      */
     public Alumno()
     {
