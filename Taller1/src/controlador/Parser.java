@@ -59,6 +59,9 @@ public abstract class Parser
      * Nota: Todas las instrucciones y la mayoría de los parámetros no son case sensitive. Para saber exactamente cuales son case 
      * sensitive y cuales no, remitirse a la documentación del modelo. En caso de no aclararse se asume que no es case sensitive.<br><br>
      * 
+     * <b>Inv:</b><br>
+     * raw_command<br>
+     * 
      * @throws ParsingException
      * Dado que la única información pertinente de las excepciones arrojadas por este método es el contenido de su mensaje 
      * (código de error y descripción), las excepciones arrojadas por este método son todas de la misma clase "ParsingException". 
