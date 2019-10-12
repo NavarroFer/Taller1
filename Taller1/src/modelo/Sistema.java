@@ -45,6 +45,9 @@ public class Sistema
      */
     public void cargar(String filename)
     {
+        assert (filename!="");
+        assert (filename!=null);
+        
         try
         {
             XMLDecoder xmldecoder = new XMLDecoder(new FileInputStream("Datos/"+filename));
@@ -71,7 +74,9 @@ public class Sistema
      */
     public void guardar()
     {
-
+        assert(this.almacen!=null);
+        assert(almacen.getFilename()!=null);
+        assert(almacen.getFilename()!="");
         try 
         {
             XMLEncoder xmlencoder = new XMLEncoder(new FileOutputStream("Datos/"+almacen.getFilename()));
@@ -93,6 +98,9 @@ public class Sistema
      */
     public void crear(String filename)
     {
+        assert(filename!=null);
+        assert(filename!="");
+        
         almacen = new Almacen(filename);
     }
 
@@ -107,6 +115,10 @@ public class Sistema
      */
     public void eliminarAlumno(String ID)
     {
+        assert(almacen!=null);
+        assert(ID!=null);
+        assert(ID!="");
+        
         almacen.eliminarAlumnoID(ID);
     }
 
@@ -221,6 +233,10 @@ public class Sistema
      */
     public void insertar(String filename) 
     {
+        assert(almacen!=null);
+        assert(filename!=null);
+        assert(filename!="");
+        
     
         try
         {
