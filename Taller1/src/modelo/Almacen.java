@@ -23,7 +23,8 @@ public class Almacen implements Serializable
 
      * @param filename nombre del archivo en que se guardara el almacen en caso de solicitarlo.
      * 
-     * <b>Pre:</b> filename != null y != "".<br><br>
+     * <b>Pre:</b> filename != null<br>
+     *filename != "".<br><br>
      * <b>Post:</b> se instancia el almacen con el nombre de archivo dado.
      * 
      */
