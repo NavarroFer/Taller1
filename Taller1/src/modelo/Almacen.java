@@ -210,7 +210,7 @@ public class Almacen implements Serializable
     }
 
     /**
-     * <b>Pre:</b> alumno != null<br
+     * <b>Pre:</b> alumno != null<br>
      * El alumno no estaba agregado previamente en la coleccion. <br><br>
      * 
      * <b>Post:</b> agrega el alumno al HashMap de alumnos.
