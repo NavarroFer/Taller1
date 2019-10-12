@@ -17,7 +17,6 @@ public class Sistema
 
     private Almacen almacen = null;
     private static Sistema instance = null;
-    
 
     private Sistema()
     {

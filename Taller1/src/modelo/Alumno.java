@@ -32,8 +32,8 @@ public class Alumno
      */
     public double valorNota(String materia)
     {
-        assert(Nombre_Materia!=null);
-        assert(Nombre_Materia!="");
+        assert(materia!=null);
+        assert(materia!="");
         return materias.get(materia);
     }
     
