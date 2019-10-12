@@ -9,9 +9,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 public class Sistema
 {
@@ -59,12 +56,12 @@ public class Sistema
     }
     catch (FileNotFoundException e)
     {
-      //Imposible por precondición
+      //Imposible por precondicion
     }
     /*
         catch (ClassCastException e)
         {
-            Esta excepción la propagamos.
+            Esta excepcion la propagamos.
         }
         */
   }
@@ -94,8 +91,9 @@ public class Sistema
     }
     catch (FileNotFoundException e)
     {
-      //Imposible por precondición
+      //Imposible por precondicion
     }
+    verificarInvariante();
   }
 
   /**
@@ -249,7 +247,7 @@ public class Sistema
     }
     catch (FileNotFoundException e)
     {
-      //Imposible por precondición
+      //Imposible por precondicion
     }
     encoder.writeObject(aux);
     encoder.close();
@@ -283,7 +281,11 @@ public class Sistema
     }
     catch (FileNotFoundException e)
     {
-      //Imposible por precondición
+      //Imposible por precondicion
     }
   }
+    private void verificarInvariante()
+    {
+        assert(this.almacen != null):"El almacen es null";
+    }
 }
