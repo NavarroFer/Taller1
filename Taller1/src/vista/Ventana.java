@@ -49,7 +49,7 @@ public class Ventana
         jTextArea2.setEditable(false);
         jTFEntrada.requestFocus();
         this.getRootPane().setDefaultButton(BotonEnviar);
-        Parser.setVentana(this);
+        Parser.setVista(this);
         
         jTextArea2.setWrapStyleWord(true);        
         jTextArea1.setWrapStyleWord(true);

@@ -168,10 +168,26 @@ public class Sistema
     /**
      * @author Nacho
      * Este metodo delega al almacen el listado de alumnos y guarda el listado en un archivo<br><br> 
-     * <b>El parámetro "materia" es case sensitive.</b>
-     * <b>Pre:</b> materia != null, materia != vacio. operador != null, operador != vacio, operador valido. La nota es un numero positivo<br><br> 
+     * 
+     * <b>El parámetro "materia" es case sensitive.</b><br><br>
+     * 
+     * <b>Pre:</b><br> 
+     * Almacen != null<br>
+     * materia != null<br>
+     * materia != ""<br>
+     * operador != null<br>
+     * operador != ""<br>
+     * operador valido<br>
+     * La nota es un numero positivo<br><br> 
+     * 
      * <b>Post:</b> Devuelve la lista de alumnos que cumple con la condicion y la almacena en un archivo. <br><br> 
-     * <b>inv: </b> <br> Almacen != null
+     * <b>inv: </b><br> 
+     * Almacen != null<br>
+     * materia != null<br>
+     * materia != ""<br>
+     * operador != null<br>
+     * operador != ""<br>
+     * operador valido<br>
      * 
      * @param materia Nombre de la materia. materia != "", materia != null
      * @param operador Operador valido para comparar la materia con la nota
