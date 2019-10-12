@@ -289,7 +289,7 @@ public abstract class Parser
      */
     private static boolean fileExists(String filename)
     {
-        File f = new File(filename);
+        File f = new File("Datos/" + filename);
         return f.exists();
     }
 
