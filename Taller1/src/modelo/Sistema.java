@@ -45,9 +45,12 @@ public class Sistema
      */
     public void cargar(String filename)
     {
+        assert (filename!="");
+        assert (filename!=null);
+        
         try
         {
-            XMLDecoder xmldecoder = new XMLDecoder(new FileInputStream(filename));
+            XMLDecoder xmldecoder = new XMLDecoder(new FileInputStream("Datos/"+filename));
             this.almacen = (Almacen) xmldecoder.readObject();
         }
         catch (FileNotFoundException e)
@@ -71,10 +74,12 @@ public class Sistema
      */
     public void guardar()
     {
-
+        assert(this.almacen!=null);
+        assert(almacen.getFilename()!=null);
+        assert(almacen.getFilename()!="");
         try 
         {
-            XMLEncoder xmlencoder = new XMLEncoder(new FileOutputStream(almacen.getFilename()));
+            XMLEncoder xmlencoder = new XMLEncoder(new FileOutputStream("Datos/"+almacen.getFilename()));
             xmlencoder.writeObject(this.almacen);
             xmlencoder.close();
         }
@@ -93,6 +98,9 @@ public class Sistema
      */
     public void crear(String filename)
     {
+        assert(filename!=null);
+        assert(filename!="");
+        
         almacen = new Almacen(filename);
     }
 
@@ -107,6 +115,10 @@ public class Sistema
      */
     public void eliminarAlumno(String ID)
     {
+        assert(almacen!=null);
+        assert(ID!=null);
+        assert(ID!="");
+        
         almacen.eliminarAlumnoID(ID);
     }
 
@@ -215,7 +227,7 @@ public class Sistema
         XMLEncoder encoder = null;
         try
         {
-            encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(nombreArch)));
+            encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream("Datos/"+nombreArch)));
         }
         catch (FileNotFoundException e)
         {
@@ -237,10 +249,14 @@ public class Sistema
      */
     public void insertar(String filename) 
     {
+        assert(almacen!=null);
+        assert(filename!=null);
+        assert(filename!="");
+        
     
         try
         {
-            XMLDecoder xmldecoder = new XMLDecoder(new FileInputStream(filename));
+            XMLDecoder xmldecoder = new XMLDecoder(new FileInputStream("Datos/"+filename));
             Alumno a = (Alumno) xmldecoder.readObject();
             almacen.agregarAlumno(a);
         }
