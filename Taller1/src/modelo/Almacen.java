@@ -81,9 +81,9 @@ public class Almacen implements Serializable
     }    
     
     /**
+     * @author Nacho
      * <b>Pre:</b> materia != null y != "". operador != null y != "". La nota es un numero.  <br><br>
      * <b>Post:</b> Devuelve la lista de alumnos que cumple con la condicion ({operador} sobre una {nota} en una {materia}).
-     * <b>Inv:</b> alumnos != null, filename != null, filename != null, filename != vacio
      * 
      * @param materia nombre de la materia:String
      * @param operador valor del operador para evaluar:String
