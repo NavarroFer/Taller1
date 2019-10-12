@@ -78,8 +78,7 @@ public abstract class Parser
      * <b>Error 005:</b> Archivo inexistente<br>
      * <b>Error 006:</b> Operacion no realizable<br>
      * <b>Error 007:</b> Dato inexistente<br>
-     * <br>
-     * <p style="font-size:8px">Si usted considera que esta documentación está incompleta comuníquese al 0223 481-6600 y pregunte por El Dema</p>
+     * <br>                                                                                                                                                                                                   <p style="font-size:8px">Si usted considera que esta documentación está incompleta comuníquese al 0223 481-6600 y pregunte por El Dema</p>
      */
     public static void parse(String raw_command) throws ParsingException
     {
