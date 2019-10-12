@@ -253,7 +253,12 @@ public abstract class Parser
         {
             if(!split_command[4].toUpperCase().equals("TOFILE"))
                 throw new ParsingException(ERROR_002 + " (Expected 'TOFILE' but found "+split_command[4].toUpperCase()+")");
-            vista.imprimirEnConsola(Sistema.getInstance().consultarArch(materia, split_command[2], nota, split_command[5]).toString());
+            
+            ArrayList<Alumno> resultado = Sistema.getInstance().consultarArch(materia, split_command[2], nota, split_command[5]);
+            if(resultado.size()==0)
+                vista.imprimirEnConsola("No se encontro ningun alumno que cumpla la condición");
+            else
+                vista.imprimirEnConsola(resultado.toString());
         }
     }
 
