@@ -110,7 +110,6 @@ public class Almacen implements Serializable
                 aux= it.next();
                 if(aux.haceMateria(materia))
                 {
-                    //Si haceMateria(materia) lo agrego a la lista de salida.
                     double auxNota = aux.valorNota(materia);
                     if(auxNota==nota)  //verifico si el alumno cursa la materia y agrega a la lista si la nota es igual
                         listaDeAlumnos.add(aux);
