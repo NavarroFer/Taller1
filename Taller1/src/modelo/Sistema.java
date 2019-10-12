@@ -133,6 +133,7 @@ public class Sistema
     assert (ID != ""):"El ID es un String vacio";
 
     almacen.eliminarAlumnoID(ID);
+    verificarInvariante();
   }
 
 
@@ -251,6 +252,7 @@ public class Sistema
     }
     encoder.writeObject(aux);
     encoder.close();
+    verificarInvariante();
     return aux;
   }
 
