@@ -47,28 +47,28 @@ public abstract class Parser
      * @param raw_command: Input del usuario tal y como fue ingresado.<br><br>
      * 
      * <b>Nota al lector:</b> El parser es la <i>capa de negocios</i> de este sistema. Recibe el input del usuario y 
-     * en función del comando que se desea ejecutar verifica que se cumplan todas las precondiciones para hacer
+     * en funciÃ³n del comando que se desea ejecutar verifica que se cumplan todas las precondiciones para hacer
      * la correspondiente llamada al modelo.<br><br>
      * 
      * <b>Pre:</b><br>
      * No hay precondiciones.<br>
      * 
      * <b>Post:</b><br>
-     * Ejecutará, de ser posible, el comando solicitado por el usuario, y enviará, en caso de ejecución satisfactoria, un mensaje de confirmación.<br>
-     * De no haber podido realizar lo anterior, lanzará una excepción con mensaje de error.<br>
-     * Nota: Todas las instrucciones y la mayoría de los parámetros no son case sensitive. Para saber exactamente cuales son case 
-     * sensitive y cuales no, remitirse a la documentación de cada método en el modelo. En caso de no aclararse se asume 
+     * EjecutarÃ¡, de ser posible, el comando solicitado por el usuario, y enviarÃ¡, en caso de ejecuciÃ³n satisfactoria, un mensaje de confirmaciÃ³n.<br>
+     * De no haber podido realizar lo anterior, lanzarÃ¡ una excepciÃ³n con mensaje de error.<br>
+     * Nota: Todas las instrucciones y la mayorÃ­a de los parÃ¡metros no son case sensitive. Para saber exactamente cuales son case 
+     * sensitive y cuales no, remitirse a la documentaciÃ³n de cada mÃ©todo en el modelo. En caso de no aclararse se asume 
      * que no es case sensitive.<br><br>
      * 
      * <b>Inv:</b><br>
      * raw_command<br>
      * 
      * @throws ParsingException
-     * Dado que la única información relevante de las excepciones arrojadas por este método es simplemente su mensaje 
-     * (código de error y descripción), las excepciones arrojadas por este método son todas de la misma clase "ParsingException". 
+     * Dado que la Ãºnica informaciÃ³n relevante de las excepciones arrojadas por este mÃ©todo es simplemente su mensaje 
+     * (cÃ³digo de error y descripciÃ³n), las excepciones arrojadas por este mÃ©todo son todas de la misma clase "ParsingException". 
      * Utilizar <u><a href="../exceptions/ParsingException.html#getErrorMessage--">getErrorMessage()</a></u> si desea obtener el mensaje de error.<br><br>
      * 
-     * <b>Códigos de error: (No coinciden con los códigos de error del SRS, debieron ser cambiados en tiempo de diseño
+     * <b>CÃ³digos de error: (No coinciden con los cÃ³digos de error del SRS, debieron ser cambiados en tiempo de diseÃ±o
      * pues el SRS era inconsistente)</b><br>
      * <b>Error 000:</b> Comando mal formado<br>
      * <b>Error 001:</b> Operacion no conocida<br>
@@ -78,7 +78,7 @@ public abstract class Parser
      * <b>Error 005:</b> Archivo inexistente<br>
      * <b>Error 006:</b> Operacion no realizable<br>
      * <b>Error 007:</b> Dato inexistente<br>
-     * <br>                                                                                                                                                                                                   <p style="font-size:8px">Si usted considera que esta documentación está incompleta comuníquese al 0223 481-6600 y pregunte por El Dema</p>
+     * <br>                                                                                                                                                                                                   <p style="font-size:8px">Si usted considera que esta documentaciÃ³n estÃ¡ incompleta comunÃ­quese al 0223 481-6600 y pregunte por El Dema</p>
      */
     public static void parse(String raw_command) throws ParsingException
     {
@@ -94,32 +94,32 @@ public abstract class Parser
         // ======================= CREAR =======================
         if(instruccion.equals(INSTRUCCION_CREAR))
         {
-            parseCrear(split_command); //Las excepciones arrojadas por este método son propagadas
+            parseCrear(split_command); //Las excepciones arrojadas por este mÃ©todo son propagadas
         }
         // ======================= CARGAR =======================
         else if(instruccion.equals(INSTRUCCION_CARGAR))
         {
-            parseCargar(split_command); //Las excepciones arrojadas por este método son propagadas
+            parseCargar(split_command); //Las excepciones arrojadas por este mÃ©todo son propagadas
         }
         // ======================= GUARDAR =======================
         else if(instruccion.equals(INSTRUCCION_GUARDAR))
         {
-            parseGuardar(split_command); //Las excepciones arrojadas por este método son propagadas
+            parseGuardar(split_command); //Las excepciones arrojadas por este mÃ©todo son propagadas
         }     
         // ======================= INSERTAR =======================
         else if(instruccion.equals(INSTRUCCION_INSERTAR))
         {
-            parseInsertar(split_command); //Las excepciones arrojadas por este método son propagadas    
+            parseInsertar(split_command); //Las excepciones arrojadas por este mÃ©todo son propagadas    
         }
         // ======================= ELIMINAR =======================  
         else if(instruccion.equals(INSTRUCCION_ELIMINAR))
         {
-            parseEliminar(split_command); //Las excepciones arrojadas por este método son propagadas
+            parseEliminar(split_command); //Las excepciones arrojadas por este mÃ©todo son propagadas
         }
         // ======================= CONSULTAR ======================
         else if(instruccion.equals(INSTRUCCION_CONSULTAR)) 
         {
-            parseConsultar(split_command, raw_command); //Las excepciones arrojadas por este método son propagadas
+            parseConsultar(split_command, raw_command); //Las excepciones arrojadas por este mÃ©todo son propagadas
         }                                                    
         else
             throw new ParsingException(ERROR_001 + " (No se reconoce la instruccion \""+instruccion+"\")");
@@ -127,7 +127,7 @@ public abstract class Parser
 
     /**
      * @author Nahuel
-     * Método creado únicamente para modularizar el método parse. No se recomienda llamarlo por si solo.
+     * MÃ©todo creado Ãºnicamente para modularizar el mÃ©todo parse. No se recomienda llamarlo por si solo.
      * @param split_command idem "parse"
      * @throws ParsingException idem "parse"
      */
@@ -147,7 +147,7 @@ public abstract class Parser
     
     /**
      * @author Nahuel
-     * Método creado únicamente para modularizar el método parse. No se recomienda llamarlo por si solo.
+     * MÃ©todo creado Ãºnicamente para modularizar el mÃ©todo parse. No se recomienda llamarlo por si solo.
      * @param split_command idem "parse"
      * @throws ParsingException idem "parse"
      */
@@ -173,7 +173,7 @@ public abstract class Parser
     
     /**
      * @author Nahuel
-     * Método creado únicamente para modularizar el método parse. No se recomienda llamarlo por si solo.
+     * MÃ©todo creado Ãºnicamente para modularizar el mÃ©todo parse. No se recomienda llamarlo por si solo.
      * @param split_command idem "parse"
      * @throws ParsingException idem "parse"
      */
@@ -189,7 +189,7 @@ public abstract class Parser
     
     /**
      * @author Nahuel
-     * Método creado únicamente para modularizar el método parse. No se recomienda llamarlo por si solo.
+     * MÃ©todo creado Ãºnicamente para modularizar el mÃ©todo parse. No se recomienda llamarlo por si solo.
      * @param split_command idem "parse"
      * @throws ParsingException idem "parse"
      */
@@ -209,7 +209,7 @@ public abstract class Parser
          
     /**
      * @author Nahuel
-     * Método creado únicamente para modularizar el método parse. No se recomienda llamarlo por si solo.
+     * MÃ©todo creado Ãºnicamente para modularizar el mÃ©todo parse. No se recomienda llamarlo por si solo.
      * @param split_command idem "parse"
      * @throws ParsingException idem "parse"
      */
@@ -227,7 +227,8 @@ public abstract class Parser
     
     /**
      * @author Nahuel
-     * Método creado únicamente para modularizar el método parse. No se recomienda llamarlo por si solo.
+     * MÃ©todo creado Ãºnicamente para modularizar el mÃ©todo parse. No se recomienda llamarlo por si solo.
+     * @param raw_command idem "parse"
      * @param split_command creado en "parse"
      * @throws ParsingException idem "parse"
      */
@@ -245,9 +246,9 @@ public abstract class Parser
            !operador.equals("<") &&
            !operador.equals(">") &&
            !operador.equals(">=") &&
-           !operador.equals("<=")) //Ya sé que esto se ve un poco feo pero te juro que todos juntos era peor
+           !operador.equals("<=")) //Ya sÃ© que esto se ve un poco feo pero te juro que todos juntos era peor
             throw new ParsingException(ERROR_002 + " (Operador desconocido: " +split_command[2]+ ")");
-        String materia = raw_command.split(" ")[1];
+        String materia = raw_command.split(" ")[1]; //Esto se hace porque en split command esta todo pasado a upper y necesitamos el nombre de la materia tal y como lo ingresÃ³ el usuario
         Double nota;
         try
         {
@@ -263,7 +264,7 @@ public abstract class Parser
             ArrayList<Alumno> resultado = Sistema.getInstance().consultar(materia, split_command[2], nota);
             
             if(resultado.size()==0)
-                vista.imprimirEnConsola("No se encontro ningun alumno que cumpla la condición");
+                vista.imprimirEnConsola("No se encontro ningun alumno que cumpla la condiciÃ³n");
             else
                 vista.imprimirEnConsola(resultado.toString());
         }
@@ -274,7 +275,7 @@ public abstract class Parser
             
             ArrayList<Alumno> resultado = Sistema.getInstance().consultarArch(materia, split_command[2], nota, split_command[5]);
             if(resultado.size()==0)
-                vista.imprimirEnConsola("No se encontro ningun alumno que cumpla la condición");
+                vista.imprimirEnConsola("No se encontro ningun alumno que cumpla la condiciÃ³n");
             else
                 vista.imprimirEnConsola(resultado.toString());
         }
