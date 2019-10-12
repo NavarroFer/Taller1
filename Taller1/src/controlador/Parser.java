@@ -122,7 +122,8 @@ public abstract class Parser
     }
 
     /**
-     * Método creado únicamente para modularizar el método parse.
+     * @author Nahuel
+     * Método creado únicamente para modularizar el método parse. No se recomienda llamarlo por si solo.
      * @param split_command idem "parse"
      * @throws ParsingException idem "parse"
      */
@@ -141,7 +142,8 @@ public abstract class Parser
     }
     
     /**
-     * Método creado únicamente para modularizar el método parse.
+     * @author Nahuel
+     * Método creado únicamente para modularizar el método parse. No se recomienda llamarlo por si solo.
      * @param split_command idem "parse"
      * @throws ParsingException idem "parse"
      */
@@ -166,7 +168,8 @@ public abstract class Parser
     }
     
     /**
-     * Método creado únicamente para modularizar el método parse.
+     * @author Nahuel
+     * Método creado únicamente para modularizar el método parse. No se recomienda llamarlo por si solo.
      * @param split_command idem "parse"
      * @throws ParsingException idem "parse"
      */
@@ -181,7 +184,8 @@ public abstract class Parser
     }
     
     /**
-     * Método creado únicamente para modularizar el método parse.
+     * @author Nahuel
+     * Método creado únicamente para modularizar el método parse. No se recomienda llamarlo por si solo.
      * @param split_command idem "parse"
      * @throws ParsingException idem "parse"
      */
@@ -201,7 +205,7 @@ public abstract class Parser
          
     /**
      * @author Nahuel
-     * Método creado únicamente para modularizar el método parse.
+     * Método creado únicamente para modularizar el método parse. No se recomienda llamarlo por si solo.
      * @param split_command idem "parse"
      * @throws ParsingException idem "parse"
      */
@@ -219,8 +223,8 @@ public abstract class Parser
     
     /**
      * @author Nahuel
-     * Método creado únicamente para modularizar el método parse.
-     * @param split_command idem "parse"
+     * Método creado únicamente para modularizar el método parse. No se recomienda llamarlo por si solo.
+     * @param split_command creado en "parse"
      * @throws ParsingException idem "parse"
      */
     private static void parseConsultar(String split_command[], String raw_command) throws ParsingException
