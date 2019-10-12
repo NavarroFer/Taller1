@@ -12,7 +12,7 @@ public class Alumno
     private HashMap<String,Double> materias;
 
     /**
-     * Constructor vacío para ser usado con fines de persistencia. No se recomienda su uso para otros fines.
+     * Constructor vacÃ­o para ser usado con fines de persistencia. No se recomienda su uso para otros fines.
      */
     public Alumno()
     {
@@ -21,22 +21,20 @@ public class Alumno
     }
 
     /**
-     * @author Nacho
+     * @author Nahuel
+     * @param materia nombre de la materia cuya nota se quiere consultar:String.
      * <b>Pre:</b><br>
-     * Nombre_Materia != null<br>
-     * Nombre_Materia != ""<br><br>
+     * Se ha verificado previamente que el alumno hace la materia utilizando <u><a href="#haceMateria-java.lang.String-">haceMateria(materia)</a></u><br><br>
      * 
+     * <b>Post:</b> Retorna la nota que tiene el alumno en la materia especificada.
      * 
-     * <b>Post:</b> se retorna la nota que tiene el alumno en la materia especificada.
-     * 
-     * @param Nombre_Materia  nombre de la materia cuya nota se quiere consultar:String.
      * @return Nota que tiene el alumno en la materia especificada.
      */
-    public double valorNota(String Nombre_Materia)
+    public double valorNota(String materia)
     {
         assert(Nombre_Materia!=null);
         assert(Nombre_Materia!="");
-        return materias.get(Nombre_Materia);
+        return materias.get(materia);
     }
     
     /**
@@ -45,10 +43,10 @@ public class Alumno
      * materia != null y materia != ""<br>
      * 
      * 
-     * <b>Post:</b> retorna true si el alumno tiene la materia en su colección de materias.
+     * <b>Post:</b> retorna true si el alumno tiene la materia en su colecciÃ³n de materias.
      * 
      * @param materia nombre de la materia cuya que se quiere consultar:String.
-     * @return retorna true si el alumno tiene la materia en su colección de materias.
+     * @return retorna true si el alumno tiene la materia en su colecciÃ³n de materias.
      */
     public boolean haceMateria(String materia)
     {
