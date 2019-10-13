@@ -54,10 +54,10 @@ public abstract class Parser
      * No hay precondiciones.<br>
      * 
      * <b>Post:</b><br>
-     * Ejecutará, de ser posible, el comando solicitado por el usuario, y enviará, en caso de ejecución satisfactoria, un mensaje de confirmación.<br>
+     * Ejecutara, de ser posible, el comando solicitado por el usuario, y enviara, en caso de ejecucion satisfactoria, un mensaje de confirmacion.<br>
      * De no haber podido realizar lo anterior, lanzará una excepción con mensaje de error.<br>
-     * Nota: Todas las instrucciones y la mayoría de los parámetros no son case sensitive. Para saber exactamente cuales son case 
-     * sensitive y cuales no, remitirse a la documentación de cada método en el modelo. En caso de no aclararse se asume 
+     * Nota: Todas las instrucciones y la mayoria de los parametros no son case sensitive. Para saber exactamente cuales son case 
+     * sensitive y cuales no, remitirse a la documentacion de cada metodo en el modelo. En caso de no aclararse se asume 
      * que no es case sensitive.<br><br>
      * 
      * <b>Inv:</b><br>
@@ -94,32 +94,32 @@ public abstract class Parser
         // ======================= CREAR =======================
         if(instruccion.equals(INSTRUCCION_CREAR))
         {
-            parseCrear(split_command); //Las excepciones arrojadas por este método son propagadas
+            parseCrear(split_command); //Las excepciones arrojadas por este metodo son propagadas
         }
         // ======================= CARGAR =======================
         else if(instruccion.equals(INSTRUCCION_CARGAR))
         {
-            parseCargar(split_command); //Las excepciones arrojadas por este método son propagadas
+            parseCargar(split_command); //Las excepciones arrojadas por este metodo son propagadas
         }
         // ======================= GUARDAR =======================
         else if(instruccion.equals(INSTRUCCION_GUARDAR))
         {
-            parseGuardar(split_command); //Las excepciones arrojadas por este método son propagadas
+            parseGuardar(split_command); //Las excepciones arrojadas por este metodo son propagadas
         }     
         // ======================= INSERTAR =======================
         else if(instruccion.equals(INSTRUCCION_INSERTAR))
         {
-            parseInsertar(split_command); //Las excepciones arrojadas por este método son propagadas    
+            parseInsertar(split_command); //Las excepciones arrojadas por este metodo son propagadas    
         }
         // ======================= ELIMINAR =======================  
         else if(instruccion.equals(INSTRUCCION_ELIMINAR))
         {
-            parseEliminar(split_command); //Las excepciones arrojadas por este método son propagadas
+            parseEliminar(split_command); //Las excepciones arrojadas por este metodo son propagadas
         }
         // ======================= CONSULTAR ======================
         else if(instruccion.equals(INSTRUCCION_CONSULTAR)) 
         {
-            parseConsultar(split_command, raw_command); //Las excepciones arrojadas por este método son propagadas
+            parseConsultar(split_command, raw_command); //Las excepciones arrojadas por este metodo son propagadas
         }                                                    
         else
             throw new ParsingException(ERROR_001 + " (No se reconoce la instruccion \""+instruccion+"\")");
@@ -147,7 +147,7 @@ public abstract class Parser
     
     /**
      * @author Nahuel
-     * Método creado únicamente para modularizar el método parse. No se recomienda llamarlo por si solo.
+     * Metodo creado unicamente para modularizar el metodo parse. No se recomienda llamarlo por si solo.
      * @param split_command idem "parse"
      * @throws ParsingException idem "parse"
      */
@@ -284,7 +284,6 @@ public abstract class Parser
 
     /**
      * @author Nahuel
-     *
      * @param nombre del archivo
      * @return true if exists
      */
