@@ -17,7 +17,6 @@ public class Controlador{
     private static Controlador instance = null;
     private static IVista vista = null;
     
-    private Observable clickEnviarComando;
     
     
     private Controlador() {
