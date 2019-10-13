@@ -200,7 +200,14 @@ public abstract class Parser
             throw new ParsingException(ERROR_006 + " (No existe el archivo)");
         if(Sistema.getInstance().alumnoExiste(split_command[1]))
             throw new ParsingException(ERROR_004 + " (Ya existe esa ID de alumno en el sistema)");
-        Sistema.getInstance().insertar(split_command[1]);
+        try
+        {
+            Sistema.getInstance().insertar(split_command[1]);
+        }
+        catch(ClassCastException e)
+        {
+            throw new ParsingException(ERROR_006 + " (El archivo existe, pero no contiene un alumno)");
+        }
         vista.imprimirEnConsola("Alumno "+split_command[1]+" insertado correctamente");    
     }
          
