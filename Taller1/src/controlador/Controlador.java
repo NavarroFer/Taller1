@@ -2,19 +2,22 @@ package controlador;
 
 import exceptions.ParsingException;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+
+import java.util.Observable;
+import java.util.Observer;
 
 import negocio.Parser;
 
-import vista.BotonEnviarComando;
 import vista.IVista;
 
-public class Controlador implements ActionListener{
+public class Controlador implements Observer{
     private static Controlador instance = null;
     private static IVista vista = null;
     
-    public static final String COMMAND_ENVIAR_COMANDO = "enviar el comando que esta escrito";
+    private Observable clickEnviarComando;
+    
     
     private Controlador() {
         super();
@@ -34,12 +37,21 @@ public class Controlador implements ActionListener{
     }
 
 
+    
+    public static void setVista(IVista view){
+        vista = view;
+    }
+
+
     @Override
-    public void actionPerformed(ActionEvent actionEvent){
-        if(actionEvent.getActionCommand().equals(Controlador.COMMAND_ENVIAR_COMANDO)){
-            BotonEnviarComando button = (BotonEnviarComando) actionEvent.getSource();
+    public void update(Observable observable, Object object) {
+        String comando = (String) object;
+        
+        if(observable.equals(clickEnviarComando))
+        {
             try {
-                Parser.parse(button.getComando());
+                Parser.parse(comando);
+                
             } 
             catch (ParsingException exception)
             {
@@ -50,11 +62,11 @@ public class Controlador implements ActionListener{
                 vista.mostrarError("\n UNEXPECTED ERROR: " + e.getMessage());
             }
         }
+
     }
     
-    public static void setVista(IVista view){
-        vista = view;
+    public void addClickEnviarComandoObservable(Observable clickEnviarComando){
+        this.clickEnviarComando = clickEnviarComando;
+        clickEnviarComando.addObserver(this);
     }
-    
-    
 }

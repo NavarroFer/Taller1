@@ -3,11 +3,15 @@ package vista;
 
 import controlador.Controlador;
 
-import exceptions.ParsingException;
-
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import java.util.Observable;
 
 import javax.swing.JButton;
 
@@ -19,7 +23,10 @@ import negocio.Parser;
  * @author Mau
  */
 public class Ventana
-    extends javax.swing.JFrame implements IVista {
+    extends javax.swing.JFrame implements IVista{
+    private Observable clickeoBotonEnviar;
+    
+
 
     /** Creates new form Ventana */
     public Ventana()
@@ -32,12 +39,23 @@ public class Ventana
         this.setMinimumSize(new Dimension(screenSize.width*6/10,screenSize.height*6/10));
         this.zonaErorres.setMinimumSize(new Dimension(zonaErorres.getPreferredSize().width/2,zonaErorres.getPreferredSize().width/2));
         this.jPanelSalida.setMinimumSize(new Dimension(jPanelSalida.getPreferredSize().width/2,jPanelSalida.getPreferredSize().width/2));
+    
+        
         this.jButtonEnviar.setBackground(Color.black);
         this.jButtonEnviar.setFocusPainted(false);
         this.jButtonEnviar.setEnabled(false);
         
-        this.jButtonEnviar.addActionListener(Controlador.getInstance());
-        this.jButtonEnviar.setActionCommand(Controlador.COMMAND_ENVIAR_COMANDO);
+        ActionListener btActionListener = new ActionListener(){
+            public void actionPerformed(ActionEvent actionEvent){
+                botonEnviarClickeado();
+            }
+        };
+            
+        this.jButtonEnviar.addActionListener(btActionListener);
+        
+        clickeoBotonEnviar = new Observable();
+        Controlador.getInstance().addClickEnviarComandoObservable(clickeoBotonEnviar);
+        
         setLocationRelativeTo(null);
         jTextAreaSalida.setEditable(false);
         jTextAreaErrores.setEditable(false);
@@ -50,12 +68,28 @@ public class Ventana
         jTextAreaSalida.setWrapStyleWord(true);
 
     }
+    
+    
+    private void botonEnviarClickeado(){
+        String usrInput = jTFComandos.getText();
+        jTextAreaSalida.append(usrInput + "\n");
+        jTFComandos.setText("");          
+        this.jButtonEnviarComando.setBackground(Color.black);
+        this.jButtonEnviarComando.setFocusPainted(false);
+        this.jButtonEnviarComando.setEnabled(false);
+        this.jTFComandos.grabFocus();
+        
+        this.clickeoBotonEnviar.notifyObservers(usrInput);
+    }
 
-     /**
-      * @param texto: el texto a escribir
-      * Se encarga de imprimir en la vista informacion sobre el funcionamiento del programa
-      * 
-      */
+
+   
+
+    /**
+     * @param texto: el texto a escribir
+     * Se encarga de imprimir en la vista informacion sobre el funcionamiento del programa
+     *
+     */
     public void imprimirEnConsola(String texto)
     {
         this.jTextAreaSalida.append(texto + "\n");
@@ -174,28 +208,9 @@ public class Ventana
         pack();
     }//GEN-END:initComponents
 
-    private void jButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) 
+    
     {//GEN-FIRST:event_jButton1ActionPerformed
-        String usrInput = jTFComandos.getText();
-        jTextAreaSalida.append(usrInput + "\n");
-        /*try
-        {
-            Parser.parse(usrInput);
-        }
-        catch (ParsingException exception)
-        {
-            jTextAreaErrores.append("\n" + exception.getErrorMessage());
-        }
-        catch (Exception e)
-        {
-            jTextAreaErrores.append("\n UNEXPECTED ERROR: " + e.getMessage());
-        }
-        */
-        jTFComandos.setText("");          
-        this.jButtonEnviar.setBackground(Color.black);
-        this.jButtonEnviar.setFocusPainted(false);
-        this.jButtonEnviar.setEnabled(false);
-        this.jTFComandos.grabFocus();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void mostrarError(String text){
@@ -208,15 +223,15 @@ public class Ventana
                 .getText()
                 .equals(""))
         {
-            this.jButtonEnviar.setBackground(Color.black);
-            this.jButtonEnviar.setFocusPainted(false);
-            this.jButtonEnviar.setEnabled(false);
+            this.jButtonEnviarComando.setBackground(Color.black);
+            this.jButtonEnviarComando.setFocusPainted(false);
+            this.jButtonEnviarComando.setEnabled(false);
           
         }
         else
         {
-            this.jButtonEnviar.setEnabled(true);
-            this.jButtonEnviar.setBackground(new JButton().getBackground());
+            this.jButtonEnviarComando.setEnabled(true);
+            this.jButtonEnviarComando.setBackground(new JButton().getBackground());
         }
     }//GEN-LAST:event_jTFComandosKeyReleased
 
