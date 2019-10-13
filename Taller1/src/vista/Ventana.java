@@ -24,7 +24,6 @@ import negocio.Parser;
  */
 public class Ventana
     extends javax.swing.JFrame implements IVista{
-    private Observable clickeoBotonEnviar;
     
 
 
@@ -50,11 +49,10 @@ public class Ventana
                 botonEnviarClickeado();
             }
         };
-            
-        this.jButtonEnviar.addActionListener(btActionListener);
         
-        clickeoBotonEnviar = new Observable();
-        Controlador.getInstance().addClickEnviarComandoObservable(clickeoBotonEnviar);
+        jButtonEnviar.addActionListener(btActionListener);
+            
+        
         
         setLocationRelativeTo(null);
         jTextAreaSalida.setEditable(false);
@@ -79,7 +77,7 @@ public class Ventana
         this.jButtonEnviar.setEnabled(false);
         this.jTFComandos.grabFocus();
         
-        this.clickeoBotonEnviar.notifyObservers(usrInput);
+        Controlador.getInstance().comandoEnviado(usrInput);
     }
 
 

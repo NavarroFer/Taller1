@@ -2,6 +2,7 @@ package controlador;
 
 import exceptions.ParsingException;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
@@ -12,7 +13,7 @@ import negocio.Parser;
 
 import vista.IVista;
 
-public class Controlador implements Observer{
+public class Controlador{
     private static Controlador instance = null;
     private static IVista vista = null;
     
@@ -43,30 +44,21 @@ public class Controlador implements Observer{
     }
 
 
-    @Override
-    public void update(Observable observable, Object object) {
-        String comando = (String) object;
-        
-        if(observable.equals(clickEnviarComando))
-        {
-            try {
-                Parser.parse(comando);
-                
-            } 
-            catch (ParsingException exception)
-            {
-                vista.mostrarError("\n" + exception.getErrorMessage());
-            }
-            catch (Exception e)
-            {
-                vista.mostrarError("\n UNEXPECTED ERROR: " + e.getMessage());
-            }
-        }
 
+    public void comandoEnviado(String comando) {
+        try {
+            Parser.parse(comando);
+            
+        } 
+        catch (ParsingException exception)
+        {
+            vista.mostrarError("\n" + exception.getErrorMessage());
+        }
+        catch (Exception e)
+        {
+            vista.mostrarError("\n UNEXPECTED ERROR: " + e.getMessage());
+        }
     }
+
     
-    public void addClickEnviarComandoObservable(Observable clickEnviarComando){
-        this.clickEnviarComando = clickEnviarComando;
-        clickEnviarComando.addObserver(this);
-    }
 }
