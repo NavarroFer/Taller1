@@ -94,7 +94,7 @@ public abstract class Parser
         // ======================= CREAR =======================
         if(instruccion.equals(INSTRUCCION_CREAR))
         {
-            parseCrear(split_command); //Las excepciones arrojadas por este metodo son propagadas
+            parseCrear(split_command,raw_command); //Las excepciones arrojadas por este metodo son propagadas
         }
         // ======================= CARGAR =======================
         else if(instruccion.equals(INSTRUCCION_CARGAR))
@@ -131,13 +131,13 @@ public abstract class Parser
      * @param split_command idem "parse"
      * @throws ParsingException idem "parse"
      */
-    private static void parseCrear(String split_command[]) throws ParsingException
+    private static void parseCrear(String split_command[],String raw_command) throws ParsingException
     {
         if(split_command.length < CREAR_EXPECTED_LENGTH)
             throw new ParsingException(ERROR_000 + " (Falta segundo argumento)");
         if(split_command.length > CREAR_EXPECTED_LENGTH) 
             throw new ParsingException(ERROR_000 + " (Mas argumentos de los necesarios para la operacion)");
-        String filename = split_command[1];
+        String filename = raw_command.split(" ")[1];
         if(fileExists(filename))
             throw new ParsingException(ERROR_006 + " (Ya existe el archivo)");
         

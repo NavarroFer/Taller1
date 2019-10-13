@@ -102,6 +102,9 @@ public class Sistema
    * <b>Pre:</b><br>
    * filename != null<br>
    * filename != "" <br><br>
+   * 
+   * <b<>Post:</b><br>
+   * Crea un archivo en el subdirectorio datos con el nombre "filename" (case sensitive. No agrega extension al archivo)
    *
    * @param filename Nombre de el archivo que representara el almacen. filename != null, filename != ""
    */
