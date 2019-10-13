@@ -23,7 +23,7 @@ public class Controlador
 
 
     /**
-     * @return instancia<br>
+     * @return instancia del singleton<br>
      * Para poder ser action listener necesita estar instanciado
      *
      * @author Juampi

@@ -125,7 +125,8 @@ public class Sistema
    * ID != ""<br>
    * Almacen != null <br><br>
    *
-   * <b>Post:</b><br> Hay un alumno menos en el almacen <br><br>
+   * <b>Post:</b><br> 
+   * Hay un alumno menos en el almacen <br><br>
    *
    * @param ID Identificacion de el alumno que se desea eliminar. ID != null, ID != ""
    */
@@ -183,7 +184,8 @@ public class Sistema
    * operador valido<br>
    * La nota es un numero positivo<br><br>
    *
-   * <b>Post:</b> Devuelve la lista de alumnos que cumple con la condicion. <br><br>
+   * <b>Post:</b><br>
+   * Devuelve la lista de alumnos que cumple con la condicion. <br><br>
    * <b>inv: </b><br>
    * Almacen != null
    * @return lista de alumnos que cumplen con la consulta
@@ -221,7 +223,8 @@ public class Sistema
    * operador valido<br>
    * La nota es un numero positivo de 0 a 10<br><br>
    *
-   * <b>Post:</b> Devuelve la lista de alumnos que cumple con la condicion y la almacena en un archivo. <br><br>
+   * <b>Post:</b><br>
+   * Devuelve la lista de alumnos que cumple con la condicion y la almacena en un archivo. <br><br>
    * <b>Inv: </b><br>
    * Almacen != null<br>
    * materia != null<br>
@@ -267,7 +270,8 @@ public class Sistema
    * almacen != null<br>
    * filename != ""<br>
    * filename != null<br>
-   * <b>Post:</b> Se ha insertado un alumno a el almacen actual <br><br>
+   * <b>Post:</b><br>
+   * Se ha insertado un alumno a el almacen actual <br><br>
    *
    * @param filename nombre de el archivo de el alumno a insertar
    */
