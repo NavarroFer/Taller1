@@ -82,10 +82,24 @@
             </hash>
             <hash>
                <list n="pattern-filters">
+                  <string v="-Datos/alumnotext1.xml"/>
+                  <string v="-Datos/alumnotext.xml"/>
+                  <string v="-Datos/ALMACEN1.XML"/>
                   <string v="+*"/>
                </list>
                <list n="url-path">
                   <url path="."/>
+               </list>
+            </hash>
+            <hash>
+               <list n="pattern-filters">
+                  <string v="-alumnotext1.xml"/>
+                  <string v="-alumnotext.xml"/>
+                  <string v="-ALMACEN1.XML"/>
+                  <string v="+*"/>
+               </list>
+               <list n="url-path">
+                  <url path="Datos/"/>
                </list>
             </hash>
          </list>
@@ -94,6 +108,8 @@
    </hash>
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
+         <string v="HTML"/>
+         <string v="JAVASCRIPT"/>
          <string v="Java"/>
          <string v="XML"/>
       </list>
@@ -128,5 +144,34 @@
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectPaths">
       <url n="outputDirectory" path="classes/"/>
+   </hash>
+   <hash n="oracle.mds.internal.dt.ide.MDSLibraryCustCSProvider">
+      <hash n="mdsContentSet">
+         <list n="constituent-sets">
+            <hash>
+               <list n="pattern-filters">
+                  <string v="+CONSULTA1.XML"/>
+                  <string v="+alumnotext1.xml"/>
+                  <string v="+alumnotext.xml"/>
+                  <string v="+ALMACEN3.XML"/>
+                  <string v="+ALMACEN2.XML"/>
+                  <string v="+ALMACEN1.XML"/>
+               </list>
+               <list n="url-path">
+                  <url path="../../Taller11/Taller1/Datos/"/>
+               </list>
+            </hash>
+            <hash>
+               <list n="pattern-filters">
+                  <string v="+mdssys/cust/**"/>
+                  <string v="+**/mdssys/cust/**"/>
+               </list>
+               <list n="url-path">
+                  <url path="libraryCustomizations/"/>
+               </list>
+            </hash>
+         </list>
+         <list n="url-path"/>
+      </hash>
    </hash>
 </jpr:project>

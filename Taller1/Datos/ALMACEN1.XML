@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_131" class="java.beans.XMLDecoder">
+ <object class="modelo.Almacen">
+  <void property="alumnos">
+   <object class="java.util.HashMap">
+    <void method="put">
+     <string>1234</string>
+     <object class="modelo.Alumno" id="Alumno0">
+      <void property="ID">
+       <string>1234</string>
+      </void>
+      <void property="apellido_y_nombre">
+       <string>probadin probadòn</string>
+      </void>
+      <void property="carrera">
+       <string>Doctorado en Biologia Marina</string>
+      </void>
+      <void property="domicilio">
+       <string>Avenida Rucula 123</string>
+      </void>
+      <void property="fecha_de_nacimiento">
+       <string>01/02/03</string>
+      </void>
+      <void property="materias">
+       <void method="put">
+        <string>Taller1</string>
+        <double>10.0</double>
+       </void>
+      </void>
+     </object>
+    </void>
+    <void method="put">
+     <string>7777</string>
+     <object class="modelo.Alumno" id="Alumno1">
+      <void property="ID">
+       <string>7777</string>
+      </void>
+      <void property="apellido_y_nombre">
+       <string>Navarro Fernando</string>
+      </void>
+      <void property="carrera">
+       <string>Ingenieria en informatica</string>
+      </void>
+      <void property="domicilio">
+       <string>Avenida Rucula 1222223</string>
+      </void>
+      <void property="fecha_de_nacimiento">
+       <string>01/02/03</string>
+      </void>
+      <void property="materias">
+       <void method="put">
+        <string>Taller1</string>
+        <double>10.0</double>
+       </void>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void property="filename">
+   <string>ALMACEN1.XML</string>
+  </void>
+ </object>
+</java>
