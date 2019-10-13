@@ -23,37 +23,45 @@ import negocio.Parser;
  * @author Mau
  */
 public class Ventana
-    extends javax.swing.JFrame implements IVista{
-    
+    extends javax.swing.JFrame
+    implements IVista
+{
 
 
     /** Creates new form Ventana */
     public Ventana()
     {
-        
+
 
         initComponents();
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds(0,0,screenSize.width*2/3, screenSize.height*2/3);
-        this.setMinimumSize(new Dimension(screenSize.width*6/10,screenSize.height*6/10));
-        this.zonaErorres.setMinimumSize(new Dimension(zonaErorres.getPreferredSize().width/2,zonaErorres.getPreferredSize().width/2));
-        this.jPanelSalida.setMinimumSize(new Dimension(jPanelSalida.getPreferredSize().width/2,jPanelSalida.getPreferredSize().width/2));
-    
+        zonaErorres.setToolTipText("TP Taller");//Porque en initComponents se hace jPanelSalida.setToolTipText("rucula") y no podemos cambiarlo porque no se puede editar jeje
+        jPanelSalida.setToolTipText("TP Taller");//Porque en initComponents se hace jPanelSalida.setToolTipText("rucula") y no podemos cambiarlo porque no se puede editar jeje
+        //Para mas info con respecto a lo de arriba ver issue #131 o hacer "ctrl+f rucula"
         
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds(0, 0, screenSize.width * 2 / 3, screenSize.height * 2 / 3);
+        this.setMinimumSize(new Dimension(screenSize.width * 6 / 10, screenSize.height * 6 / 10));
+        this.zonaErorres.setMinimumSize(new Dimension(zonaErorres.getPreferredSize().width / 2,
+                                                      zonaErorres.getPreferredSize().width / 2));
+        this.jPanelSalida.setMinimumSize(new Dimension(jPanelSalida.getPreferredSize().width / 2,
+                                                       jPanelSalida.getPreferredSize().width / 2));
+
+
         this.jButtonEnviar.setBackground(Color.black);
         this.jButtonEnviar.setFocusPainted(false);
         this.jButtonEnviar.setEnabled(false);
-        
-        ActionListener btActionListener = new ActionListener(){
-            public void actionPerformed(ActionEvent actionEvent){
+
+        ActionListener btActionListener = new ActionListener()
+        {
+            public void actionPerformed(ActionEvent actionEvent)
+            {
                 botonEnviarClickeado();
             }
         };
-        
+
         jButtonEnviar.addActionListener(btActionListener);
-            
-        
-        
+
+
         setLocationRelativeTo(null);
         jTextAreaSalida.setEditable(false);
         jTextAreaErrores.setEditable(false);
@@ -61,27 +69,26 @@ public class Ventana
         this.getRootPane().setDefaultButton(jButtonEnviar);
         Parser.setVista(this);
         Controlador.setVista(this);
-        
-        jTextAreaErrores.setWrapStyleWord(true);        
+
+        jTextAreaErrores.setWrapStyleWord(true);
         jTextAreaSalida.setWrapStyleWord(true);
 
     }
-    
-    
-    private void botonEnviarClickeado(){
+
+
+    private void botonEnviarClickeado()
+    {
         String usrInput = jTFComandos.getText();
         jTextAreaSalida.append(usrInput + "\n");
-        jTFComandos.setText("");          
+        jTFComandos.setText("");
         this.jButtonEnviar.setBackground(Color.black);
         this.jButtonEnviar.setFocusPainted(false);
         this.jButtonEnviar.setEnabled(false);
         this.jTFComandos.grabFocus();
-        
+
         Controlador.getInstance().comandoEnviado(usrInput);
     }
 
-
-   
 
     /**
      * @param texto: el texto a escribir
@@ -204,7 +211,8 @@ public class Ventana
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    public void mostrarError(String text){
+    public void mostrarError(String text)
+    {
         jTextAreaErrores.append("\n " + text);
     }
     
@@ -217,7 +225,7 @@ public class Ventana
             this.jButtonEnviar.setBackground(Color.black);
             this.jButtonEnviar.setFocusPainted(false);
             this.jButtonEnviar.setEnabled(false);
-          
+
         }
         else
         {
@@ -228,7 +236,7 @@ public class Ventana
 
     private void jTFComandosFocusGained(java.awt.event.FocusEvent evt)//GEN-FIRST:event_jTFComandosFocusGained
     {//GEN-HEADEREND:event_jTFComandosFocusGained
-      this.jTFComandos.setText("");
+        this.jTFComandos.setText("");
     }//GEN-LAST:event_jTFComandosFocusGained
 
     private void jTFComandosFocusLost(java.awt.event.FocusEvent evt)//GEN-FIRST:event_jTFComandosFocusLost
