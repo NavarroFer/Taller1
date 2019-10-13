@@ -47,7 +47,7 @@ public abstract class Parser
      * @param raw_command: Input del usuario tal y como fue ingresado.<br><br>
      * 
      * <b>Nota al lector:</b> El parser es la <i>capa de negocios</i> de este sistema. Recibe el input del usuario y 
-     * en funcion del comando que se desea ejecutar verifica que se cumplan todas las precondiciones para hacer
+     * en función del comando que se desea ejecutar verifica que se cumplan todas las precondiciones para hacer
      * la correspondiente llamada al modelo.<br><br>
      * 
      * <b>Pre:</b><br>
@@ -69,7 +69,7 @@ public abstract class Parser
      * (codigo de error y descripcion), las excepciones arrojadas por este metodo son todas de la misma clase "ParsingException". 
      * Utilizar <u><a href="../exceptions/ParsingException.html#getErrorMessage--">getErrorMessage()</a></u> si desea obtener el mensaje de error.<br><br>
      * 
-     * <b>Codigos de error: (No coinciden con los codigos de error del SRS, debieron ser cambiados en tiempo de disenio
+     * <b>Codigos de error: (No coinciden con los codigos de error del SRS, debieron ser cambiados en tiempo de diseño
      * pues el SRS era inconsistente)</b><br>
      * <b>Error 000:</b> Comando mal formado<br>
      * <b>Error 001:</b> Operacion no conocida<br>
@@ -200,7 +200,14 @@ public abstract class Parser
             throw new ParsingException(ERROR_006 + " (No existe el archivo)");
         if(Sistema.getInstance().alumnoExiste(split_command[1]))
             throw new ParsingException(ERROR_004 + " (Ya existe esa ID de alumno en el sistema)");
-        Sistema.getInstance().insertar(split_command[1]);
+        try
+        {
+            Sistema.getInstance().insertar(split_command[1]);
+        }
+        catch(ClassCastException e)
+        {
+            throw new ParsingException(ERROR_006 + " (El archivo existe, pero no contiene un alumno)");
+        }
         vista.imprimirEnConsola("Alumno "+split_command[1]+" insertado correctamente");    
     }
          

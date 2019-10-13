@@ -292,6 +292,12 @@ public class Sistema
     {
       //Imposible por precondicion
     }
+    /*
+    catch(ClassCastException e)
+    {
+        esta excepcion se propaga
+    }
+     */
   }
     private void verificarInvariante()
     {
