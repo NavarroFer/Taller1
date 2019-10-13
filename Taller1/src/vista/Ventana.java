@@ -3,6 +3,8 @@ package vista;
 
 import controlador.Controlador;
 
+import exceptions.ParsingException;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -77,7 +79,26 @@ public class Ventana
         this.jButtonEnviar.setEnabled(false);
         this.jTFComandos.grabFocus();
         
-        Controlador.getInstance().comandoEnviado(usrInput);
+        this.enviaComando(usrInput);
+        
+    }
+
+    /**
+     * @author Juan Pablo
+     * Manda el comando al controlador para que lo pase a Negocio
+     * @param usrInput
+     * 
+     */
+    private void enviaComando(String usrInput){
+        try {
+            Controlador.getInstance().comandoEnviado(usrInput);
+        } 
+        catch (ParsingException e) {
+            mostrarError("\n" + e.getErrorMessage());
+        } 
+        catch (Exception e) {
+            mostrarError("\n UNEXPECTED ERROR: " + e.getMessage());
+        }
     }
 
 

@@ -13,6 +13,7 @@ import negocio.Parser;
 
 import vista.IVista;
 
+
 public class Controlador{
     private static Controlador instance = null;
     private static IVista vista = null;
@@ -25,8 +26,8 @@ public class Controlador{
 
 
     /**
-     * Para poder ser action listener necesita estar instanciado
-     * @return
+     * Singleton
+     * @return instancia de controlador
      */
     public static Controlador getInstance(){
         if(instance == null){
@@ -43,20 +44,14 @@ public class Controlador{
     }
 
 
-
-    public void comandoEnviado(String comando) {
-        try {
-            Parser.parse(comando);
-            
-        } 
-        catch (ParsingException exception)
-        {
-            vista.mostrarError("\n" + exception.getErrorMessage());
-        }
-        catch (Exception e)
-        {
-            vista.mostrarError("\n UNEXPECTED ERROR: " + e.getMessage());
-        }
+    /**
+     * Llama a la capa de Negocio con el comando que recibio de la vista
+     * Pre: vista != null
+     * @param comando
+     */
+    public void comandoEnviado(String comando) throws ParsingException, Exception {
+        Parser.parse(comando);
+        
     }
 
     
