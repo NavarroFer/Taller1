@@ -64,11 +64,11 @@ public abstract class Parser
      * raw_command<br>
      * 
      * @throws ParsingException
-     * Dado que la única información relevante de las excepciones arrojadas por este método es simplemente su mensaje 
-     * (código de error y descripción), las excepciones arrojadas por este método son todas de la misma clase "ParsingException". 
+     * Dado que la única informacion relevante de las excepciones arrojadas por este metodo es simplemente su mensaje 
+     * (codigo de error y descripcion), las excepciones arrojadas por este metodo son todas de la misma clase "ParsingException". 
      * Utilizar <u><a href="../exceptions/ParsingException.html#getErrorMessage--">getErrorMessage()</a></u> si desea obtener el mensaje de error.<br><br>
      * 
-     * <b>Códigos de error: (No coinciden con los códigos de error del SRS, debieron ser cambiados en tiempo de diseño
+     * <b>Codigos de error: (No coinciden con los codigos de error del SRS, debieron ser cambiados en tiempo de diseño
      * pues el SRS era inconsistente)</b><br>
      * <b>Error 000:</b> Comando mal formado<br>
      * <b>Error 001:</b> Operacion no conocida<br>
@@ -94,7 +94,7 @@ public abstract class Parser
         // ======================= CREAR =======================
         if(instruccion.equals(INSTRUCCION_CREAR))
         {
-            parseCrear(split_command); //Las excepciones arrojadas por este metodo son propagadas
+            parseCrear(split_command,raw_command); //Las excepciones arrojadas por este metodo son propagadas
         }
         // ======================= CARGAR =======================
         else if(instruccion.equals(INSTRUCCION_CARGAR))
@@ -131,13 +131,13 @@ public abstract class Parser
      * @param split_command idem "parse"
      * @throws ParsingException idem "parse"
      */
-    private static void parseCrear(String split_command[]) throws ParsingException
+    private static void parseCrear(String split_command[],String raw_command) throws ParsingException
     {
         if(split_command.length < CREAR_EXPECTED_LENGTH)
             throw new ParsingException(ERROR_000 + " (Falta segundo argumento)");
         if(split_command.length > CREAR_EXPECTED_LENGTH) 
             throw new ParsingException(ERROR_000 + " (Mas argumentos de los necesarios para la operacion)");
-        String filename = split_command[1];
+        String filename = raw_command.split(" ")[1];
         if(fileExists(filename))
             throw new ParsingException(ERROR_006 + " (Ya existe el archivo)");
         
