@@ -64,11 +64,11 @@ public abstract class Parser
      * raw_command<br>
      * 
      * @throws ParsingException
-     * Dado que la única información relevante de las excepciones arrojadas por este método es simplemente su mensaje 
-     * (código de error y descripción), las excepciones arrojadas por este método son todas de la misma clase "ParsingException". 
+     * Dado que la única informacion relevante de las excepciones arrojadas por este metodo es simplemente su mensaje 
+     * (codigo de error y descripcion), las excepciones arrojadas por este metodo son todas de la misma clase "ParsingException". 
      * Utilizar <u><a href="../exceptions/ParsingException.html#getErrorMessage--">getErrorMessage()</a></u> si desea obtener el mensaje de error.<br><br>
      * 
-     * <b>Códigos de error: (No coinciden con los códigos de error del SRS, debieron ser cambiados en tiempo de diseño
+     * <b>Codigos de error: (No coinciden con los codigos de error del SRS, debieron ser cambiados en tiempo de diseño
      * pues el SRS era inconsistente)</b><br>
      * <b>Error 000:</b> Comando mal formado<br>
      * <b>Error 001:</b> Operacion no conocida<br>
