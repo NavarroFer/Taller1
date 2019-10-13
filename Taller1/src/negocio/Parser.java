@@ -51,20 +51,21 @@ public abstract class Parser
      * la correspondiente llamada al modelo.<br><br>
      * 
      * <b>Pre:</b><br>
-     * No hay precondiciones.<br>
+     * No hay precondiciones.<br><br>
      * 
      * <b>Post:</b><br>
      * Ejecutara, de ser posible, el comando solicitado por el usuario, y enviara, en caso de ejecucion satisfactoria, un mensaje de confirmacion.<br>
-     * De no haber podido realizar lo anterior, lanzará una excepción con mensaje de error.<br>
-     * Nota: Todas las instrucciones y la mayoria de los parametros no son case sensitive. Para saber exactamente cuales son case 
+     * De no haber podido realizar lo anterior, lanzara una excepcion con mensaje de error.<br>
+     * Nota 1: Todas las instrucciones y la mayoria de los parametros no son case sensitive. Para saber exactamente cuales son case 
      * sensitive y cuales no, remitirse a la documentacion de cada metodo en el modelo. En caso de no aclararse se asume 
-     * que no es case sensitive.<br><br>
+     * que no es case sensitive.<br>
+     * Nota 2: Recuerde que los nombres de las materias en el sistema deben estar separados por guion bajo y no espacio. (Taller_de_programacion_1)<br><br>
      * 
      * <b>Inv:</b><br>
      * raw_command<br>
      * 
      * @throws ParsingException
-     * Dado que la única informacion relevante de las excepciones arrojadas por este metodo es simplemente su mensaje 
+     * Dado que la unica informacion relevante de las excepciones arrojadas por este metodo es simplemente su mensaje 
      * (codigo de error y descripcion), las excepciones arrojadas por este metodo son todas de la misma clase "ParsingException". 
      * Utilizar <u><a href="../exceptions/ParsingException.html#getErrorMessage--">getErrorMessage()</a></u> si desea obtener el mensaje de error.<br><br>
      * 
@@ -126,8 +127,7 @@ public abstract class Parser
     }
 
     /**
-     * @author Nahuel
-     * Método creado únicamente para modularizar el método parse. No se recomienda llamarlo por si solo.
+     * Metodo creado unicamente para modularizar el metodo parse. No se recomienda llamarlo por si solo.
      * @param split_command idem "parse"
      * @throws ParsingException idem "parse"
      */
@@ -146,7 +146,6 @@ public abstract class Parser
     }
     
     /**
-     * @author Nahuel
      * Metodo creado unicamente para modularizar el metodo parse. No se recomienda llamarlo por si solo.
      * @param split_command idem "parse"
      * @throws ParsingException idem "parse"
@@ -172,8 +171,7 @@ public abstract class Parser
     }
     
     /**
-     * @author Nahuel
-     * Método creado únicamente para modularizar el método parse. No se recomienda llamarlo por si solo.
+     * Metodo creado unicamente para modularizar el metodo parse. No se recomienda llamarlo por si solo.
      * @param split_command idem "parse"
      * @throws ParsingException idem "parse"
      */
@@ -188,8 +186,7 @@ public abstract class Parser
     }
     
     /**
-     * @author Nahuel
-     * Método creado únicamente para modularizar el método parse. No se recomienda llamarlo por si solo.
+     * Metodo creado unicamente para modularizar el método parse. No se recomienda llamarlo por si solo.
      * @param split_command idem "parse"
      * @throws ParsingException idem "parse"
      */
@@ -202,14 +199,13 @@ public abstract class Parser
         if(!fileExists(split_command[1]))
             throw new ParsingException(ERROR_006 + " (No existe el archivo)");
         if(Sistema.getInstance().alumnoExiste(split_command[1]))
-            throw new ParsingException(ERROR_004);
+            throw new ParsingException(ERROR_004 + " (Ya existe esa ID de alumno en el sistema)");
         Sistema.getInstance().insertar(split_command[1]);
         vista.imprimirEnConsola("Alumno "+split_command[1]+" insertado correctamente");    
     }
          
     /**
-     * @author Nahuel
-     * Método creado únicamente para modularizar el método parse. No se recomienda llamarlo por si solo.
+     * Metodo creado unicamente para modularizar el metodo parse. No se recomienda llamarlo por si solo.
      * @param split_command idem "parse"
      * @throws ParsingException idem "parse"
      */
@@ -227,7 +223,7 @@ public abstract class Parser
     
     /**
      * @author Nahuel
-     * Método creado únicamente para modularizar el método parse. No se recomienda llamarlo por si solo.
+     * Metodo creado unicamente para modularizar el metodo parse. No se recomienda llamarlo por si solo.
      * @param raw_command idem "parse"
      * @param split_command creado en "parse"
      * @throws ParsingException idem "parse"
@@ -246,9 +242,9 @@ public abstract class Parser
            !operador.equals("<") &&
            !operador.equals(">") &&
            !operador.equals(">=") &&
-           !operador.equals("<=")) //Ya sé que esto se ve un poco feo pero te juro que todos juntos era peor
+           !operador.equals("<=")) //Ya se que esto se ve un poco feo pero te juro que todos juntos era peor
             throw new ParsingException(ERROR_002 + " (Operador desconocido: " +split_command[2]+ ")");
-        String materia = raw_command.split(" ")[1]; //Esto se hace porque en split command esta todo pasado a upper y necesitamos el nombre de la materia tal y como lo ingresó el usuario
+        String materia = raw_command.split(" ")[1]; //Esto se hace porque en split command esta tudo pasado a upper y necesitamos el nombre de la materia tal y como lo ingreso el usuario
         Double nota;
         try
         {
@@ -264,7 +260,7 @@ public abstract class Parser
             ArrayList<Alumno> resultado = Sistema.getInstance().consultar(materia, split_command[2], nota);
             
             if(resultado.size()==0)
-                vista.imprimirEnConsola("No se encontro ningun alumno que cumpla la condición");
+                vista.imprimirEnConsola("No se encontro ningun alumno que cumpla la condicion. (Recuerde respetar las mayusculas, y no utilizar espacios en el nombre de la materia)");
             else
                 vista.imprimirEnConsola(resultado.toString());
         }
@@ -272,12 +268,12 @@ public abstract class Parser
         {
             if(!split_command[4].toUpperCase().equals("TOFILE"))
                 throw new ParsingException(ERROR_002 + " (Expected 'TOFILE' but found "+split_command[4].toUpperCase()+")");
-            
-            ArrayList<Alumno> resultado = Sistema.getInstance().consultarArch(materia, split_command[2], nota, split_command[5]);
+            String filename = split_command[5];
+            ArrayList<Alumno> resultado = Sistema.getInstance().consultarArch(materia, split_command[2], nota, filename);
             if(resultado.size()==0)
-                vista.imprimirEnConsola("No se encontro ningun alumno que cumpla la condición");
+                vista.imprimirEnConsola("No se encontro ningun alumno que cumpla la condicion. (Recuerde respetar las mayusculas, y no utilizar espacios en el nombre de la materia)");
             else
-                vista.imprimirEnConsola(resultado.toString());
+                vista.imprimirEnConsola(resultado.toString() + " (Resultado exportado al archivo /Datos/"+filename+" exitosamente)");
         }
     }
 

@@ -39,12 +39,13 @@ public class Alumno
     
     /**
      * @author Nahuel
-     * @param materia nombre de la materia cuya que se quiere consultar:String.
+     * @param materia nombre de la materia cuya que se quiere consultar:String. Recuerde que el nombre de la materia no debe llevar espacios.
      * <b>Pre:</b><br>
      * materia != null<br>
-     * materia != ""<br><br> 
+     * materia != ""<br>
+     * materia.contains(" ") = false<br><br>
      * 
-     * <b>Post:</b> retorna true si el alumno tiene la materia en su colecciÃ³n de materias.
+     * <b>Post:</b> retorna true si el alumno tiene la materia en su coleccion de materias.
      * 
      * @return retorna true si el alumno tiene la materia en su coleccion de materias.
      */
@@ -105,6 +106,10 @@ public class Alumno
         this.carrera = carrera;
     }
 
+    /**
+     * A ser usado con fines de serialización.
+     * @param materias HashMap de materias. Precondición: Ninguna materia contiene espacio en su nombre. (Utilizar_guiones_bajos).
+     */
     public void setMaterias(HashMap<String, Double> materias) 
     {
         this.materias = materias;
