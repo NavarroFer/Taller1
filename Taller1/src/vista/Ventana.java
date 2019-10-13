@@ -74,9 +74,9 @@ public class Ventana
         String usrInput = jTFComandos.getText();
         jTextAreaSalida.append(usrInput + "\n");
         jTFComandos.setText("");          
-        this.jButtonEnviarComando.setBackground(Color.black);
-        this.jButtonEnviarComando.setFocusPainted(false);
-        this.jButtonEnviarComando.setEnabled(false);
+        this.jButtonEnviar.setBackground(Color.black);
+        this.jButtonEnviar.setFocusPainted(false);
+        this.jButtonEnviar.setEnabled(false);
         this.jTFComandos.grabFocus();
         
         this.clickeoBotonEnviar.notifyObservers(usrInput);
@@ -109,6 +109,7 @@ public class Ventana
         JPanelTF = new javax.swing.JPanel();
         jTFComandos = new javax.swing.JTextField();
         jPanelButton = new javax.swing.JPanel();
+        jButtonEnviar = new javax.swing.JButton();
         jPanelSalida = new javax.swing.JPanel();
         jPanelSalidaAdentro = new javax.swing.JPanel();
         jScrollPaneSalida = new javax.swing.JScrollPane();
@@ -146,16 +147,8 @@ public class Ventana
 
         jPanelBotonyTFAdentro.add(JPanelTF, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout jPanelButtonLayout = new javax.swing.GroupLayout(jPanelButton);
-        jPanelButton.setLayout(jPanelButtonLayout);
-        jPanelButtonLayout.setHorizontalGroup(
-            jPanelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 149, Short.MAX_VALUE)
-        );
-        jPanelButtonLayout.setVerticalGroup(
-            jPanelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 54, Short.MAX_VALUE)
-        );
+        jButtonEnviar.setText("ENVIAR");
+        jPanelButton.add(jButtonEnviar);
 
         jPanelBotonyTFAdentro.add(jPanelButton, java.awt.BorderLayout.EAST);
 
@@ -223,15 +216,15 @@ public class Ventana
                 .getText()
                 .equals(""))
         {
-            this.jButtonEnviarComando.setBackground(Color.black);
-            this.jButtonEnviarComando.setFocusPainted(false);
-            this.jButtonEnviarComando.setEnabled(false);
+            this.jButtonEnviar.setBackground(Color.black);
+            this.jButtonEnviar.setFocusPainted(false);
+            this.jButtonEnviar.setEnabled(false);
           
         }
         else
         {
-            this.jButtonEnviarComando.setEnabled(true);
-            this.jButtonEnviarComando.setBackground(new JButton().getBackground());
+            this.jButtonEnviar.setEnabled(true);
+            this.jButtonEnviar.setBackground(new JButton().getBackground());
         }
     }//GEN-LAST:event_jTFComandosKeyReleased
 
@@ -330,6 +323,7 @@ public class Ventana
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanelTF;
+    private javax.swing.JButton jButtonEnviar;
     private javax.swing.JPanel jPanelBotonyTFAdentro;
     private javax.swing.JPanel jPanelBotonyTextField;
     private javax.swing.JPanel jPanelButton;
