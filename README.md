@@ -7,4 +7,4 @@
 ### Navarro, Fernando
 ### Viejo, Ignacio
 
-# Cualquier reproducción total o parcial de este software por cualquier medio electrónico o mecánico, sin autorización por escrito de los autores, es completamente legal jeje saludos.
+##### Cualquier reproducción total o parcial de este software por cualquier medio electrónico o mecánico, sin autorización por escrito de los autores, es completamente legal jeje saludos.
