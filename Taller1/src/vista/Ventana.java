@@ -3,11 +3,15 @@ package vista;
 
 import controlador.Controlador;
 
-import exceptions.ParsingException;
-
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import java.util.Observable;
 
 import javax.swing.JButton;
 
@@ -19,7 +23,9 @@ import negocio.Parser;
  * @author Mau
  */
 public class Ventana
-    extends javax.swing.JFrame implements IVista {
+    extends javax.swing.JFrame implements IVista{
+    
+
 
     /** Creates new form Ventana */
     public Ventana()
@@ -32,12 +38,22 @@ public class Ventana
         this.setMinimumSize(new Dimension(screenSize.width*6/10,screenSize.height*6/10));
         this.zonaErorres.setMinimumSize(new Dimension(zonaErorres.getPreferredSize().width/2,zonaErorres.getPreferredSize().width/2));
         this.jPanelSalida.setMinimumSize(new Dimension(jPanelSalida.getPreferredSize().width/2,jPanelSalida.getPreferredSize().width/2));
+    
+        
         this.jButtonEnviar.setBackground(Color.black);
         this.jButtonEnviar.setFocusPainted(false);
         this.jButtonEnviar.setEnabled(false);
         
-        this.jButtonEnviar.addActionListener(Controlador.getInstance());
-        this.jButtonEnviar.setActionCommand(Controlador.COMMAND_ENVIAR_COMANDO);
+        ActionListener btActionListener = new ActionListener(){
+            public void actionPerformed(ActionEvent actionEvent){
+                botonEnviarClickeado();
+            }
+        };
+        
+        jButtonEnviar.addActionListener(btActionListener);
+            
+        
+        
         setLocationRelativeTo(null);
         jTextAreaSalida.setEditable(false);
         jTextAreaErrores.setEditable(false);
@@ -50,12 +66,28 @@ public class Ventana
         jTextAreaSalida.setWrapStyleWord(true);
 
     }
+    
+    
+    private void botonEnviarClickeado(){
+        String usrInput = jTFComandos.getText();
+        jTextAreaSalida.append(usrInput + "\n");
+        jTFComandos.setText("");          
+        this.jButtonEnviar.setBackground(Color.black);
+        this.jButtonEnviar.setFocusPainted(false);
+        this.jButtonEnviar.setEnabled(false);
+        this.jTFComandos.grabFocus();
+        
+        Controlador.getInstance().comandoEnviado(usrInput);
+    }
 
-     /**
-      * @param texto: el texto a escribir
-      * Se encarga de imprimir en la vista informacion sobre el funcionamiento del programa
-      * 
-      */
+
+   
+
+    /**
+     * @param texto: el texto a escribir
+     * Se encarga de imprimir en la vista informacion sobre el funcionamiento del programa
+     *
+     */
     public void imprimirEnConsola(String texto)
     {
         this.jTextAreaSalida.append(texto + "\n");
@@ -75,6 +107,7 @@ public class Ventana
         JPanelTF = new javax.swing.JPanel();
         jTFComandos = new javax.swing.JTextField();
         jPanelButton = new javax.swing.JPanel();
+        jButtonEnviar = new javax.swing.JButton();
         jPanelSalida = new javax.swing.JPanel();
         jPanelSalidaAdentro = new javax.swing.JPanel();
         jScrollPaneSalida = new javax.swing.JScrollPane();
@@ -112,16 +145,8 @@ public class Ventana
 
         jPanelBotonyTFAdentro.add(JPanelTF, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout jPanelButtonLayout = new javax.swing.GroupLayout(jPanelButton);
-        jPanelButton.setLayout(jPanelButtonLayout);
-        jPanelButtonLayout.setHorizontalGroup(
-            jPanelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 149, Short.MAX_VALUE)
-        );
-        jPanelButtonLayout.setVerticalGroup(
-            jPanelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 54, Short.MAX_VALUE)
-        );
+        jButtonEnviar.setText("ENVIAR");
+        jPanelButton.add(jButtonEnviar);
 
         jPanelBotonyTFAdentro.add(jPanelButton, java.awt.BorderLayout.EAST);
 
@@ -174,28 +199,9 @@ public class Ventana
         pack();
     }//GEN-END:initComponents
 
-    private void jButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) 
+    
     {//GEN-FIRST:event_jButton1ActionPerformed
-        String usrInput = jTFComandos.getText();
-        jTextAreaSalida.append(usrInput + "\n");
-        /*try
-        {
-            Parser.parse(usrInput);
-        }
-        catch (ParsingException exception)
-        {
-            jTextAreaErrores.append("\n" + exception.getErrorMessage());
-        }
-        catch (Exception e)
-        {
-            jTextAreaErrores.append("\n UNEXPECTED ERROR: " + e.getMessage());
-        }
-        */
-        jTFComandos.setText("");          
-        this.jButtonEnviar.setBackground(Color.black);
-        this.jButtonEnviar.setFocusPainted(false);
-        this.jButtonEnviar.setEnabled(false);
-        this.jTFComandos.grabFocus();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void mostrarError(String text){
@@ -315,6 +321,7 @@ public class Ventana
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanelTF;
+    private javax.swing.JButton jButtonEnviar;
     private javax.swing.JPanel jPanelBotonyTFAdentro;
     private javax.swing.JPanel jPanelBotonyTextField;
     private javax.swing.JPanel jPanelButton;

@@ -5,16 +5,19 @@ import exceptions.ParsingException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+import java.util.Observable;
+import java.util.Observer;
+
 import negocio.Parser;
 
-import vista.BotonEnviarComando;
 import vista.IVista;
 
-public class Controlador implements ActionListener{
+public class Controlador{
     private static Controlador instance = null;
     private static IVista vista = null;
     
-    public static final String COMMAND_ENVIAR_COMANDO = "enviar el comando que esta escrito";
+    
     
     private Controlador() {
         super();
@@ -34,27 +37,27 @@ public class Controlador implements ActionListener{
     }
 
 
-    @Override
-    public void actionPerformed(ActionEvent actionEvent){
-        if(actionEvent.getActionCommand().equals(Controlador.COMMAND_ENVIAR_COMANDO)){
-            BotonEnviarComando button = (BotonEnviarComando) actionEvent.getSource();
-            try {
-                Parser.parse(button.getComando());
-            } 
-            catch (ParsingException exception)
-            {
-                vista.mostrarError("\n" + exception.getErrorMessage());
-            }
-            catch (Exception e)
-            {
-                vista.mostrarError("\n UNEXPECTED ERROR: " + e.getMessage());
-            }
-        }
-    }
     
     public static void setVista(IVista view){
         vista = view;
     }
-    
+
+
+
+    public void comandoEnviado(String comando) {
+        try {
+            Parser.parse(comando);
+            
+        } 
+        catch (ParsingException exception)
+        {
+            vista.mostrarError("\n" + exception.getErrorMessage());
+        }
+        catch (Exception e)
+        {
+            vista.mostrarError("\n UNEXPECTED ERROR: " + e.getMessage());
+        }
+    }
+
     
 }
