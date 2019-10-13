@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_131" class="java.beans.XMLDecoder">
+ <object class="modelo.Alumno">
+  <void property="ID">
+   <string>9020</string>
+  </void>
+  <void property="apellido_y_nombre">
+   <string>Palermo Juan Roman</string>
+  </void>
+  <void property="carrera">
+   <string>Abogacia</string>
+  </void>
+  <void property="domicilio">
+   <string>Avellaneda 4321</string>
+  </void>
+  <void property="fecha_de_nacimiento">
+   <string>23/08/99</string>
+  </void>
+  <void property="materias">
+   <object class="java.util.HashMap">
+    <void method="put">
+     <string>Derecho penal</string>
+     <double>5.0</double>
+    </void>
+    <void method="put">
+     <string>Derecho comercial</string>
+     <double>4.6</double>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
