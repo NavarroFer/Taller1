@@ -47,7 +47,7 @@ public abstract class Parser
      * @param raw_command: Input del usuario tal y como fue ingresado.<br><br>
      * 
      * <b>Nota al lector:</b> El parser es la <i>capa de negocios</i> de este sistema. Recibe el input del usuario y 
-     * en función del comando que se desea ejecutar verifica que se cumplan todas las precondiciones para hacer
+     * en funcion del comando que se desea ejecutar verifica que se cumplan todas las precondiciones para hacer
      * la correspondiente llamada al modelo.<br><br>
      * 
      * <b>Pre:</b><br>
@@ -69,7 +69,7 @@ public abstract class Parser
      * (codigo de error y descripcion), las excepciones arrojadas por este metodo son todas de la misma clase "ParsingException". 
      * Utilizar <u><a href="../exceptions/ParsingException.html#getErrorMessage--">getErrorMessage()</a></u> si desea obtener el mensaje de error.<br><br>
      * 
-     * <b>Codigos de error: (No coinciden con los codigos de error del SRS, debieron ser cambiados en tiempo de diseño
+     * <b>Codigos de error: (No coinciden con los codigos de error del SRS, debieron ser cambiados en tiempo de disenio
      * pues el SRS era inconsistente)</b><br>
      * <b>Error 000:</b> Comando mal formado<br>
      * <b>Error 001:</b> Operacion no conocida<br>
