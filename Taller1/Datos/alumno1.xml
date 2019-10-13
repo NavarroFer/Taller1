@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_131" class="java.beans.XMLDecoder">
+ <object class="modelo.Alumno">
+  <void property="ID">
+   <string>8573</string>
+  </void>
+  <void property="apellido_y_nombre">
+   <string>Sanchez Mauricio</string>
+  </void>
+  <void property="carrera">
+   <string>Ingenieria Quimica</string>
+  </void>
+  <void property="domicilio">
+   <string>Rawson 1223</string>
+  </void>
+  <void property="fecha_de_nacimiento">
+   <string>05/06/98</string>
+  </void>
+  <void property="materias">
+   <object class="java.util.HashMap">
+    <void method="put">
+     <string>Quimica1</string>
+     <double>9.5</double>
+    </void>
+    <void method="put">
+     <string>SistemasdeRepresentacion</string>
+     <double>7</double>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

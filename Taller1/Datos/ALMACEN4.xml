@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_131" class="java.beans.XMLDecoder">
+ <object class="modelo.Almacen">
+  <void property="alumnos">
+   <object class="java.util.HashMap">
+    <void method="put">
+     <string>7770</string>
+     <object class="modelo.Alumno" id="Alumno0">
+      <void property="ID">
+       <string>7770</string>
+      </void>
+      <void property="apellido_y_nombre">
+       <string>Fernandez Mauricio</string>
+      </void>
+      <void property="carrera">
+       <string>Ingenieria en informatica</string>
+      </void>
+      <void property="domicilio">
+       <string>Avenida Rucula 1222223</string>
+      </void>
+      <void property="fecha_de_nacimiento">
+       <string>01/02/03</string>
+      </void>
+      <void property="materias">
+       <void method="put">
+        <string>Taller1</string>
+        <double>10.0</double>
+       </void>
+      </void>
+     </object>
+    </void>
+    <void method="put">
+     <string>2314</string>
+     <object class="modelo.Alumno" id="Alumno1">
+      <void property="ID">
+       <string>2314</string>
+      </void>
+      <void property="apellido_y_nombre">
+       <string>Lopez Julio</string>
+      </void>
+      <void property="carrera">
+       <string>Contador publico</string>
+      </void>
+      <void property="domicilio">
+       <string>Tucuman 9</string>
+      </void>
+      <void property="fecha_de_nacimiento">
+       <string>24/12/96</string>
+      </void>
+      <void property="materias">
+       <void method="put">
+        <string>Contabilidad2</string>
+        <double>5.0</double>
+       </void>
+       <void method="put">
+        <string>Contabilidad3</string>
+        <double>4.5</double>
+       </void>
+       <void method="put">
+        <string>Contabilidad1</string>
+        <double>10.0</double>
+       </void>
+       <void method="put">
+        <string>Auditoria</string>
+        <double>3.0</double>
+       </void>
+      </void>
+     </object>
+    </void>
+    <void method="put">
+     <string>9020</string>
+     <object class="modelo.Alumno" id="Alumno2">
+      <void property="ID">
+       <string>9020</string>
+      </void>
+      <void property="apellido_y_nombre">
+       <string>Palermo Juan Roman</string>
+      </void>
+      <void property="carrera">
+       <string>Abogacia</string>
+      </void>
+      <void property="domicilio">
+       <string>Avellaneda 4321</string>
+      </void>
+      <void property="fecha_de_nacimiento">
+       <string>23/08/99</string>
+      </void>
+      <void property="materias">
+       <void method="put">
+        <string>Derecho penal</string>
+        <double>5.0</double>
+       </void>
+       <void method="put">
+        <string>Derecho comercial</string>
+        <double>4.6</double>
+       </void>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void property="filename">
+   <string>ALMACEN4.xml</string>
+  </void>
+ </object>
+</java>

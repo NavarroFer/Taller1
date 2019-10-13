@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_131" class="java.beans.XMLDecoder">
+ <object class="modelo.Alumno">
+  <void property="ID">
+   <string>2314</string>
+  </void>
+  <void property="apellido_y_nombre">
+   <string>Lopez Julio</string>
+  </void>
+  <void property="carrera">
+   <string>Contador publico</string>
+  </void>
+  <void property="domicilio">
+   <string>Tucuman 9</string>
+  </void>
+  <void property="fecha_de_nacimiento">
+   <string>24/12/96</string>
+  </void>
+  <void property="materias">
+   <object class="java.util.HashMap">
+    <void method="put">
+     <string>Contabilidad1</string>
+     <double>10.0</double>
+    </void>
+    <void method="put">
+     <string>Contabilidad2</string>
+     <double>5.0</double>
+    </void>
+    <void method="put">
+     <string>Contabilidad3</string>
+     <double>4.5</double>
+    </void>
+    <void method="put">
+     <string>Auditoria</string>
+     <double>3.0</double>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

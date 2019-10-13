@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_131" class="java.beans.XMLDecoder">
+ <object class="modelo.Alumno">
+  <void property="ID">
+   <string>9999</string>
+  </void>
+  <void property="apellido_y_nombre">
+   <string>Lima Mauricio</string>
+  </void>
+  <void property="carrera">
+   <string>Ingenieria en informatica</string>
+  </void>
+  <void property="domicilio">
+   <string>Camet 6784</string>
+  </void>
+  <void property="fecha_de_nacimiento">
+   <string>04/10/98</string>
+  </void>
+  <void property="materias">
+   <object class="java.util.HashMap">
+    <void method="put">
+     <string>Programacion1</string>
+     <double>10.0</double>
+    </void>
+    <void method="put">
+     <string>Programacion2</string>
+     <double>9.3</double>
+    </void>
+    <void method="put">
+     <string>Programacion3</string>
+     <double>9.0</double>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
