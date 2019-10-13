@@ -26,7 +26,7 @@ public class Controlador{
 
     /**
      * Para poder ser action listener necesita estar instanciado
-     * @return
+     * @return singleton, retorna la instancia de el controlador
      */
     public static Controlador getInstance(){
         if(instance == null){
