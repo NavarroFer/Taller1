@@ -1,4 +1,4 @@
-# Trabajo práctico
+# Trabajo práctico (Grupo II)
 ## Proyecto realizado para la cátedra Taller de Programación I, Facultad de Ingeniería, Universidad Nacional de Mar Del Plata
 ## Integrantes:
 ### Cardoso, Juan Pablo
