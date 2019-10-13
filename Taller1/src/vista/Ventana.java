@@ -3,7 +3,6 @@ package vista;
 
 import controlador.Controlador;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -11,7 +10,6 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import java.util.Observable;
 
 import javax.swing.JButton;
 
@@ -19,16 +17,19 @@ import negocio.Parser;
 
 
 /**
- *
  * @author Mau
+ * 
  */
 public class Ventana
     extends javax.swing.JFrame
     implements IVista
 {
+    //Ignoren esto es para q no salte un warning de version y noseq gansada, nada relevante
+    @SuppressWarnings("compatibility:-6144201775304125878")
+    private static final long serialVersionUID = 1L;
+    //
 
-
-    /** Creates new form Ventana */
+    /** Creates new form Ventana. */
     public Ventana()
     {
 
@@ -91,7 +92,7 @@ public class Ventana
 
 
     /**
-     * @param texto: el texto a escribir
+     * @param texto el texto a escribir<br>
      * Se encarga de imprimir en la vista informacion sobre el funcionamiento del programa
      *
      */
@@ -211,9 +212,13 @@ public class Ventana
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * Recibe un mensaje de error. Lo que hace es, al area de texto de errores le append un \n y el texto.
+     * @param text el mensaje de error
+     * */
     public void mostrarError(String text)
     {
-        jTextAreaErrores.append("\n " + text);
+        jTextAreaErrores.append(text + "\n\n");
     }
     
     private void jTFComandosKeyReleased(java.awt.event.KeyEvent evt)//GEN-FIRST:event_jTFComandosKeyReleased

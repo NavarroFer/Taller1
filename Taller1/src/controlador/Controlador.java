@@ -2,62 +2,71 @@ package controlador;
 
 import exceptions.ParsingException;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-
-import java.util.Observable;
-import java.util.Observer;
 
 import negocio.Parser;
 
 import vista.IVista;
 
-public class Controlador{
+/**
+ * @author Juampi
+ */
+public class Controlador
+{
     private static Controlador instance = null;
     private static IVista vista = null;
-    
-    
-    
-    private Controlador() {
+
+
+    private Controlador()
+    {
         super();
     }
 
 
     /**
+     * @return instancia<br>
      * Para poder ser action listener necesita estar instanciado
-     * @return
+     *
+     * @author Juampi
      */
-    public static Controlador getInstance(){
-        if(instance == null){
+    public static Controlador getInstance()
+    {
+        if (instance == null)
+        {
             instance = new Controlador();
         }
-        
+
         return instance;
     }
 
 
-    
-    public static void setVista(IVista view){
+    /**
+     * @param view Vista cualquiera que implemente la interfaz IVista
+     */
+    public static void setVista(IVista view)
+    {
         vista = view;
     }
 
 
-
-    public void comandoEnviado(String comando) {
-        try {
+    /**
+     * @param comando el comando ingresado por el usuario
+     * @author Tosti (Ft Nawe)
+     */
+    public void comandoEnviado(String comando)
+    {
+        try
+        {
             Parser.parse(comando);
-            
-        } 
+        }
         catch (ParsingException exception)
         {
-            vista.mostrarError("\n" + exception.getErrorMessage());
+            vista.mostrarError(exception.getErrorMessage());
         }
         catch (Exception e)
         {
-            vista.mostrarError("\n UNEXPECTED ERROR: " + e.getMessage());
+            vista.mostrarError("UNEXPECTED ERROR: " + e.getMessage());
         }
     }
 
-    
+
 }
